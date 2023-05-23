@@ -2,8 +2,7 @@ const Footer = () => {
 
     return (
         <div className="footer">
-            
-            <p>Footer</p>
+            <p>Footer - Kanske nån copyright text - länk till kontaktsidan(Om vi ska ha en sådan)</p>
         </div>
     )
 }
