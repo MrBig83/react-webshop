@@ -28,11 +28,11 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "title": "",
-  "price": 0,
-  "description": "",
-  "image": "",
-  "inStock": 0
+  "title": "TestTitel",
+  "price": 7,
+  "description": "Test-beskrivning av testprodukten som heter testtitel.",
+  "image": "https://lyko.com/globalassets/product-images/clarins-lip-perfector-22-peach-glow-12-ml-1078-a55-0022_1.jpg?ref=1305738&w=960&h=960&mode=max&quality=75&format=webp",
+  "inStock": 3
 }
 
 ###
