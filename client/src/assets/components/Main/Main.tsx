@@ -10,11 +10,11 @@ const Main = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-
   <Routes>
     <Route path='/' element={<Main />} />
     <Route path='/:id' element={<SingleProduct />} />
   </Routes>
+
 
   return (
     <div className="main">
