@@ -1,37 +1,27 @@
-import { Breadcrumb, theme } from 'antd';
-import { Route, Routes } from 'react-router-dom';
-import Products from '../Products/Products';
-import SingleProduct from '../SingleProduct/SingleProduct';
+import Products from "../Products/Products";
+import { Breadcrumb, theme } from "antd";
 
-
-
-// import About from "./About/About";
-// import Contact from "./Contact/Contact";
-
-const Main: React.FC = () => {
-    const {
-        token: { colorBgContainer },
-      } = theme.useToken();
-
-    return (
-        <div style={{ padding: '0 50px' }}>
-        <Breadcrumb style={{ margin: '16px 0' }}>
+const Main = () => {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+  return (
+    <div className="main">
+      <div style={{ padding: "0 50px" }}>
+        <Breadcrumb style={{ margin: "16px 0" }}>
           <Breadcrumb.Item>Home</Breadcrumb.Item>
-          {/* <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item> */}
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
         </Breadcrumb>
-        <div className="site-layout-content" style={{ background: colorBgContainer }}> 
-          {/* <Products /> */}
+        <div
+          className="site-layout-content"
+          style={{ background: colorBgContainer }}
+        >
+          Content
+          <Products />
         </div>
-         
-        <Routes>
-                <Route path='/' element={<Products />} />
-                <Route path='/:id' element={<SingleProduct />} />
-                {/* <Route path='about' element={<About />} />
-                <Route path='contact' element={<Contact /> } /> */}
-            </Routes>
-        </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 export default Main;
-

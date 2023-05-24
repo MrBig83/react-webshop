@@ -1,13 +1,13 @@
-import { Layout } from 'antd';
-
-import Header from "./assets/components/Header/Header";
+import React from "react";
+import { Layout } from "antd";
 import Main from "./assets/components/Main/Main";
-import Footer from './assets/components/Footer/Footer';
+import Header from "./assets/components/Header/Header";
+import Footer from "./assets/components/Footer/Footer";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <Layout className="layout">
-      <Header />
+      <Header></Header>
       <Main />
       <Footer />
     </Layout>
