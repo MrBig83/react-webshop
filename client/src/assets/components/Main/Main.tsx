@@ -1,4 +1,6 @@
-import { Route, Routes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+
 import Products from "../Products/Products";
 import SingleProduct from "../SingleProduct/SingleProduct";
 import { Breadcrumb, theme } from "antd";
@@ -7,6 +9,13 @@ const Main = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+
+  <Routes>
+    <Route path='/' element={<Main />} />
+    <Route path='/:id' element={<SingleProduct />} />
+  </Routes>
+
   return (
     <div className="main">
       <div style={{ padding: "0 50px" }}>
@@ -21,10 +30,6 @@ const Main = () => {
         >
           Content
           <Products />
-          <Routes>
-            <Route path='/' element={<Main />} />
-            <Route path='/:id' element={<SingleProduct />} />
-          </Routes>
         </div>
       </div>
     </div>
