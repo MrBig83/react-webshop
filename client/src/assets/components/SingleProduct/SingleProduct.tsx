@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css"
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 
 const SingleProduct = () => {   
@@ -18,7 +19,8 @@ const SingleProduct = () => {
 
     return (
         <div className="SingleProduct">
-            <div>
+            <Breadcrumbs />
+            <div className="title">
                 <h3>{product.title}</h3>
                 <img src={product.image} height={500}/>
             </div>

@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css"
 
 
+
 const Products = () => {
     const [products, setProducts] = useState([])
 
@@ -23,6 +24,7 @@ useEffect(() => {
 
     return (
         <div className="ProductList">
+            
             {products.map((product) => (
                 <Link key={product._id} to={`/${product._id}`}>
                     <ProductCard product={product}/> 
