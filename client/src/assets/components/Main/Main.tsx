@@ -1,8 +1,8 @@
-import { Routes, Route } from "react-router-dom";
+
 
 
 import Products from "../Products/Products";
-import SingleProduct from "../SingleProduct/SingleProduct";
+
 import { Breadcrumb, theme } from "antd";
 
 const Main = () => {
@@ -10,10 +10,7 @@ const Main = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  <Routes>
-    <Route path='/' element={<Main />} />
-    <Route path='/:id' element={<SingleProduct />} />
-  </Routes>
+
 
 
   return (

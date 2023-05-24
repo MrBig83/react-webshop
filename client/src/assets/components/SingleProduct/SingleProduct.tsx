@@ -9,12 +9,9 @@ const SingleProduct = () => {
         useEffect(() => {
             const fetchProduct = async () => {
                 const response = await fetch(`http://localhost:3000/api/products/${id}`)
-                const data = await response.json()
-                console.log(data);
-                
+                const data = await response.json()                
                 setProduct(data) 
             }
-
             fetchProduct()
         }, [product]) //============== Saknar ID! ================
 
@@ -29,8 +26,6 @@ const SingleProduct = () => {
             <br />
             <br />
             <Link to={`/`}>Tillbaka till huvudsidan</Link>
-        
-            
         </div>
     )
 }
