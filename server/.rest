@@ -47,4 +47,8 @@ Content-Type: application/json
  "deliveryTimeInHours": 72
 }
 
-##
+###
+
+GET http://localhost:3000/api/products/646c94579836a36c85514f06
+
+###
