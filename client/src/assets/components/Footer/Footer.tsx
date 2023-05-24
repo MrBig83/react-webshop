@@ -1,9 +1,6 @@
 const Footer = () => {
-
-    return (
-        <div className="footer">
-            <p>Footer - Kanske nån copyright text - länk till kontaktsidan(Om vi ska ha en sådan)</p>
-        </div>
-    )
-}
+  return (
+    <div style={{ textAlign: "center" }}>Webbshop ©2023 Created by Grupp 3</div>
+  );
+};
 export default Footer;
