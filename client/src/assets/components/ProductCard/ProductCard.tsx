@@ -1,7 +1,7 @@
 
 
 
-function ProductCard({product}) { //{product} innanför paranteserna sen. 
+function ProductCard({product}) { // ================== Behövs typas! =================
 
     return (
         <div className="productcard">

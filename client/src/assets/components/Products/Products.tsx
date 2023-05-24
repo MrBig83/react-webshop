@@ -10,13 +10,9 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             const response = await fetch(`http://localhost:3000/api/products`)
-            const data = await response.json()
-            console.log(data);
-            
+            const data = await response.json()   
             setProducts(data) 
         }
-            
-
         fetchProducts()
     }, [])
 
@@ -24,20 +20,13 @@ useEffect(() => {
     // console.log(products);
 }, [products])
 
-
-
     return (
         <div className="ProductList">
-
             {products.map((product) => (
-                // <Link key={product._id} to={`/${product._id}`}>
+                <Link key={product._id} to={`/${product._id}`}>
                     <ProductCard product={product}/> 
-                    
-
-                // </Link>
-            ))}
-
-            
+                </Link>
+            ))}            
         </div>
     )
 }
