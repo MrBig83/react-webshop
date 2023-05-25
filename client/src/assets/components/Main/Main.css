@@ -4,14 +4,12 @@
     justify-content: center;
 }
 
-.content {
-    width: 30vw;
+.routes {
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
-    
-    
     
 }
 .sectionLine {
