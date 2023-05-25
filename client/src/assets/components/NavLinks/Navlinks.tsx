@@ -1,8 +1,24 @@
 // import "./NavLinks.css";
 import { NavLink } from "react-router-dom";
+
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+
+import { Drawer } from "antd";
+import { useState } from "react";
+
 import "./NavLink.css";
+import ShopingCart from "../ShopingCart/ShopingCart";
+
 function NavLinks() {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
     <div className="menu-container">
       <ul>
@@ -19,8 +35,16 @@ function NavLinks() {
           <NavLink to="/kontakta-oss">kontakta oss</NavLink>
         </li>
         <li className="shopingcart-container">
-          <NavLink className={"shopingcart-icon"} to="/shopingcart">
-            <ShoppingCartOutlined />
+          <NavLink className={"shopingcart-icon"} to="">
+            <ShoppingCartOutlined onClick={showDrawer} />
+            <Drawer
+              title="Basic Drawer"
+              placement="right"
+              onClose={onClose}
+              open={open}
+            >
+              <ShopingCart />
+            </Drawer>
           </NavLink>
             <UserOutlined />
         </li>
