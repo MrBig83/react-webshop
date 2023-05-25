@@ -3,7 +3,7 @@
 
 import Products from "../Products/Products";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import { Breadcrumb, theme } from "antd";
+import { theme } from "antd";
 
 const Main = () => {
   const {
