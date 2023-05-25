@@ -1,0 +1,28 @@
+ul {
+  display: flex;
+  list-style-type: none;
+  gap: 2rem;
+  /* margin-right: 0.8rem; */
+  text-transform: uppercase;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+a.active {
+  border-bottom: 2px solid black;
+}
+a:hover {
+  border-bottom: 2px solid black;
+  color: black;
+}
+a {
+  color: black;
+  height: 100%;
+}
+.shopingcart-container {
+  position: absolute;
+  margin-left: 85%;
+  font-size: 30px;
+}

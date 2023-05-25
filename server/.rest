@@ -28,11 +28,11 @@ POST http://localhost:3000/api/products
 Content-Type: application/json
 
 {
-  "title": "",
-  "price": 0,
-  "description": "",
-  "image": "",
-  "inStock": 0
+  "title": "Mascara",
+  "price": 216,
+  "description": "Mascara som är fantastisk.",
+  "image": "https://lyko.com/globalassets/product-images/clinique-lash-power-mascara-black-onyx-2059-241-0001_1.jpg?ref=458627&w=2880&h=2880&mode=max&quality=75&format=webp",
+  "inStock": 3
 }
 
 ###
@@ -47,4 +47,8 @@ Content-Type: application/json
  "deliveryTimeInHours": 72
 }
 
-##
+###
+
+GET http://localhost:3000/api/products/646c94579836a36c85514f06
+
+###
