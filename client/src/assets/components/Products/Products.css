@@ -1,5 +1,7 @@
 .ProductList {
-    display: flex;
-    padding: 5rem;
-    gap: 5rem;
+  display: flex;
+  padding: 5rem;
+  gap: 5rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
