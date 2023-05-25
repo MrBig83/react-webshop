@@ -11,7 +11,7 @@ function Contact() {
         <p>Mailadess: asdf@asdf.com</p>
         
         
-        <div className="sectionLine"></div>
+        
     </div>
     </div>
   )
