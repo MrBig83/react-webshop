@@ -1,10 +1,35 @@
 import { UserOutlined } from "@ant-design/icons"
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Drawer } from "antd";
+import LoginForm from "./LoginForm/LoginForm";
 
-function Login() {
+const Login = () => {
+  const [open, setOpen] = useState(false);
+
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
   return (
-    <div>
-       <UserOutlined />
-    </div>
+    
+       
+       <li>
+            <NavLink to=''>
+            <UserOutlined onClick={showDrawer} />
+            <Drawer
+            title='Login'
+            placement="right"
+            onClose={onClose}
+            open={open}
+            >
+              <LoginForm />
+            </Drawer>
+            </NavLink>
+          </li>
   )
 }
 
