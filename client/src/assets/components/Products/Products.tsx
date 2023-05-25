@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css"
-
+import IProduct from "../../interfaces/Interfaces";
 
 
 const Products = () => {
@@ -12,7 +12,9 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             const response = await fetch(`http://localhost:3000/api/products`)
-            const data = await response.json()   
+            const data = await response.json()
+            console.log(data[0]);
+               
             setProducts(data) 
         }
         fetchProducts()
@@ -25,7 +27,7 @@ useEffect(() => {
     return (
         <div className="ProductList">
             
-            {products.map((product) => (
+            {products.map((product:IProduct) => (
                 <Link key={product._id} to={`/${product._id}`}>
                     <ProductCard product={product}/> 
                 </Link>
