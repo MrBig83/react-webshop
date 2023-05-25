@@ -21,10 +21,10 @@ const SingleProduct = () => {
         <div className="SingleProduct">
             <Breadcrumbs />
             <div className="title">
-                <h3>{product.title}</h3>
                 <img src={product.image} height={500}/>
             </div>
             <div className="info">
+                <h3>{product.title}</h3>
                 <p>{product.description}</p>
                 <p>{product.price} :-</p>
                 <button>Köp nu</button>
