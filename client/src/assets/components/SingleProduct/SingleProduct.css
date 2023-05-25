@@ -1,0 +1,15 @@
+.SingleProduct {
+    margin-left: 3rem;
+    display: flex;
+    
+}
+.SingleProduct .title {
+    padding-top: 4rem;
+}
+
+.info {
+    margin: 5rem;
+}
+.info button {
+    align-items: flex-end;
+}

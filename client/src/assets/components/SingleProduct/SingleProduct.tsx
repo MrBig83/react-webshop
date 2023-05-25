@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import "./SingleProduct.css"
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
 
 const SingleProduct = () => {   
@@ -16,13 +18,17 @@ const SingleProduct = () => {
         }, [product]) //============== Saknar ID! ================
 
     return (
-        <div>
-            <h3>{product.title}</h3>
-            <img src={product.image} height={500}/>
-            <p>{product.description}</p>
-            <p>{product.price} :-</p>
-            <button>Köp nu</button>
-           
+        <div className="SingleProduct">
+            <Breadcrumbs />
+            <div className="title">
+                <h3>{product.title}</h3>
+                <img src={product.image} height={500}/>
+            </div>
+            <div className="info">
+                <p>{product.description}</p>
+                <p>{product.price} :-</p>
+                <button>Köp nu</button>
+            </div>
             <br />
             <br />
             <Link to={`/`}>Tillbaka till huvudsidan</Link>

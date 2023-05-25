@@ -2,7 +2,7 @@
 
 
 import Products from "../Products/Products";
-
+import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { Breadcrumb, theme } from "antd";
 
 const Main = () => {
@@ -16,16 +16,12 @@ const Main = () => {
   return (
     <div className="main">
       <div style={{ padding: "0 50px" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
+        <Breadcrumbs />
         <div
           className="site-layout-content"
           style={{ background: colorBgContainer }}
         >
-          Content
+          <h3>Här kan vi ha en karusell som är jättefin</h3>
           <Products />
         </div>
       </div>

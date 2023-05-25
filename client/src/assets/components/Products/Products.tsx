@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
+import "./Products.css"
+
 
 
 const Products = () => {
@@ -22,6 +24,7 @@ useEffect(() => {
 
     return (
         <div className="ProductList">
+            
             {products.map((product) => (
                 <Link key={product._id} to={`/${product._id}`}>
                     <ProductCard product={product}/> 
