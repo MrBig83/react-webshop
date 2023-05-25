@@ -16,7 +16,7 @@ const defaultProduct = {
 }
 
 const SingleProduct = () => {   
-        const [product, setProduct] = useState(defaultProduct);    //<Product[]>([]); 
+        const [product, setProduct] = useState(defaultProduct); 
         const { id } = useParams();
     
         useEffect(() => {
