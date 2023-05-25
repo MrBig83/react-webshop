@@ -3,7 +3,7 @@ import "./BtnBuyNow.css"
 const BtnBuyNow = () => {
 
     function buyNow(){
-        console.log("click"); //Byt ut detta till önskad funktionalitet. Typ att lägga in varorna i en object-array eller i databasen. 
+        console.log("click"); //Byt ut detta till önskad funktionalitet. Typ att lägga in varorna i en object-array i LocalStorage eller i databasen. 
         
     }
 
