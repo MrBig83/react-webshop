@@ -10,7 +10,9 @@ function ProductCard({ product }) {
 
       <div className="ProductCardInfo">
         <h3>{product.title}</h3>
-        <BtnBuyNow />
+        
+          <BtnBuyNow />
+        
       </div>
     </div>
   );
