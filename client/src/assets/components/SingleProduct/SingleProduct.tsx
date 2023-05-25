@@ -2,10 +2,21 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css"
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+// import { Product } from "../../interfaces/Interfaces";
+// import Products from "../Products/Products";
 
+const defaultProduct = {
+    _id: "", 
+    categories: [],
+    description: "", 
+    image: "", 
+    inStock: 0,
+    price: 0,
+    title: "",     
+}
 
 const SingleProduct = () => {   
-        const [product, setProduct] = useState([]);
+        const [product, setProduct] = useState(defaultProduct);    //<Product[]>([]); 
         const { id } = useParams();
     
         useEffect(() => {
@@ -15,7 +26,7 @@ const SingleProduct = () => {
                 setProduct(data) 
             }
             fetchProduct()
-        }, [product]) //============== Saknar ID! ================
+        }, [product, id]) 
 
     return (
         <div className="SingleProduct">
