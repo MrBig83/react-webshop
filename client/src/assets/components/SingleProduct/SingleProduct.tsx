@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css"
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
+import BtnBuyNow from "../BtnBuyNow/BtnBuyNow"
 // import { Product } from "../../interfaces/Interfaces";
 // import Products from "../Products/Products";
 
@@ -38,7 +39,7 @@ const SingleProduct = () => {
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>
                 <p>{product.price} :-</p>
-                <button>Köp nu</button>
+                <BtnBuyNow />
             </div>
             <br />
             <br />
