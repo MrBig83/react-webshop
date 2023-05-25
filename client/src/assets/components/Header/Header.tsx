@@ -1,5 +1,8 @@
 import NavLinks from "../NavLinks/Navlinks";
 import "./Header.css";
+import Login from "../Login/Login";
+
+
 const Header = () => {
   return (
     <>
@@ -7,6 +10,7 @@ const Header = () => {
         <h1>Grupp 3</h1>
       </div>
       <div>
+        <Login />
         <NavLinks />
       </div>
     </>

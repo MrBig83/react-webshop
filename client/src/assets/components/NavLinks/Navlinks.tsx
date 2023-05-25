@@ -1,6 +1,6 @@
 // import "./NavLinks.css";
 import { NavLink } from "react-router-dom";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import "./NavLink.css";
 function NavLinks() {
   return (
@@ -22,6 +22,7 @@ function NavLinks() {
           <NavLink className={"shopingcart-icon"} to="/shopingcart">
             <ShoppingCartOutlined />
           </NavLink>
+            <UserOutlined />
         </li>
       </ul>
     </div>
