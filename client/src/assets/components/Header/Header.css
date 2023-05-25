@@ -1,11 +1,13 @@
 .Store-title {
   display: flex;
   justify-content: center;
+  background-color: white;
 }
-.menu-text {
+
+.menu-container {
   display: flex;
-  justify-content: center;
-}
-.shoping-cart svg {
-  font-size: large;
+  background-color: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 100%;
 }
