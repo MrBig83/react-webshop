@@ -1,6 +1,3 @@
-
-
-
 import Products from "../Products/Products";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import { theme } from "antd";
@@ -9,9 +6,6 @@ const Main = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
-
-
-
 
   return (
     <div className="main">
