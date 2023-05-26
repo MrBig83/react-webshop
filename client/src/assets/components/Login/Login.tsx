@@ -2,7 +2,7 @@ import { UserOutlined } from "@ant-design/icons"
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Drawer } from "antd";
-import LoginForm from "./LoginForm/LoginForm";
+import LoginForm from "../LoginForm/LoginForm";
 
 const Login = () => {
   const [open, setOpen] = useState(false);
