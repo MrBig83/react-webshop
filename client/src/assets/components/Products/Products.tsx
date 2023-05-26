@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css";
 import IProduct from "../../interfaces/Interfaces";
-
+import NavCarousel from "../NavCarousel/NavCarousel";
 const Products = () => {
   const [products, setProducts] = useState([]);
 
@@ -24,6 +24,7 @@ const Products = () => {
 
   return (
     <div>
+      <NavCarousel />
       <div className="ProductList">
         {products.map((product: IProduct) => (
           <Link key={product._id} to={`/${product._id}`}>
