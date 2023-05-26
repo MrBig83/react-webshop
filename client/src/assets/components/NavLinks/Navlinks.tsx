@@ -1,5 +1,7 @@
 // import "./NavLinks.css";
 import { NavLink } from "react-router-dom";
+import Login from "../Login/Login";
+
 
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
@@ -47,6 +49,7 @@ function NavLinks() {
               <ShopingCart />
             </Drawer>
           </NavLink>
+        <Login />
           </li>
           
         

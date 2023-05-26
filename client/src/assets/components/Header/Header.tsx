@@ -10,7 +10,6 @@ const Header = () => {
         <h1>Grupp 3</h1>
       </div>
       <div>
-        <Login />
         <NavLinks />
       </div>
     </>
