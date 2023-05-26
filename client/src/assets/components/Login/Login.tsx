@@ -14,22 +14,17 @@ const Login = () => {
   const onClose = () => {
     setOpen(false);
   };
-  return (
-    
-       
-       <li>
+  return ( 
             <NavLink to=''>
             <UserOutlined onClick={showDrawer} />
             <Drawer
             title='Login'
             placement="right"
             onClose={onClose}
-            open={open}
-            >
+            open={open}>
               <LoginForm />
             </Drawer>
-            </NavLink>
-          </li>
+            </NavLink>  
   )
 }
 
