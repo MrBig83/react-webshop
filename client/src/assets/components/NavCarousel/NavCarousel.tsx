@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "antd";
-// import "/NavCarousel.css";
+
 const contentStyle: React.CSSProperties = {
   height: "30rem",
   width: "100%",
@@ -32,6 +32,7 @@ const NavCarousel: React.FC = () => (
         style={imageStyle}
       />
     </div>
+
     <div>
       <img
         className="slidethree"

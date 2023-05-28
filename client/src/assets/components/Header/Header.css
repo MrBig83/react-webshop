@@ -1,7 +1,9 @@
 .Store-title {
   display: flex;
   justify-content: center;
-  background-color: white;
+  background-color: rgb(239, 239, 239);
+  height: 10rem;
+  align-items: center;
 }
 
 .menu-container {
@@ -10,4 +12,10 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
   width: 100%;
+}
+
+.logo {
+  width: auto; /* Ange den önskade bredden här */
+  height: 20rem; /* Låt höjden anpassas automatiskt för att behålla proportionerna */
+  justify-content: space-around;
 }
