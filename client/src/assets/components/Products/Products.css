@@ -1,8 +1,13 @@
 .ProductList {
   display: flex;
+  
   padding: 5rem;
   gap: 5rem;
   justify-content: center;
   flex-wrap: wrap;
   background-color: white;
+}
+.ProductCardRender {
+  display: flex;
+  flex-direction: column;
 }

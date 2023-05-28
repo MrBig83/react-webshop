@@ -10,8 +10,8 @@ function ProductCard({ product }) {
 
       <div className="ProductCardInfo">
         <h3>{product.title}</h3>
+        <p>{product.price}:-</p>
         
-          <BtnBuyNow />
         
       </div>
     </div>
