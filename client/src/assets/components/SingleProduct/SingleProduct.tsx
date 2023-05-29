@@ -16,6 +16,8 @@ const defaultProduct = {
     title: "",     
 }
 
+
+
 const SingleProduct = () => {   
         const [product, setProduct] = useState(defaultProduct); 
         const { id } = useParams();

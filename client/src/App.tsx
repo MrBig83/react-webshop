@@ -4,7 +4,7 @@ import Main from "./assets/components/Main/Main";
 import Header from "./assets/components/Header/Header";
 import Footer from "./assets/components/Footer/Footer";
 import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
-import MyProductsProvider from "./context/productscontext";
+import MyProductsProvider from "./context/ProductsContext";
 const App: React.FC = () => {
   return (
     <MyProductsProvider>
