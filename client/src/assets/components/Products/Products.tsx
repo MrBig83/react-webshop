@@ -18,20 +18,18 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    // console.log(products);
-  }, [products]);
+  useEffect(() => {}, [products]);
 
   return (
     <div>
       <div className="ProductList">
         {products.map((product: IProduct) => (
           <div className="ProductCardRender">
-          <Link key={product._id} to={`/${product._id}`}>
-            <ProductCard product={product} />
-          </Link>
-      <BtnBuyNow />
-      </div>
+            <Link key={product._id} to={`/${product._id}`}>
+              <ProductCard product={product} />
+            </Link>
+            <BtnBuyNow />
+          </div>
         ))}
       </div>
     </div>
