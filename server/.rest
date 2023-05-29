@@ -3,11 +3,11 @@ POST http://localhost:3000/api/users/register
 Content-Type: application/json
 
 {
-  "firstName": "Admin",
-  "lastName": "Adminsson",
-  "email": "admin@admin.se",
-  "password": "admin",
-  "isAdmin": true
+  "firstName": "lasse",
+  "lastName": "lassensson",
+  "email": "lasse@lasse.se",
+  "password": "lasse",
+  "isAdmin": false
 }
 
 ###
@@ -17,8 +17,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "admin@admin.se",
-  "password": "admin"
+  "email": "lasse@lasse.se",
+  "password": "lasse"
 }
 
 ###
@@ -50,5 +50,9 @@ Content-Type: application/json
 ###
 
 GET http://localhost:3000/api/products/646c94579836a36c85514f06
+
+###
+
+GET http://localhost:3000/api/products/
 
 ###
