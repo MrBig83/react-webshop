@@ -38,11 +38,11 @@ const SingleProduct = () => {
             <div className="info">
                 <h3>{product.title}</h3>
                 <p>{product.description}</p>
+                <p>{product.inStock}st i lager</p>
                 <p>{product.price} :-</p>
                 <BtnBuyNow />
             </div>
-            <br />
-            <br />
+
             <Link to={`/`}>Tillbaka till huvudsidan</Link>
         </div>
     )
