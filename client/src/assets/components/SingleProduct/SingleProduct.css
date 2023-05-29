@@ -1,6 +1,7 @@
 .SingleProduct {
     margin-left: 3rem;
     display: flex;
+    cursor:context-menu;
     
 }
 .SingleProduct .title {
