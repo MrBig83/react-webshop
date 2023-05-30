@@ -6,7 +6,7 @@ import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
 import IProduct from "../../interfaces/Interfaces";
 // import Products from "../Products/Products";
 
-const defaultProduct = {
+const defaultProduct: IProduct = {
   _id: "",
   categories: [],
   description: "",
@@ -17,7 +17,7 @@ const defaultProduct = {
 };
 
 const SingleProduct = () => {
-  const [product, setProduct] = useState(defaultProduct);
+  const [product, setProduct] = useState<IProduct>(defaultProduct);
   const { id } = useParams();
 
 
