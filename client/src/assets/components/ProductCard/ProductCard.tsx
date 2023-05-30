@@ -11,7 +11,9 @@ function ProductCard({ product }: { product: IProduct }) {
       <div className="ProductCardInfo">
         <h3>{product.title}</h3>
         <p>{product.price}:-</p>
+
         <BtnBuyNow product={product} />
+
       </div>
     </div>
   );
