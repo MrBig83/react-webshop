@@ -12,7 +12,8 @@ const BtnBuyNow = ({ product }: { product: IProduct }) => {
     setIsProductsInCart(ProductIsInCart(product._id));
   });
 
-  const buyNow = (event) => {
+  const buyNow = (event: any) => {
+    //kan man ha any här?
     event.preventDefault();
 
     if (productInCart) {
