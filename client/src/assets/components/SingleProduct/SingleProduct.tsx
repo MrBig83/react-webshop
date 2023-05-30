@@ -20,6 +20,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState(defaultProduct);
   const { id } = useParams();
 
+
   useEffect(() => {
     const fetchProduct = async () => {
       const response = await fetch(`http://localhost:3000/api/products/${id}`);
@@ -48,3 +49,4 @@ const SingleProduct = () => {
   );
 };
 export default SingleProduct;
+
