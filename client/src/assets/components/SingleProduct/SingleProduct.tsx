@@ -16,10 +16,11 @@ const defaultProduct = {
   title: "",
 };
 
+
+
 const SingleProduct = () => {
   const [product, setProduct] = useState(defaultProduct);
   const { id } = useParams();
-
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -38,7 +39,10 @@ const SingleProduct = () => {
       </div>
       <div className="info">
         <h3>{product.title}</h3>
-        <p>{product.description}</p>
+        <p>{product.description}</p>     
+        
+        <p>{product.inStock}st i lager</p>
+        
         <p>{product.price} :-</p>
         <BtnBuyNow product={product} />
       </div>

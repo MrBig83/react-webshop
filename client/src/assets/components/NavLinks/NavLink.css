@@ -1,5 +1,6 @@
 ul {
   display: flex;
+  height: 50px;
   list-style-type: none;
   gap: 2rem;
   /* margin-right: 0.8rem; */
@@ -23,6 +24,7 @@ a {
 }
 .shopingcart-container {
   position: absolute;
+  height: 50px;
   margin-left: 85%;
   font-size: 30px;
 }
