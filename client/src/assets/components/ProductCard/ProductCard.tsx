@@ -1,7 +1,7 @@
 import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
-
-function ProductCard({ product }) {
+import IProduct from "../../interfaces/Interfaces";
+function ProductCard({ product }: { product: IProduct }) {
   // ================== Behövs typas! =================
 
   return (
@@ -11,9 +11,9 @@ function ProductCard({ product }) {
       <div className="ProductCardInfo">
         <h3>{product.title}</h3>
         <p>{product.price}:-</p>
-        {/* <p>{product.inStock}st i lager</p> */}
-        
-        
+
+        <BtnBuyNow product={product} />
+
       </div>
     </div>
   );

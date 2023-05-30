@@ -1,16 +1,32 @@
-import "./BtnBuyNow.css"
+import { useContext, useEffect, useState } from "react";
+import { MyProductsContext } from "../../../context/productscontext";
+import "./BtnBuyNow.css";
+import IProduct from "../../interfaces/Interfaces";
 
-const BtnBuyNow = () => {
+const BtnBuyNow = ({ product }: { product: IProduct }) => {
+  const [productInCart, setIsProductsInCart] = useState(false);
+  const { addProduct, removeProduct, ProductIsInCart } =
+    useContext(MyProductsContext);
 
-    function buyNow(){
-        console.log("click"); //Byt ut detta till önskad funktionalitet. Typ att lägga in varorna i en object-array i LocalStorage eller i databasen. 
-        
+  useEffect(() => {
+    setIsProductsInCart(ProductIsInCart(product._id));
+  });
+
+  const buyNow = (event) => {
+    event.preventDefault();
+
+    if (productInCart) {
+      removeProduct(product._id);
+      return;
     }
 
-    return (
-        <div className="btnbuynow" onClick={buyNow}>
-            <p>Köp</p>
-        </div>
-    )
-}
+    addProduct(product);
+  };
+
+  return (
+    <button className="btnbuynow" onClick={buyNow}>
+      {productInCart ? "remove" : "add"}
+    </button>
+  );
+};
 export default BtnBuyNow;
