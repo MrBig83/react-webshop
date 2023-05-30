@@ -2,7 +2,6 @@
 import { NavLink } from "react-router-dom";
 import Login from "../Login/Login";
 
-
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { Drawer } from "antd";
@@ -10,7 +9,6 @@ import { useState } from "react";
 
 import "./NavLink.css";
 import ShopingCart from "../ShopingCart/ShopingCart";
-
 
 function NavLinks() {
   const [open, setOpen] = useState(false);
@@ -41,7 +39,7 @@ function NavLinks() {
           <NavLink className={"shopingcart-icon"} to="">
             <ShoppingCartOutlined onClick={showDrawer} />
             <Drawer
-              title="Basic Drawer"
+              title="Kundvagn"
               placement="right"
               onClose={onClose}
               open={open}
@@ -49,10 +47,8 @@ function NavLinks() {
               <ShopingCart />
             </Drawer>
           </NavLink>
-        <Login />
-          </li>
-          
-        
+          <Login />
+        </li>
       </ul>
     </div>
   );
