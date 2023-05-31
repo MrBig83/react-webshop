@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Drawer } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
-import LoggedIn from "../LoginForm/LoggedIn";
+
 
 
 const Login = () => {
@@ -25,7 +25,6 @@ const Login = () => {
             onClose={onClose}
             open={open}>
               <LoginForm />
-             <LoggedIn />
             </Drawer>
             </NavLink>  
   );
