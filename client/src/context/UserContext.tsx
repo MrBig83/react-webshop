@@ -35,7 +35,7 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
       const data = await res.json();
       console.log(data);
 
-      return data
+      setData(data)
       // Handle the response data as needed
 
     } catch (err) {
@@ -53,8 +53,7 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
         method: "POST"
          
       });
-      const data = await res.json()
-      //const data = ''
+      const data = ''
 
       setData(data)
       console.log(data)
@@ -66,19 +65,10 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
     }
   };
 
-
-//här kollar vi om usern är auth
-
   const auth = async(): Promise<void> => {
-    
-      const response = await fetch("/api/users/authorize") 
-
+      const response = await fetch("/api/users/authorize")
       const data = await response.json();
-      //setLoggedInUser (data.firstName)
       console.log(data);
-     // console.log(loggedInUser);
-      //return data
-      setData(data)
 
   }
   return (
@@ -87,6 +77,5 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
     </UserContext.Provider>
   );
 };
-
 
 export default UserContextProvider;

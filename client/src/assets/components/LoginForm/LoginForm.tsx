@@ -5,34 +5,14 @@ import { UserContext } from '../../../context/UserContext';
 
 const LoginForm: React.FC = () => {
   const { email, password, setEmail, setPassword, login, logOut, auth, data } = useContext(UserContext)!;
-  
-
-  const handleLogout = async() => {
-    
-      await logOut()
-      console.log('utloggad')
-      
-    
-  }
-
 
   const handleSubmit = async () => {
     await auth()
-    if (data === "You are not logged in") {
+    if (!data.firstName) {
       await login()
-      console.log('inloggad')
     }else{
       await logOut()
-      console.log('utloggad')
     }
-    // try {
-    //   await login(); 
-    //   await auth()
-    //   console.log(data)
-    // } catch (error) {
-    //   console.log('Error:', error);
-      
-    //}
   };
 
   return (
@@ -68,10 +48,8 @@ const LoginForm: React.FC = () => {
         </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-          <Button onClick={handleSubmit}type="primary" htmlType="submit">Logga
-              {/* //====== här vill vi kolla om man är inloggad ====== */}
-          
-            {/* //{data ? 'logga in' : 'logga ut'} */}
+          <Button onClick={handleSubmit}type="primary" htmlType="submit">
+            {data.firstName ? 'logga ut' : 'logga in'}
           </Button>
           
         </Form.Item>
