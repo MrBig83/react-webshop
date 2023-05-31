@@ -1,5 +1,5 @@
 
-export default interface IProduct {
+export interface IProduct {
     _id: string; 
     categories: [];
     description: string;
@@ -7,4 +7,10 @@ export default interface IProduct {
     inStock: number;
     price: number;
     title: string;    
+}
+
+export interface ICartItem {
+    product: IProduct;
+    quantity: number;
+    totalPrice: number;
 }

@@ -1,8 +1,8 @@
 import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
-import IProduct from "../../interfaces/Interfaces";
+import { IProduct } from "../../interfaces/Interfaces";
+
 function ProductCard({ product }: { product: IProduct }) {
-  // ================== Behövs typas! =================
 
   return (
     <div className="productcard">

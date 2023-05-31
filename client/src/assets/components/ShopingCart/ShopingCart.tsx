@@ -2,6 +2,10 @@ import { useContext } from "react";
 import { MyProductsContext } from "../../../context/productscontext";
 import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
 import "./ShopingCart.css";
+import CartItemCard from "../CartItem/CartItem";
+
+
+
 const ShopingCart = () => {
   const { products } = useContext(MyProductsContext);
   console.log(products);
@@ -18,6 +22,7 @@ const ShopingCart = () => {
             <div className="shopingcart-info">
               <h3>{p.title}</h3>
               antal...
+              <CartItemCard />
               <BtnBuyNow product={p} />
             </div>
           </div>
