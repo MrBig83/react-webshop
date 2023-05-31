@@ -1,10 +1,11 @@
-import { PropsWithChildren, createContext, useState } from "react";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
 import IProduct from "../assets/interfaces/Interfaces";
 
 interface IProductContext {
   products: IProduct[];
   addProduct: (product: IProduct) => void;
   removeProduct: (productId: string) => void;
+  updateProductQuantity: (productId: string, quantity: number) => void;
   ProductIsInCart: (productId: string) => boolean;
 }
 
@@ -12,8 +13,10 @@ export const MyProductsContext = createContext<IProductContext>({
   products: [],
   addProduct: () => {},
   removeProduct: () => {},
+  updateProductQuantity: () => {}, // Lägg till den nya funktionen med en tom implementation
   ProductIsInCart: () => false,
 });
+export const useMyProductsContext = () => useContext(MyProductsContext);
 
 const MyProductsProvider = ({ children }: PropsWithChildren) => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -31,9 +34,28 @@ const MyProductsProvider = ({ children }: PropsWithChildren) => {
     return products.some((p) => p._id === productId);
   };
 
+  const updateProductQuantity = (productId: string, quantity: number) => {
+    const updatedProducts = products.map((p) => {
+      if (p.id === productId) {
+        return {
+          ...p,
+          quantity: quantity,
+        };
+      }
+      return p;
+    });
+    setProducts(updatedProducts);
+  };
+
   return (
     <MyProductsContext.Provider
-      value={{ products, addProduct, removeProduct, ProductIsInCart }}
+      value={{
+        products,
+        addProduct,
+        removeProduct,
+        ProductIsInCart,
+        updateProductQuantity,
+      }}
     >
       {children}
     </MyProductsContext.Provider>
