@@ -7,7 +7,7 @@ const LoginForm: React.FC = () => {
   const { email, password, setEmail, setPassword, login } = useContext(UserContext)!;
 
 
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async () => {
     try {
       await login();   
     } catch (error) {

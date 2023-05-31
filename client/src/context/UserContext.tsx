@@ -1,9 +1,8 @@
 
 
-
 import React, { PropsWithChildren, createContext, useState } from 'react';
 
-interface ApiContextProps {
+interface UserContextProps {
   email: string;
   password: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
@@ -11,10 +10,8 @@ interface ApiContextProps {
   login: () => Promise<void>;
 }
 
-//useeffect som kollar om man är inloggad
-//uselocalstorage hook
 
-export const UserContext = createContext<ApiContextProps | null>(null);
+export const UserContext = createContext<UserContextProps | null>(null);
 
 const UserContextProvider = ({ children }:PropsWithChildren) => {
   const [email, setEmail] = useState("");
@@ -31,7 +28,7 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
       });
 
       const data = await res.json();
-      console.log(data);
+      console.log(data.firstName);
       // Handle the response data as needed
 
     } catch (err) {

@@ -5,7 +5,6 @@ import "./ShopingCart.css";
 const ShopingCart = () => {
   const { products } = useContext(MyProductsContext);
   console.log(products);
-
   return (
     <>
       <h2>Dina varor</h2>
