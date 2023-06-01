@@ -10,7 +10,7 @@ const LoginForm: React.FC = () => {
     await auth()
     if (!data._id) {
       await login()
-      
+
     }else{
       await logOut()
     }
@@ -18,7 +18,11 @@ const LoginForm: React.FC = () => {
   
   return (
     <div>
-      <Form 
+      {data.firstName ? (
+        <div style={{display: 'none'}}>Hidden element</div>
+      ) : (
+        
+        <Form 
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
@@ -27,33 +31,31 @@ const LoginForm: React.FC = () => {
         autoComplete="on"
         >
         <Form.Item
-          label="Username"
+          label="E-postadress"
           name="username"
           initialValue={email}
-          rules={[{ required: true, message: 'Please input your username!' }]}
+          rules={[{ required: true, message: 'Var god fyll i din e-postadress' }]}
           >
           <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
 
         <Form.Item
-          label="Password"
+          label="Lösenord"
           name="password"
           initialValue={password}
-          rules={[{ required: true, message: 'Please input your password!' }]}
+          rules={[{ required: true, message: 'Var god fyll i ditt lösenord' }]}
           >
           <Input.Password onChange={(e) => setPassword(e.target.value)} />
         </Form.Item>
 
-        <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        </Form.Item>
+      </Form>
+        )}
           <Button onClick={handleSubmit}type="primary" htmlType="submit">
             {data._id ? 'logga ut' : 'logga in'}
           </Button>
-        </Form.Item>
-      </Form>
       <div>
       </div>
     </div>

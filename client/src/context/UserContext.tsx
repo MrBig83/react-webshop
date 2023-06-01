@@ -34,7 +34,7 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
       });
 
       const data = await res.json();
-      console.log(data);
+      console.log(data.isAdmin);
 
       setData(data);
       // Handle the response data as needed
@@ -53,10 +53,8 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
     const data = "";
 
     setData(data);
-    console.log(data);
     // Handle the response data as needed
 
-    console.log(err);
     // Handle errors
   };
 
