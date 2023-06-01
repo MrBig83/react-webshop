@@ -20,13 +20,21 @@ Content-Type: application/json
   "email": "lasse@lasse.se",
   "password": "lasse"
 }
+###
+
+//Autorisera användaren
+
+GET http://localhost:3000/api/users/authorize
 
 ###
+//Logga ut
+POST http://localhost:3000/api/users/logout
+
+
 
 //Skapa produkter här
 POST http://localhost:3000/api/products
 Content-Type: application/json
-
 {
   "title": "Mascara",
   "price": 216,
