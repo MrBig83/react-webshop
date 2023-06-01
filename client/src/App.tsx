@@ -5,9 +5,11 @@ import Header from "./assets/components/Header/Header";
 import Footer from "./assets/components/Footer/Footer";
 import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
 import MyProductsProvider from "./context/productscontext";
-//import ApiContextProvider from "./context/ApiContext";
+
+import UserContextProvider from "./context/UserContext";
 const App: React.FC = () => {
   return (
+    <UserContextProvider>
      <MyProductsProvider> 
       <Layout className="layout">
         <Header />
@@ -16,6 +18,7 @@ const App: React.FC = () => {
         <Footer />
       </Layout>
      </MyProductsProvider>
+     </UserContextProvider>
   );
 };
 

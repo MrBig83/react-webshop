@@ -4,6 +4,8 @@ import SingleProduct from "../SingleProduct/SingleProduct";
 import Products from "../Products/Products";
 import ShopingCart from "../ShopingCart/ShopingCart";
 import Contact from "../Contact/Contact";
+
+
 import "./Main.css"
 const Main = () => {
   return (
