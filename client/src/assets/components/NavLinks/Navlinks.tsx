@@ -5,23 +5,28 @@ import Login from "../Login/Login";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { Drawer } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import "./NavLink.css";
 import ShopingCart from "../ShopingCart/ShopingCart";
+import { UserContext } from "../../../context/UserContext";
+
+
 
 function NavLinks() {
+  const { data } = useContext(UserContext)!
   const [open, setOpen] = useState(false);
-
+  
   const showDrawer = () => {
     setOpen(true);
   };
-
+  
   const onClose = () => {
     setOpen(false);
   };
   return (
     <div className="menu-container">
+      <p>{data.firstName} {data.lastName}</p>
       <ul>
         <li>
           <NavLink to="/">hem</NavLink>

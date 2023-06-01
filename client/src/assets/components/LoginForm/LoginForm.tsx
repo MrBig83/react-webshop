@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
       await logOut()
     }
   };
-
+  
   return (
     <div>
       <Form 
@@ -31,7 +31,7 @@ const LoginForm: React.FC = () => {
           name="username"
           initialValue={email}
           rules={[{ required: true, message: 'Please input your username!' }]}
-        >
+          >
           <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
 
@@ -40,7 +40,7 @@ const LoginForm: React.FC = () => {
           name="password"
           initialValue={password}
           rules={[{ required: true, message: 'Please input your password!' }]}
-        >
+          >
           <Input.Password onChange={(e) => setPassword(e.target.value)} />
         </Form.Item>
 
@@ -52,12 +52,9 @@ const LoginForm: React.FC = () => {
           <Button onClick={handleSubmit}type="primary" htmlType="submit">
             {data._id ? 'logga ut' : 'logga in'}
           </Button>
-          
         </Form.Item>
       </Form>
       <div>
-      <h2>{data.firstName}</h2>
-      <h2>{data.laststName}</h2>
       </div>
     </div>
   );

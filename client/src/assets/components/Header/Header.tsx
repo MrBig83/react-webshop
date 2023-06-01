@@ -1,6 +1,5 @@
 import NavLinks from "../NavLinks/Navlinks";
 import "./Header.css";
-// import Login from "../Login/Login";
 
 const Header = () => {
   return (
