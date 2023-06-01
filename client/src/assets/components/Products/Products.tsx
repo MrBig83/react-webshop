@@ -13,22 +13,25 @@ const Products = () => {
       const data = await response.json();
 
       setProducts(data);
+      console.log(data);
     };
     fetchProducts();
   }, []);
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   useEffect(() => {}, [products]);
 
   return (
     <div className="ProductList">
       {products.map((product: IProduct) => (
-        <div className="ProductCardRender">
-          <Link key={product._id} to={`/${product._id}`}>
-            <ProductCard key={product._id} product={product} />
+        <div className="ProductCardRender" key={product._id}>
+          <Link to={`/${product._id}`}>
+            <ProductCard product={product} />
           </Link>
         </div>
       ))}
     </div>
   );
 };
+
 export default Products;

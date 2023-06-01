@@ -10,7 +10,15 @@ const ShoppingCart = () => {
   const calculateTotal = () => {
     let total = 0;
     products.forEach((p) => {
-      total += p.price * p.quantity;
+      // Kontrollera att både p.price och p.quantity är giltiga numeriska värden innan du utför beräkningen
+      if (
+        typeof p.price === "number" &&
+        typeof p.quantity === "number" &&
+        !isNaN(p.price) &&
+        !isNaN(p.quantity)
+      ) {
+        total += p.price * p.quantity;
+      }
     });
     return total;
   };

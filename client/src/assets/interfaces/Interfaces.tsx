@@ -8,3 +8,10 @@ export default interface IProduct {
   title: string;
   quantity: number;
 }
+
+export interface ICartItem {
+  product: IProduct;
+
+  onQuantityChange: (productId: string, quantity: number) => void;
+  onRemove: (productId: string) => void;
+}

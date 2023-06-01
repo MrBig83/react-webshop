@@ -1,5 +1,6 @@
 import React from "react";
 import IProduct from "../../interfaces/Interfaces";
+
 interface CartItemProps {
   product: IProduct;
   onQuantityChange: (productId: string, quantity: number) => void;
@@ -23,8 +24,8 @@ const CartItem: React.FC<CartItemProps> = ({
     <div>
       <img src={product.image} alt={product.title} />
       <h3>{product.title}</h3>
-      <p>Antal: {product.quantity}</p>
-      <p>Pris: {product.price * product.quantity}</p>
+      <p>Antal: {product.quantity ?? 0}</p>
+      <p>Pris: {product.price * (product.quantity ?? 0)}</p>
       <button onClick={() => handleQuantityChange(product.quantity + 1)}>
         +
       </button>

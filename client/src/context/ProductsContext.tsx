@@ -11,12 +11,15 @@ interface IProductContext {
 
 export const MyProductsContext = createContext<IProductContext>({
   products: [],
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   addProduct: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   removeProduct: () => {},
-  updateProductQuantity: () => {}, // Lägg till den nya funktionen med en tom implementation
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  updateProductQuantity: () => {},
   ProductIsInCart: () => false,
 });
-export const useMyProductsContext = () => useContext(MyProductsContext);
+// export const useMyProductsContext = () => useContext(MyProductsContext);
 
 const MyProductsProvider = ({ children }: PropsWithChildren) => {
   const [products, setProducts] = useState<IProduct[]>([]);
@@ -36,7 +39,7 @@ const MyProductsProvider = ({ children }: PropsWithChildren) => {
 
   const updateProductQuantity = (productId: string, quantity: number) => {
     const updatedProducts = products.map((p) => {
-      if (p.id === productId) {
+      if (p._id === productId) {
         return {
           ...p,
           quantity: quantity,
