@@ -1,17 +1,18 @@
-// import "./NavLinks.css";
 import { NavLink } from "react-router-dom";
 import Login from "../Login/Login";
 
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { Drawer } from "antd";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import "./NavLink.css";
 import BtnAdminpanel from "../BtnAdminpanel/BtnAdminpanel";
 import ShopingCart from "../ShopingCart/ShopingCart";
+import { UserContext } from "../../../context/UserContext";
 
 function NavLinks() {
+  const { data } = useContext(UserContext)!;
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -23,6 +24,9 @@ function NavLinks() {
   };
   return (
     <div className="menu-container">
+      <p className="menu-left">
+        {data.firstName} {data.lastName}
+      </p>
       <ul>
         <li>
           <NavLink to="/">hem</NavLink>
@@ -39,6 +43,8 @@ function NavLinks() {
           <li>
             <BtnAdminpanel />
           </li>
+      </ul>
+      <ul className="menu-right">
         <li className="shopingcart-container">
           <NavLink className={"shopingcart-icon"} to="">
             <ShoppingCartOutlined onClick={showDrawer} />
@@ -51,6 +57,8 @@ function NavLinks() {
               <ShopingCart />
             </Drawer>
           </NavLink>
+        </li>
+        <li>
           <Login />
         </li>
       </ul>

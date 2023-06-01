@@ -1,6 +1,17 @@
+import React, {
+  PropsWithChildren,
+  createContext,
+  useState,
+  useEffect,
+} from "react";
 
-
-import React, { PropsWithChildren, createContext, useState } from 'react';
+interface IuserData {
+  email: string;
+  firstName: string;
+  isAdmin: boolean;
+  lastName: string;
+  _id: string;
+}
 
 interface UserContextProps {
   email: string;
@@ -10,34 +21,35 @@ interface UserContextProps {
   login: () => Promise<void>;
   logOut: () => Promise<void>;
   auth: () => Promise<void>;
-  data: {}
+  data: IuserData;
 }
-
 
 export const UserContext = createContext<UserContextProps | null>(null);
 
-const UserContextProvider = ({ children }:PropsWithChildren) => {
+const UserContextProvider = ({ children }: PropsWithChildren) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState([])
- 
-  
+  const [data, setData] = useState<IuserData>({
+    email: "",
+    firstName: "",
+    isAdmin: false,
+    lastName: "",
+    _id: "",
+  });
+
   const login = async (): Promise<void> => {
     try {
       const res = await fetch("/api/users/login", {
         method: "POST",
-        headers: {  
-          "Content-Type": "application/json"
+        headers: {
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: email, password: password })
+        body: JSON.stringify({ email: email, password: password }),
       });
 
       const data = await res.json();
-      console.log(data);
 
-      setData(data)
-      // Handle the response data as needed
-
+      setData(data);
     } catch (err) {
       console.log(err);
       // Handle errors
@@ -47,32 +59,42 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
   //här loggar vi ut
 
   const logOut = async (): Promise<void> => {
-    
-    try {
-      const res = await fetch("/api/users/logout", {
-        method: "POST"
-         
-      });
-      const data = ''
+    await fetch("/api/users/logout", {
+      method: "POST",
+    });
+    const data: IuserData = {
+      // Update the assignment
+      email: "",
+      firstName: "",
+      isAdmin: false,
+      lastName: "",
+      _id: "",
+    };
 
-      setData(data)
-      console.log(data)
-      // Handle the response data as needed
-
-    } catch (err) {
-      console.log(err);
-      // Handle errors
-    }
+    setData(data);
   };
 
-  const auth = async(): Promise<void> => {
-      const response = await fetch("/api/users/authorize")
-      const data = await response.json();
-      console.log(data);
-
-  }
+  const auth = async (): Promise<void> => {
+    const response = await fetch("/api/users/authorize");
+    const data = await response.json();
+    setData(data);
+  };
+  useEffect(() => {
+    auth();
+  }, []);
   return (
-    <UserContext.Provider value={{ email, password, setEmail, setPassword, login, logOut,  auth, data }}>
+    <UserContext.Provider
+      value={{
+        email,
+        password,
+        setEmail,
+        setPassword,
+        login,
+        logOut,
+        auth,
+        data,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
