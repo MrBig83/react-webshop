@@ -17,10 +17,12 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "lasse@lasse.se",
-  "password": "lasse"
+  "email": "admin@admin.se",
+  "password": "admin"
 }
 
+###
+POST http://localhost:3000/api/users/logout
 ###
 
 GET http://localhost:3000/api/users/authorize
@@ -38,7 +40,6 @@ Content-Type: application/json
   "image": "https://lyko.com/globalassets/product-images/clinique-lash-power-mascara-black-onyx-2059-241-0001_1.jpg?ref=458627&w=2880&h=2880&mode=max&quality=75&format=webp",
   "inStock": 3
 }
-
 ###
 
 //Skapa fraktsätt här

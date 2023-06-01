@@ -17,7 +17,7 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {}, [products]);
+  useEffect(() => {}, [products]); // ======== {} ger felkod. 
 
   return (
     <div className="ProductList">

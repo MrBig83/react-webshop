@@ -33,6 +33,11 @@ const BtnAdminpanel: React.FC = () => {
         <Button type="primary" onClick={showChildrenDrawer}>
           Administrera produkter
         </Button>
+        <br />
+        <br />
+        <Button type="primary" onClick={showChildrenDrawer}>
+          Administrera Användare
+        </Button>
 
         <Drawer
           title="Administrera produkter"
