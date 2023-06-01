@@ -5,16 +5,19 @@ import Header from "./assets/components/Header/Header";
 import Footer from "./assets/components/Footer/Footer";
 import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
 import MyProductsProvider from "./context/productscontext";
+import MyCartItemProvider from "./context/CartItemContext";
 //import ApiContextProvider from "./context/ApiContext";
 const App: React.FC = () => {
   return (
      <MyProductsProvider> 
+      <MyCartItemProvider>
       <Layout className="layout">
         <Header />
         <NavCarousel />
         <Main />
         <Footer />
       </Layout>
+      </MyCartItemProvider>
      </MyProductsProvider>
   );
 };

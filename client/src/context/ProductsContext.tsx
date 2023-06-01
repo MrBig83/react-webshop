@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import IProduct from "../assets/interfaces/Interfaces";
+import IProduct from "../assets/interfaces/iproduct";
 
 interface IProductContext {
   products: IProduct[];

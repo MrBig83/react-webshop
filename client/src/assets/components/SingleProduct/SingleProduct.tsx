@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
-import IProduct from "../../interfaces/Interfaces";
+import IProduct from "../../interfaces/iproduct";
 // import Products from "../Products/Products";
 
 const defaultProduct: IProduct = {
