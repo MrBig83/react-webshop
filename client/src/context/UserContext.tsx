@@ -5,6 +5,14 @@ import React, {
   useEffect,
 } from "react";
 
+interface IuserData {
+  email: string;
+  firstName: string;
+  isAdmin: boolean;
+  lastName: string;
+  _id: string;
+}
+
 interface UserContextProps {
   email: string;
   password: string;
@@ -13,7 +21,7 @@ interface UserContextProps {
   login: () => Promise<void>;
   logOut: () => Promise<void>;
   auth: () => Promise<void>;
-  data: {};
+  data: IuserData;
 }
 
 export const UserContext = createContext<UserContextProps | null>(null);
@@ -21,7 +29,13 @@ export const UserContext = createContext<UserContextProps | null>(null);
 const UserContextProvider = ({ children }: PropsWithChildren) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<IuserData>({
+    email: "",
+    firstName: "",
+    isAdmin: false,
+    lastName: "",
+    _id: "",
+  });
 
   const login = async (): Promise<void> => {
     try {
@@ -34,10 +48,8 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
       });
 
       const data = await res.json();
-      console.log(data.isAdmin);
 
       setData(data);
-      // Handle the response data as needed
     } catch (err) {
       console.log(err);
       // Handle errors
@@ -47,22 +59,25 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
   //här loggar vi ut
 
   const logOut = async (): Promise<void> => {
-    const res = await fetch("/api/users/logout", {
+    await fetch("/api/users/logout", {
       method: "POST",
     });
-    const data = "";
+    const data: IuserData = {
+      // Update the assignment
+      email: "",
+      firstName: "",
+      isAdmin: false,
+      lastName: "",
+      _id: "",
+    };
 
     setData(data);
-    // Handle the response data as needed
-
-    // Handle errors
   };
 
   const auth = async (): Promise<void> => {
     const response = await fetch("/api/users/authorize");
     const data = await response.json();
     setData(data);
-    console.log(data);
   };
   useEffect(() => {
     auth();
