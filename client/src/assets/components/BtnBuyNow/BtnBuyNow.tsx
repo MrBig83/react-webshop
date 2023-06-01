@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { MyProductsContext } from "../../../context/productscontext";
+import { MyProductsContext } from "../../../context/ProductsContext";
 import "./BtnBuyNow.css";
 import IProduct from "../../interfaces/Interfaces";
 

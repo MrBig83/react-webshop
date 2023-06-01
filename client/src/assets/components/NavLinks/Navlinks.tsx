@@ -8,6 +8,7 @@ import { Drawer } from "antd";
 import { useState } from "react";
 
 import "./NavLink.css";
+import BtnAdminpanel from "../BtnAdminpanel/BtnAdminpanel";
 import ShopingCart from "../ShopingCart/ShopingCart";
 
 function NavLinks() {
@@ -35,6 +36,9 @@ function NavLinks() {
         <li>
           <NavLink to="/kontakta-oss">kontakta oss</NavLink>
         </li>
+          <li>
+            <BtnAdminpanel />
+          </li>
         <li className="shopingcart-container">
           <NavLink className={"shopingcart-icon"} to="">
             <ShoppingCartOutlined onClick={showDrawer} />
