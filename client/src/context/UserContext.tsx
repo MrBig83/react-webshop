@@ -48,7 +48,7 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
 
   const logOut = async (): Promise<void> => {
     
-    try {
+    
       const res = await fetch("/api/users/logout", {
         method: "POST"
          
@@ -59,10 +59,8 @@ const UserContextProvider = ({ children }:PropsWithChildren) => {
       console.log(data)
       // Handle the response data as needed
 
-    } catch (err) {
       console.log(err);
       // Handle errors
-    }
   };
 
   const auth = async(): Promise<void> => {

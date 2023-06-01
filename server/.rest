@@ -27,6 +27,11 @@ GET http://localhost:3000/api/users/authorize
 
 ###
 
+POST http://localhost:3000/api/users/logout
+
+###
+
+
 //Skapa produkter här
 POST http://localhost:3000/api/products
 Content-Type: application/json

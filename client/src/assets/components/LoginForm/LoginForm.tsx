@@ -8,8 +8,9 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = async () => {
     await auth()
-    if (!data.firstName) {
+    if (!data._id) {
       await login()
+      
     }else{
       await logOut()
     }
@@ -24,7 +25,7 @@ const LoginForm: React.FC = () => {
         style={{ maxWidth: 600 }}
         initialValues={{ remember: true }}
         autoComplete="on"
-      >
+        >
         <Form.Item
           label="Username"
           name="username"
@@ -49,14 +50,14 @@ const LoginForm: React.FC = () => {
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button onClick={handleSubmit}type="primary" htmlType="submit">
-            {data.firstName ? 'logga ut' : 'logga in'}
+            {data._id ? 'logga ut' : 'logga in'}
           </Button>
           
         </Form.Item>
       </Form>
       <div>
-        <h2>{data.firstName}</h2>
-        <h2>{data.lastName}</h2>
+      <h2>{data.firstName}</h2>
+      <h2>{data.laststName}</h2>
       </div>
     </div>
   );
