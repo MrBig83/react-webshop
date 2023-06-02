@@ -24,9 +24,15 @@ const CartItem: React.FC<CartItemProps> = ({
     <div>
       <img src={product.image} alt={product.title} />
       <h3>{product.title}</h3>
-      <p>Antal: {product.quantity ?? 0}</p>
-      <p>Pris: {product.price * (product.quantity ?? 0)}</p>
-      <button onClick={() => handleQuantityChange(product.quantity + 1)}>
+      <p>Antal: {product.quantity ?? 1}</p>
+      <p>Pris: {product.price * (product.quantity ?? 1)}</p>
+      <button
+        onClick={() =>
+          handleQuantityChange(
+            isNaN(product.quantity) ? 1 : product.quantity + 1
+          )
+        }
+      >
         +
       </button>
       <button onClick={() => handleQuantityChange(product.quantity - 1)}>

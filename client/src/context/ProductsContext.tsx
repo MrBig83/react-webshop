@@ -40,14 +40,29 @@ const MyProductsProvider = ({ children }: PropsWithChildren) => {
   const updateProductQuantity = (productId: string, quantity: number) => {
     const updatedProducts = products.map((p) => {
       if (p._id === productId) {
-        return {
+        const updatedProduct = {
           ...p,
           quantity: quantity,
         };
+        return updatedProduct;
       }
       return p;
     });
-    setProducts(updatedProducts);
+
+    // Filtrera bort objekt med noll kvantitet
+    const filteredProducts = updatedProducts.filter((p) => p.quantity > 0);
+
+    setProducts(filteredProducts);
+
+    // Hitta den uppdaterade produkten
+    const updatedProduct = filteredProducts.find((p) => p._id === productId);
+
+    // Returnera priset för produkten, om den hittades
+    if (updatedProduct) {
+      return updatedProduct.price * updatedProduct.quantity;
+    }
+
+    return 0; // Om produkten inte hittades, returnera 0 som standardvärde
   };
 
   return (
