@@ -1,16 +1,14 @@
 import { useContext } from "react";
 import { MyCartItemContext } from "../../../context/CartItemContext";
-import CartItem from  '../../components/CartItem/CartItem';
-
+import CartItem from "../../components/CartItem/CartItem";
 
 const ShoppingCart = () => {
-  const { items, addItem, removeItem } =
-    useContext(MyCartItemContext);
-    console.log(items);
+  const { items, addItem, removeItem } = useContext(MyCartItemContext);
+  console.log(items);
 
   const calculateTotal = () => {
     let total = 0;
-   items.forEach((i) => {
+    items.forEach((i) => {
       // Kontrollera att både p.price och p.quantity är giltiga numeriska värden innan du utför beräkningen
       if (
         typeof i.product.price === "number" &&
@@ -18,7 +16,7 @@ const ShoppingCart = () => {
         !isNaN(i.product.price) &&
         !isNaN(i.quantity)
       ) {
-        total += (i.product.price * i.quantity);
+        total += i.product.price * i.quantity;
       }
     });
     return total;
@@ -32,7 +30,7 @@ const ShoppingCart = () => {
           <CartItem
             key={i.product._id}
             item={i}
-          onQuantityChange={addItem}
+            onQuantityChange={addItem}
             onRemove={removeItem}
           />
         ))}
