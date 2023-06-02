@@ -3,6 +3,7 @@
 import IProduct from "../../interfaces/Interfaces";
 import "./AdminProductCard.css"
 import BtnAdminEditProduct from "../BtnAdminEditProduct/BtnAdminEditProduct"
+import BtnRemoveProduct from "../BtnRemoveProduct/BtnRemoveProduct"
 
 // interface CartItemProps {
 //   product: IProduct;
@@ -14,6 +15,8 @@ function AdminProductCard({ product }: { product: IProduct}) {
 
 
   return (
+    <>
+    
     <div className="adminProductCard">
     
         <div className="AdminProductCardInfo">
@@ -22,9 +25,11 @@ function AdminProductCard({ product }: { product: IProduct}) {
         <p>{product.price}:-</p>
 
         <BtnAdminEditProduct product={product} />
+        <BtnRemoveProduct product={product} />
 
         </div>
   </div>
+  </>
   );
 }
 

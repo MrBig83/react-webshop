@@ -48,7 +48,7 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
       });
 
       const data = await res.json();
-
+      
       setData(data);
     } catch (err) {
       console.log(err);
@@ -77,6 +77,7 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
   const auth = async (): Promise<void> => {
     const response = await fetch("/api/users/authorize");
     const data = await response.json();
+        
     setData(data);
   };
   useEffect(() => {

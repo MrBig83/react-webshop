@@ -30,7 +30,8 @@ const Adminpanel = () => {
         <input type="text" placeholder="Sök" />
         <button>Sök</button>
       </div>
-      <div><p>Produktlista:</p></div>
+      <div><p>Produktlista:</p>
+      <p>Här skall det finnas en "Lägg till"-knapp. Använd uppdateringsformuläret som mall</p></div>
       
       <div className="ProductList">
       {products.map((product: IProduct) => (

@@ -26,6 +26,7 @@ function NavLinks() {
     <div className="menu-container">
       <p className="menu-left">
         {data.firstName} {data.lastName}
+        {(data.isAdmin ? " Admin: Ja":" Admin: Nej")}
       </p>
       <ul>
         <li>

@@ -29,10 +29,6 @@ GET http://localhost:3000/api/users/authorize
 
 ###
 
-POST http://localhost:3000/api/users/logout
-
-###
-
 
 //Skapa produkter här
 POST http://localhost:3000/api/products
@@ -52,15 +48,25 @@ POST http://localhost:3000/api/shippingMethod
 Content-Type: application/json
 
 {
-  "company": "PostNord",
-  "price": 20,
- "deliveryTimeInHours": 72
+  "company": "DHL",
+  "price": 99,
+ "deliveryTimeInHours": 24
 }
 
 ###
 
 GET http://localhost:3000/api/products/646c94579836a36c85514f06
 
+###
+PUT http://localhost:3000/api/products/646c94579836a36c85514f06
+Content-Type: application/json
+{
+  "title": "Mascara2",
+  "price": 2162,
+  "description": "Mascara som är fantastisk2.",
+  "image": "https://lyko.com/globalassets/product-images/clinique-lash-power-mascara-black-onyx-2059-241-0001_1.jpg?ref=458627&w=2880&h=2880&mode=max&quality=75&format=webp",
+  "inStock": 32
+}
 ###
 
 GET http://localhost:3000/api/products/

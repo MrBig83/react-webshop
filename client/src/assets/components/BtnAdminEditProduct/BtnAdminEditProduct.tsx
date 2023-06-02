@@ -4,10 +4,30 @@
 import "./BtnAdminEditProduct.css";
 import IProduct from "../../interfaces/Interfaces";
 import React, { useState } from 'react';
-import { Button, Col, Drawer, Form, Input, Row } from 'antd';
+import { Button, Col, Drawer, Form, Input, InputNumber, Row, Checkbox } from 'antd';
+
+import UserContextProvider from "../../../context/UserContext"
 
 const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
+  
+  //Sätt nedan i en annan fil sen
+  async function updateDatabase(values:IProduct, id:string){
+      const response = await fetch (`/api/products/${id}`,{
+          method: "PUT", 
+          headers: {
+              "Content-Type": "application/json"
+          },
+          
+          body: JSON.stringify(values)
+        })
+        console.log("values");
+        console.log(values);
+
+      const res = response.json()
+      console.log(res);
+  }
+  //Sätt ovan i en annan fil sen
 
   const showEditDrawer = () => {
     setOpen(true);
@@ -15,11 +35,6 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 
   const onClose = () => {
     setOpen(false);
-  };
-
-  const onFinish = (values: IProduct) => {
-      
-      updateDatabase(values, product._id);
   };
   
   const onFinishFailed = (errorInfo: any) => {
@@ -40,7 +55,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 
       >
         <Form layout="vertical" hideRequiredMark
-            onFinish={onFinish}
+            onFinish={(values) => updateDatabase(values, product._id)}
             onFinishFailed={onFinishFailed}
         >
           <Row gutter={16}>
@@ -52,7 +67,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 label="Titel"
                 rules={[{ required: true, message: "Fyll i produkttitel" }]}
               >
-                <Input placeholder = {product.title} />
+                <Input defaultValue = {product.title} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -61,8 +76,26 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 label="Pris"
                 rules={[{ required: true,  }]}
               >
-                {/* ======= Fixa typning av placeholder. Skall vara nummer. */}
-                <Input placeholder = {product.price} />
+                
+                <InputNumber defaultValue = {product.price} />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="_id"
+                label="Id"
+                rules={[{ required: true,  }]}
+              >
+                <Input disabled={false} defaultValue = {product._id} />
+              </Form.Item>
+            </Col>
+            <Col span={12}>
+              <Form.Item
+                name="inStock"
+                label="Saldo"
+                rules={[{ required: true,  }]}
+              >
+                <InputNumber defaultValue = {product.inStock} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -73,17 +106,14 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
               >
                 <Input
                   style={{ width: '100%' }}
-                //   addonBefore="http://"
-                //   addonAfter=".com"
-                  placeholder={product.image}
+                defaultValue={product.image}
                 />
               </Form.Item>
             </Col>
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-              
-            
+
             </Col>
           </Row>
           <Row gutter={16}>
@@ -98,10 +128,24 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                   },
                 ]}
               >
-                <Input.TextArea rows={4} placeholder={product.description} />
+                <Input.TextArea rows={4} defaultValue={product.description} />
               </Form.Item>
-            </Col>
+              </Col>
           </Row>
+            <Col span={24}>
+              <Form.Item
+                name="deleted"
+                label="Borttagen?"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <Checkbox checked={false} >Borttagen</Checkbox>
+              </Form.Item>
+            </Col> 
+          {/* </Row> */}
           <Button type="primary" htmlType="submit">
               Spara
             </Button>
@@ -113,45 +157,8 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 };
 
 
-// const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
-// //   const [productInCart, setIsProductsInCart] = useState(false);
 
 
-// const editProduct = () => {
-//     console.log("Edit product");
-//     console.log(product.title);
-//     //Öppna en drawer där vi redigerar specifik produkt. 
-
-    
-// }
-
-//   return (
-//     <button className="btnAdminEditProduct" onClick={editProduct}>
-//       Redigera
-//     </button>
-//   );
-// };
-
-//Sätt nedan i en annan fil sen
-async function updateDatabase(values:IProduct, id){ // =========== FIXA TYPNING PÅ ID =====
-    const response = await fetch (`http://localhost:3000/api/products/${id}`,{
-        method: "PUT", 
-        headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
-    })
-    const res = response.json()
-    console.log(res);
-    
-    
-    
-    //console.log(values);
-    
-}
-
-//Sätt ovan i en annan fil sen
 
 
 export default BtnAdminEditProduct;

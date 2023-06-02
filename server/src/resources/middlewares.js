@@ -6,6 +6,8 @@ function adminOnly(req, res, next) {
 
 /** Prevent access to logged out users */
 function auth(req, res, next) {
+  console.log(req.body);
+  console.log(req.session);
   if (req.session?._id) return next();
   res.status(401).json("You must login to perform this request");
 }
