@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 import { useContext } from "react";
-
+import { NavLink } from "react-router-dom";
 import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
 // import ProductCard from "../ProductCard/ProductCard";
@@ -32,7 +32,6 @@ const ShoppingCart = () => {
     <>
       <h2>Dina varor</h2>
       <div>
-
         {items.map((item) => (
           <CartItem
             key={item.product?._id}
@@ -46,11 +45,9 @@ const ShoppingCart = () => {
             quantity={0}
             price={0}
           />
-
         ))}
       </div>
       <h3>Totalbelopp: {calculateTotal()} kr</h3>
-      <button>Lägg order</button>
     </>
   );
 };
