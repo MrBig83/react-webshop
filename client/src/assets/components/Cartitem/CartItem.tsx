@@ -1,46 +1,39 @@
 import React from "react";
-import IProduct from "../../interfaces/Interfaces";
-
-interface CartItemProps {
-  product: IProduct;
-  onQuantityChange: (productId: string, quantity: number) => void;
-  onRemove: (productId: string) => void;
-}
-
-const CartItem: React.FC<CartItemProps> = ({
-  product,
+import { ICartItem } from "../../interfaces/ICartItem";
+import BtnsInCart from "../Buttons/BtnsInCart/BtnsInCart";
+import "./CartItem.css";
+const Cartproduct: React.FC<ICartItem> = ({
+  product: item,
   onQuantityChange,
   onRemove,
 }) => {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(product._id, quantity);
+    onQuantityChange(item.product._id, quantity);
   };
 
   const handleRemove = () => {
-    onRemove(product._id);
+    onRemove(item.product._id);
   };
 
   return (
     <div>
-      <img src={product.image} alt={product.title} />
-      <h3>{product.title}</h3>
-      <p>Antal: {product.quantity ?? 1}</p>
-      <p>Pris: {product.price * (product.quantity ?? 1)}</p>
-      <button
+      <img src={item.product.image} alt={item.product.title} />
+      <h3>{item.product.title}</h3>
+      <p>Antal: {item.quantity ?? 1}</p>
+      <p>Pris: {item.product.price * (item.quantity ?? 1)}</p>
+      <BtnsInCart
+        label="+"
         onClick={() =>
-          handleQuantityChange(
-            isNaN(product.quantity) ? 1 : product.quantity + 1
-          )
+          handleQuantityChange(isNaN(item.quantity) ? 1 : item.quantity + 1)
         }
-      >
-        +
-      </button>
-      <button onClick={() => handleQuantityChange(product.quantity - 1)}>
-        -
-      </button>
-      <button onClick={handleRemove}>Ta bort</button>
+      />
+      <BtnsInCart
+        label="-"
+        onClick={() => handleQuantityChange(item.quantity - 1)}
+      />
+      <BtnsInCart label="Ta bort" onClick={handleRemove} />
     </div>
   );
 };
 
-export default CartItem;
+export default Cartproduct;

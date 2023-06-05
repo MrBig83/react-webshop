@@ -1,4 +1,5 @@
 export default interface IProduct {
+  product: IProduct;
   _id: string;
   categories: [];
   description: string;
@@ -7,11 +8,4 @@ export default interface IProduct {
   price: number;
   title: string;
   quantity: number;
-}
-
-export interface ICartItem {
-  product: IProduct;
-
-  onQuantityChange: (productId: string, quantity: number) => void;
-  onRemove: (productId: string) => void;
 }

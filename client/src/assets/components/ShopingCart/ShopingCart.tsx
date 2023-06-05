@@ -1,81 +1,54 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useContext } from "react";
-import { MyProductsContext } from "../../../context/productscontext";
+import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
+// import ProductCard from "../ProductCard/ProductCard";
+// import Products from "../Products/Products";
 
 const ShoppingCart = () => {
-  const { products, updateProductQuantity, removeProduct } =
-    useContext(MyProductsContext);
-  console.log(products);
+  const { items, updateItemQuantity, removeItem } = useContext(MyCartContext);
 
   const calculateTotal = () => {
     let total = 0;
-    products.forEach((p) => {
-      // Kontrollera att både p.price och p.quantity är giltiga numeriska värden innan du utför beräkningen
+
+    items.forEach((item) => {
       if (
-        typeof p.price === "number" &&
-        typeof p.quantity === "number" &&
-        !isNaN(p.price) &&
-        !isNaN(p.quantity)
+        typeof item.product?.price === "number" &&
+        typeof item.quantity === "number" &&
+        !isNaN(item.product?.price) &&
+        !isNaN(item.quantity)
       ) {
-        total += p.price * p.quantity;
+        total += item.product?.price * item.quantity;
       }
     });
+
     return total;
   };
-
+  console.log("items:", items);
+  console.log("total:", calculateTotal());
   return (
     <>
       <h2>Dina varor</h2>
       <div>
-        {products.map((p) => (
+        {items.map((item) => (
           <CartItem
-            key={p._id}
-            product={p}
-            onQuantityChange={updateProductQuantity}
-            onRemove={removeProduct}
+            key={item.product?._id}
+            product={item}
+            onQuantityChange={updateItemQuantity}
+            onRemove={removeItem}
+            item={item.product}
+            image={item.product.image}
+            title={""}
+            _id={""}
+            quantity={0}
+            price={0}
           />
         ))}
       </div>
       <h3>Totalbelopp: {calculateTotal()} kr</h3>
+      <button>Lägg order</button>
     </>
   );
 };
 
 export default ShoppingCart;
-
-// import { useContext } from "react";
-// import { MyProductsContext } from "../../../context/productscontext";
-// import CartItem from "../Cartitem/CartItem";
-
-// const ShoppingCart = () => {
-//   const { products, updateProductQuantity, removeProduct } =
-//     useContext(MyProductsContext);
-//   console.log(products);
-
-//   const calculateTotal = () => {
-//     let total = 0;
-//     products.forEach((p) => {
-//       total += p.price * p.quantity;
-//     });
-//     return total;
-//   };
-
-//   return (
-//     <>
-//       <h2>Dina varor</h2>
-//       <div>
-//         {products.map((p) => (
-//           <CartItem
-//             key={p._id}
-//             product={p}
-//             onQuantityChange={updateProductQuantity}
-//             onRemove={removeProduct}
-//           />
-//         ))}
-//       </div>
-//       <h3>Totalbelopp: {calculateTotal()} kr</h3>
-//     </>
-//   );
-// };
-
-// export default ShoppingCart;
