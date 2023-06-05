@@ -4,7 +4,7 @@ import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
 // import ProductCard from "../ProductCard/ProductCard";
 // import Products from "../Products/Products";
-
+//BEHÖVS TYPAS FILEN ÄR RÖD?
 const ShoppingCart = () => {
   const { items, updateItemQuantity, removeItem } = useContext(MyCartContext);
 

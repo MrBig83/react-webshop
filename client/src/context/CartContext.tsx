@@ -1,6 +1,7 @@
 import { createContext, PropsWithChildren, useState } from "react";
 import IProduct from "../assets/interfaces/IProduct";
 import { ICartItem } from "../assets/interfaces/ICartItem";
+//BEHÖVS TYPAS FILEN ÄR RÖD?
 
 interface CartContext {
   items: ICartItem[];
