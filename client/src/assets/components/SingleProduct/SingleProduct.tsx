@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
-import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
-import IProduct from "../../interfaces/Interfaces";
+import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
+import IProduct from "../../interfaces/IProduct";
 // import Products from "../Products/Products";
 
 const defaultProduct: IProduct = {
@@ -19,7 +19,6 @@ const defaultProduct: IProduct = {
 const SingleProduct = () => {
   const [product, setProduct] = useState<IProduct>(defaultProduct);
   const { id } = useParams();
-
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -49,4 +48,3 @@ const SingleProduct = () => {
   );
 };
 export default SingleProduct;
-
