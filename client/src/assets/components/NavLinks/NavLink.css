@@ -4,7 +4,6 @@ ul {
   gap: 2rem;
   /* margin-right: 0.8rem; */
   text-transform: uppercase;
-  width: 100%;
   justify-content: center;
   align-items: center;
   margin-right: 2rem;
@@ -21,13 +20,21 @@ a {
   color: black;
   height: 100%;
 }
-.shopingcart-container {
-  position: absolute;
-  margin-left: 85%;
-  font-size: 30px;
-}
 
 svg {
   width: 50px;
   font-size: 20px;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-between;
+}
+.menu-right {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.menu-left {
+  width: 150px;
 }
