@@ -17,18 +17,17 @@ const CheckoutForm = () => {
   } = useContext(OrderContext)!;
 
   const { data } = useContext(UserContext)!;
-  const { shippingData } = useContext(OrderContext)!
+  const { shippingData } = useContext(OrderContext)!;
 
-  
   const handleSubmit = () => {
     placeOrder();
   };
-  console.log(shippingData)
-//shippingData.map((d) => console.log(d.price))
-  
-  
+  console.log(shippingData);
+  //shippingData.map((d) => console.log(d.price))
+
   return (
     <div>
+      <h2>Fyll i dina uppgifter:</h2>
       <Form
         name="basic"
         labelCol={{ span: 8 }}
@@ -52,7 +51,7 @@ const CheckoutForm = () => {
           label="Förnamn"
           name="Förnamn"
           initialValue={data.firstName}
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: "Fyll i - förnamn" }]}
         >
           <Input onChange={(e) => setFirstname(e.target.value)} />
         </Form.Item>
@@ -61,7 +60,7 @@ const CheckoutForm = () => {
           label="Efternamn"
           name="Efternamn"
           initialValue={data.lastName}
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: "Fyll i - efternamn" }]}
         >
           <Input onChange={(e) => setLastname(e.target.value)} />
         </Form.Item>
@@ -70,7 +69,7 @@ const CheckoutForm = () => {
           label="Email"
           name="Email"
           initialValue={data.email}
-          rules={[{ required: true, message: "Please input your username!" }]}
+          rules={[{ required: true, message: "Fyll i - din epost" }]}
         >
           <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
@@ -78,7 +77,7 @@ const CheckoutForm = () => {
         <Form.Item
           label="Telefon"
           name="Telefonnummer"
-          rules={[{ required: true, message: "Skriv in tel" }]}
+          rules={[{ required: true, message: "Fyll i - telefon" }]}
         >
           <Input onChange={(e) => setPhoneNumber(e.target.value)} />
         </Form.Item>
@@ -86,7 +85,7 @@ const CheckoutForm = () => {
         <Form.Item
           label="Gata"
           name="Gata"
-          rules={[{ required: true, message: "Skriv in tel" }]}
+          rules={[{ required: true, message: "Fyll i - din gatuadress" }]}
         >
           <Input onChange={(e) => setStreet(e.target.value)} />
         </Form.Item>
@@ -94,7 +93,7 @@ const CheckoutForm = () => {
         <Form.Item
           label="Postnummer"
           name="Postnummer"
-          rules={[{ required: true, message: "Skriv in tel" }]}
+          rules={[{ required: true, message: "Fyll i - postnummer" }]}
         >
           <Input onChange={(e) => setZipcode(e.target.value)} />
         </Form.Item>
@@ -102,7 +101,7 @@ const CheckoutForm = () => {
         <Form.Item
           label="Stad"
           name="Stad"
-          rules={[{ required: true, message: "Skriv in tel" }]}
+          rules={[{ required: true, message: "Fyll i - stad" }]}
         >
           <Input onChange={(e) => setCity(e.target.value)} />
         </Form.Item>
@@ -110,7 +109,7 @@ const CheckoutForm = () => {
         <Form.Item
           label="Land"
           name="Land"
-          rules={[{ required: true, message: "Skriv in tel" }]}
+          rules={[{ required: true, message: "Fyll i - land" }]}
         >
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
