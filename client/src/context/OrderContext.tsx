@@ -1,5 +1,5 @@
 import { ICartItem } from "../assets/interfaces/ICartItem";
-import { useState, createContext, PropsWithChildren } from "react";
+import { useState, useEffect ,createContext, PropsWithChildren } from "react";
 
 interface IOrderData {
   orderItems: ICartItem[];
@@ -22,6 +22,7 @@ interface OrderContextProps {
   zipcode: string;
   city: string;
   country: string;
+  shippingData: any
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -45,7 +46,13 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [zipcode, setZipcode] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
+  const [shippingData, setShippingData] = useState("");
 
+  const order = {
+    firstName,
+    lastName,
+    //orderItem,
+  }
   const placeOrder = async (): Promise<void> => {
     try {
       const res = await fetch("/api/orders", {
@@ -53,11 +60,12 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-        }),
+        body: JSON.stringify(order)
+
+        // firstName: firstName,
+        // lastName: lastName,
+        // email: email,j
+        //),
       });
 
       const data = await res.json();
@@ -68,6 +76,18 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
       // Handle errors
     }
   };
+
+  //shippingMethod
+  const shippingMethod = async() => {
+    const res = await fetch ('/api/shippingmethod')
+    const shippingData = await res.json()
+    setShippingData(shippingData)
+  }
+
+  useEffect(() => {
+    shippingMethod();
+  }, []);
+  
 
   return (
     <OrderContext.Provider
@@ -89,7 +109,9 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         setCountry,
         setCity,
         placeOrder,
+        shippingData
       }}
+
     >
       {children}
     </OrderContext.Provider>

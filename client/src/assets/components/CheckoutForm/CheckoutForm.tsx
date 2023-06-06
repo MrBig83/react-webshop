@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext } from "react";
@@ -17,11 +17,16 @@ const CheckoutForm = () => {
   } = useContext(OrderContext)!;
 
   const { data } = useContext(UserContext)!;
+  const { shippingData } = useContext(OrderContext)!
 
+  
   const handleSubmit = () => {
     placeOrder();
   };
-
+  console.log(shippingData)
+//shippingData.map((d) => console.log(d.price))
+  
+  
   return (
     <div>
       <Form
@@ -32,6 +37,17 @@ const CheckoutForm = () => {
         initialValues={{ remember: true }}
         autoComplete="on"
       >
+        {/* <Form.Item         
+         name={['address', 'province']} 
+         noStyle 
+         rules={[{ required: true, message: 'Province is required' }]}>
+         <Select placeholder="Select province">
+          <Option value="Zhejiang">Postnord</Option>
+          <Option value="">DHL</Option>
+          <Option value="Jiangsu">DB Shenker</Option>
+         </Select>
+        </Form.Item> */}
+
         <Form.Item
           label="Förnamn"
           name="Förnamn"
