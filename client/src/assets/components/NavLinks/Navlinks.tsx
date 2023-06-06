@@ -26,7 +26,6 @@ function NavLinks() {
     <div className="menu-container">
       <p className="menu-left">
         {data.firstName} {data.lastName}
-        {(data.isAdmin ? " Admin: Ja":" Admin: Nej")}
       </p>
       <ul>
         <li>
@@ -41,11 +40,11 @@ function NavLinks() {
         <li>
           <NavLink to="/kontakta-oss">kontakta oss</NavLink>
         </li>
-          <li>
-            <BtnAdminpanel />
-          </li>
       </ul>
       <ul className="menu-right">
+          <li style={{position:"absolute", marginRight: "20%"}}>
+            {(data.isAdmin ? <BtnAdminpanel /> : "" )}
+          </li>
         <li className="shopingcart-container">
           <NavLink className={"shopingcart-icon"} to="">
             <ShoppingCartOutlined onClick={showDrawer} />

@@ -1,20 +1,20 @@
 
 // import { useContext, useEffect, useState } from "react";
 
-import "./BtnAdminEditProduct.css";
+import "./BtnAdminAddProduct.css";
 import IProduct from "../../interfaces/Interfaces";
 import React, { useState } from 'react';
 import { Button, Col, Drawer, Form, Input, InputNumber, Row, Checkbox } from 'antd';
 
 import UserContextProvider from "../../../context/UserContext"
 
-const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
+const BtnAdminAddProduct = () => {
   const [open, setOpen] = useState(false);
   
   //Sätt nedan i en annan fil sen
-  async function updateDatabase(values:IProduct, id:string){
-      const response = await fetch (`/api/products/${id}`,{
-          method: "PUT", 
+  async function addToDatabase(values:IProduct){
+      const response = await fetch (`/api/products/`,{
+          method: "POST", 
           headers: {
               "Content-Type": "application/json"
           },
@@ -44,10 +44,10 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
   return (
     <>
       <Button type="primary" onClick={showEditDrawer} >
-        Redigera
+        Lägg till produkt
       </Button>
       <Drawer
-        title="Redigera produkt"
+        title="Lägg till produkt"
         width={720}
         onClose={onClose}
         open={open}
@@ -55,19 +55,18 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 
       >
         <Form layout="vertical" hideRequiredMark
-            onFinish={(values) => updateDatabase(values, product._id)}
+            onFinish={(values) => addToDatabase(values)}
             onFinishFailed={onFinishFailed}
         >
           <Row gutter={16}>
             <Col span={12}>
 
-                <p>{product._id}</p>
               <Form.Item
                 name="title"
                 label="Titel"
                 rules={[{ required: false, message: "Fyll i produkttitel" }]}
               >
-                <Input defaultValue = {product.title} />
+                <Input placeholder = "Produktnamn" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -77,7 +76,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 rules={[{ required: false,  }]}
               >
                 
-                <InputNumber defaultValue = {product.price} />
+                <InputNumber placeholder = "Pris" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -86,7 +85,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 label="Id"
                 rules={[{ required: false,  }]}
               >
-                <Input disabled={false} defaultValue = {product._id} />
+                <Input disabled={false} placeholder = "ProduktID (Lämna tomt)" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -95,7 +94,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 label="Saldo"
                 rules={[{ required: false,  }]}
               >
-                <InputNumber defaultValue = {product.inStock} />
+                <InputNumber placeholder = "Antal i lager" />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -106,7 +105,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
               >
                 <Input
                   style={{ width: '100%' }}
-                defaultValue={product.image}
+                  placeholder="URL till produktbild"
                 />
               </Form.Item>
             </Col>
@@ -128,25 +127,11 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                   },
                 ]}
               >
-                <Input.TextArea rows={4} defaultValue={product.description} />
+                <Input.TextArea rows={4} placeholder="Produktbeskrivning" />
               </Form.Item>
               </Col>
           </Row>
-            <Col span={24}>
-              <Form.Item
-                name="deleted"
-                valuePropName="deleted"
-                label="Borttagen?"
-                rules={[
-                  {
-                    required: false, 
-                  },
-                ]}
-              >
-                <Checkbox checked={false} >Borttagen</Checkbox>
-              </Form.Item>
-            </Col> 
-          {/* </Row> */}
+            
           <Button type="primary" htmlType="submit">
               Spara
             </Button>
@@ -162,4 +147,4 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 
 
 
-export default BtnAdminEditProduct;
+export default BtnAdminAddProduct;

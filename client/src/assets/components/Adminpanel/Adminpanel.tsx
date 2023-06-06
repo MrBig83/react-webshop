@@ -1,7 +1,10 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useEffect, useState } from "react";
 
 import AdminProductCard from "../AdminProductCard/AdminProductCard"
 import IProduct from "../../interfaces/Interfaces";
+import BtnAdminAddProduct from "../BtnAdminAddProduct/BtnAdminAddProduct"
+
 
 import "./Adminpanel.css";
 
@@ -18,27 +21,26 @@ const Adminpanel = () => {
       fetchProducts();
     }, []);
   
-    useEffect(() => {}, [products]); // ======== {} ger felkod. 
+    useEffect(() => {}, [products]); 
   
   return (
     <>
       
-      <div>
-        <p>Här ska vi ha CRUD för produkter</p>
-      </div>
-      <div>
+
+      {/* <div>
         <input type="text" placeholder="Sök" />
         <button>Sök</button>
-      </div>
+      </div> */}
+
       <div><p>Produktlista:</p>
-      <p>Här skall det finnas en "Lägg till"-knapp. Använd uppdateringsformuläret som mall</p></div>
+      <BtnAdminAddProduct />
+      
+      </div>
       
       <div className="ProductList">
       {products.map((product: IProduct) => (
         <div className="ProductCardRender">
-          {/* <Link key={product._id} to={`/${product._id}`}> */}
             <AdminProductCard key={product._id} product={product} />
-          {/* </Link> */}
         </div>
       ))}
     </div>

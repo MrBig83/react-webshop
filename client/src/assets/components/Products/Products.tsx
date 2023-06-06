@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
@@ -17,7 +18,7 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  useEffect(() => {}, [products]); // ======== {} ger felkod. 
+  useEffect(() => {}, [products]); 
 
   return (
     <div className="ProductList">
