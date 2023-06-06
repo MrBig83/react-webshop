@@ -4,12 +4,19 @@
 import "./BtnAdminEditProduct.css";
 import IProduct from "../../interfaces/Interfaces";
 import React, { useState } from 'react';
-import { Button, Col, Drawer, Form, Input, InputNumber, Row, Checkbox } from 'antd';
+import { Button, Col, Drawer, Form, Input, InputNumber, Row, Radio, RadioChangeEvent } from 'antd';
 
 import UserContextProvider from "../../../context/UserContext"
 
 const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(false);
+  const [form] = Form.useForm();
+
+  const onChange = (e: RadioChangeEvent) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
   
   //Sätt nedan i en annan fil sen
   async function updateDatabase(values:IProduct, id:string){
@@ -54,14 +61,24 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
         bodyStyle={{ paddingBottom: 80 }}
 
       >
-        <Form layout="vertical" hideRequiredMark
+        <Form 
+            layout="vertical" hideRequiredMark
             onFinish={(values) => updateDatabase(values, product._id)}
             onFinishFailed={onFinishFailed}
+            initialValues={{
+              ["title"]: product.title,
+              ["price"]: product.price,
+              ["_id"]: product._id,
+              ["inStock"]: product.inStock,
+              ["image"]: product.image,
+              ["description"]: product.description, 
+              ["deleted"]: false
+            }}
+
         >
           <Row gutter={16}>
             <Col span={12}>
 
-                <p>{product._id}</p>
               <Form.Item
                 name="title"
                 label="Titel"
@@ -86,7 +103,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
                 label="Id"
                 rules={[{ required: false,  }]}
               >
-                <Input disabled={false} defaultValue = {product._id} />
+                <Input disabled={true} defaultValue = {product._id} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -133,20 +150,15 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
               </Col>
           </Row>
             <Col span={24}>
-              <Form.Item
-                name="deleted"
-                valuePropName="deleted"
-                label="Borttagen?"
-                rules={[
-                  {
-                    required: false, 
-                  },
-                ]}
-              >
-                <Checkbox checked={false} >Borttagen</Checkbox>
-              </Form.Item>
+            <Form.Item 
+            label="Borttagen?"
+            name="deleted">
+          <Radio.Group onChange={onChange} defaultValue={false}>
+            <Radio value={true}> Ja </Radio>
+            <Radio value={false}> Nej </Radio>
+          </Radio.Group>
+        </Form.Item>
             </Col> 
-          {/* </Row> */}
           <Button type="primary" htmlType="submit">
               Spara
             </Button>

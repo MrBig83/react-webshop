@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { PropsWithChildren, createContext, useState } from "react";
 import IProduct from "../assets/interfaces/Interfaces";
 
