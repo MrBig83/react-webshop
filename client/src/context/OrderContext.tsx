@@ -31,6 +31,8 @@ interface OrderContextProps {
   setZipcode: React.Dispatch<React.SetStateAction<string>>;
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
+  setShippingValue: React.Dispatch<React.SetStateAction<string>>;
+  setOrderItems: React.Dispatch<React.SetStateAction<string>>;
   placeOrder: () => Promise<void>;
   //   data: IOrderData;
 }
@@ -47,6 +49,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [shippingData, setShippingData] = useState([]);
+  const [shippingValue, setShippingValue] = useState("");
+  const [orderItems, setOrderItems] = useState([]);
 
   const order = {
     firstName,
@@ -57,8 +61,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
     zipcode,
     city,
     country,
-    shippingData,
-    // Items,
+    shippingValue,
+    orderItems,
   };
 
   const placeOrder = async (): Promise<void> => {
@@ -69,13 +73,9 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(order),
-
-        // firstName: firstName,
-        // lastName: lastName,
-        // email: email,j
-        //),
       });
 
+      console.log(order);
       const data = await res.json();
 
       console.log(data);
@@ -84,6 +84,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
       // Handle errors
     }
   };
+
+  console.log(shippingValue);
 
   //shippingMethod
   const shippingMethod = async () => {
@@ -117,6 +119,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         setCity,
         placeOrder,
         shippingData,
+        setShippingValue,
+        setOrderItems,
       }}
     >
       {children}

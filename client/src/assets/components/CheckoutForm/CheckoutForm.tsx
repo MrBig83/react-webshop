@@ -2,6 +2,7 @@ import { Button, Form, Input, Select } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext } from "react";
+import { MyCartContext } from "../../../context/CartContext";
 
 const CheckoutForm = () => {
   const {
@@ -14,10 +15,18 @@ const CheckoutForm = () => {
     setCountry,
     setCity,
     placeOrder,
+    setShippingValue,
+    setOrderItems,
   } = useContext(OrderContext)!;
 
   const { data } = useContext(UserContext)!;
   const { shippingData } = useContext(OrderContext)!;
+  const { items } = useContext(MyCartContext);
+
+  console.log(items);
+
+  const Title = items.map((p) => p._id);
+  console.log(Title);
 
   const handleSubmit = () => {
     placeOrder();
@@ -25,6 +34,8 @@ const CheckoutForm = () => {
 
   const handleDropdownChange = (value) => {
     console.log("Selected value:", value);
+    setShippingValue(value);
+    setOrderItems(items);
   };
 
   return (
