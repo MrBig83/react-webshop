@@ -3,36 +3,43 @@
 
 import "./BtnAdminEditProduct.css";
 import IProduct from "../../interfaces/Interfaces";
-import React, { useState } from 'react';
+
+import React, { useState, useContext, useEffect } from 'react';
 import { Button, Col, Drawer, Form, Input, InputNumber, Row, Radio, RadioChangeEvent } from 'antd';
 
-import UserContextProvider from "../../../context/UserContext"
+
 
 const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(false);
   const [form] = Form.useForm();
 
+
+
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
-  
+
+
   //Sätt nedan i en annan fil sen
+  
   async function updateDatabase(values:IProduct, id:string){
       const response = await fetch (`/api/products/${id}`,{
           method: "PUT", 
           headers: {
               "Content-Type": "application/json"
           },
-          
           body: JSON.stringify(values)
         })
+
+        
         console.log("values");
         console.log(values);
+        
+        const res = response.json()
+        console.log(res);
 
-      const res = response.json()
-      console.log(res);
   }
   //Sätt ovan i en annan fil sen
 
@@ -41,6 +48,7 @@ const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
   };
 
   const onClose = () => {
+    //Fetcha igen här? 
     setOpen(false);
   };
   

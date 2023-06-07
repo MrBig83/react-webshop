@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import AdminProductCard from "../AdminProductCard/AdminProductCard"
 import IProduct from "../../interfaces/Interfaces";
 import BtnAdminAddProduct from "../BtnAdminAddProduct/BtnAdminAddProduct"
 
+// import { MyProductsContext } from "../../../context/productscontext";
 
 import "./Adminpanel.css";
 
 const Adminpanel = () => {
+  // const { products } = useContext(MyProductsContext);
     const [products, setProducts] = useState([]);
   
     useEffect(() => {
@@ -37,9 +39,9 @@ const Adminpanel = () => {
       
       </div>
       
-      <div className="ProductList">
+      <div className="ProductList" >
       {products.map((product: IProduct) => (
-        <div className="ProductCardRender">
+        <div className="ProductCardRender" key={product._id}>
             <AdminProductCard key={product._id} product={product} />
         </div>
       ))}

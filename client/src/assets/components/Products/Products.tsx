@@ -14,16 +14,17 @@ const Products = () => {
       const data = await response.json();
 
       setProducts(data);
+      
     };
     fetchProducts();
   }, []);
 
   useEffect(() => {}, [products]); 
-
+  
   return (
     <div className="ProductList">
       {products.map((product: IProduct) => (
-        <div className="ProductCardRender">
+        <div className="ProductCardRender" key={product._id}>
           <Link key={product._id} to={`/${product._id}`}>
             <ProductCard key={product._id} product={product} />
           </Link>
