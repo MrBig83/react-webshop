@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css";
-import IProduct from "../../interfaces/Interfaces";
+import IProduct from "../../interfaces/IProduct";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -14,23 +14,25 @@ const Products = () => {
       const data = await response.json();
 
       setProducts(data);
-      
+      console.log(data);
     };
     fetchProducts();
   }, []);
 
-  useEffect(() => {}, [products]); 
-  
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  useEffect(() => {}, [products]);
+
   return (
     <div className="ProductList">
       {products.map((product: IProduct) => (
         <div className="ProductCardRender" key={product._id}>
-          <Link key={product._id} to={`/${product._id}`}>
-            <ProductCard key={product._id} product={product} />
+          <Link to={`/${product._id}`}>
+            <ProductCard product={product} />
           </Link>
         </div>
       ))}
     </div>
   );
 };
+
 export default Products;

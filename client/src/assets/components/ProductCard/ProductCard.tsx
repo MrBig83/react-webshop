@@ -1,6 +1,7 @@
-import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
+import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
-import IProduct from "../../interfaces/Interfaces";
+// import { ICartItem } from "../../interfaces/ICartItem";
+import IProduct from "../../interfaces/IProduct";
 function ProductCard({ product }: { product: IProduct }) {
   
 
@@ -13,7 +14,6 @@ function ProductCard({ product }: { product: IProduct }) {
         <p>{product.price}:-</p>
 
         <BtnBuyNow product={product} />
-
       </div>
     </div>
   );

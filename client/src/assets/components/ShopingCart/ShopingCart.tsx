@@ -1,29 +1,55 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { useContext } from "react";
-import { MyProductsContext } from "../../../context/productscontext";
-import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
-import "./ShopingCart.css";
-const ShopingCart = () => {
-  const { products } = useContext(MyProductsContext);
-  console.log(products);
+import { NavLink } from "react-router-dom";
+import { MyCartContext } from "../../../context/CartContext";
+import CartItem from "../Cartitem/CartItem";
+// import ProductCard from "../ProductCard/ProductCard";
+// import Products from "../Products/Products";
+//BEHÖVS TYPAS FILEN ÄR RÖD?
+const ShoppingCart = () => {
+  const { items, updateItemQuantity, removeItem } = useContext(MyCartContext);
+
+  const calculateTotal = () => {
+    let total = 0;
+
+    items.forEach((item) => {
+      if (
+        typeof item.product?.price === "number" &&
+        typeof item.quantity === "number" &&
+        !isNaN(item.product?.price) &&
+        !isNaN(item.quantity)
+      ) {
+        total += item.product?.price * item.quantity;
+      }
+    });
+
+    return total;
+  };
+  console.log("items:", items);
+  console.log("total:", calculateTotal());
+
   return (
     <>
       <h2>Dina varor</h2>
       <div>
-        {products.map((p) => (
-          <div key={p._id} className="shopingcart-product-card">
-            <div className="shopingcart-img">
-              <img src={p.image} />
-            </div>
-            <div className="shopingcart-info">
-              <h3>{p.title}</h3>
-              antal...
-              <BtnBuyNow product={p} />
-            </div>
-          </div>
+        {items.map((item) => (
+          <CartItem
+            key={item.product?._id}
+            product={item}
+            onQuantityChange={updateItemQuantity}
+            onRemove={removeItem}
+            item={item.product}
+            image={item.product.image}
+            title={""}
+            _id={""}
+            quantity={0}
+            price={0}
+          />
         ))}
       </div>
+      <h3>Totalbelopp: {calculateTotal()} kr</h3>
     </>
   );
 };
 
-export default ShopingCart;
+export default ShoppingCart;
