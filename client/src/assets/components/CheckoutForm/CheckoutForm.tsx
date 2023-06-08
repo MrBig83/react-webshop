@@ -6,16 +6,12 @@ import { MyCartContext } from "../../../context/CartContext";
 
 const CheckoutForm = () => {
   const {
-    setFirstname,
-    setLastname,
-    setEmail,
-    setPhoneNumber,
     setZipcode,
     setStreet,
     setCountry,
     setCity,
     placeOrder,
-    setShippingValue,
+    setShippingMethod,
     setOrderItems,
   } = useContext(OrderContext)!;
 
@@ -25,8 +21,11 @@ const CheckoutForm = () => {
 
   console.log(items);
 
-  const Title = items.map((p) => p._id);
-  console.log(Title);
+  const OrderItems = items.map((p) => ({
+    product: p.product._id,
+    quantity: p.quantity,
+  }));
+  console.log(OrderItems);
 
   const handleSubmit = () => {
     placeOrder();
@@ -34,8 +33,8 @@ const CheckoutForm = () => {
 
   const handleDropdownChange = (value) => {
     console.log("Selected value:", value);
-    setShippingValue(value);
-    setOrderItems(items);
+    setShippingMethod(value);
+    setOrderItems(OrderItems);
   };
 
   return (
@@ -91,14 +90,6 @@ const CheckoutForm = () => {
           rules={[{ required: true, message: "Please input your username!" }]}
         >
           <Input onChange={(e) => setEmail(e.target.value)} />
-        </Form.Item>
-
-        <Form.Item
-          label="Telefon"
-          name="Telefonnummer"
-          rules={[{ required: true, message: "Skriv in tel" }]}
-        >
-          <Input onChange={(e) => setPhoneNumber(e.target.value)} />
         </Form.Item>
 
         <Form.Item
