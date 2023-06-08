@@ -22,7 +22,9 @@ interface OrderContextProps {
   zipcode: string;
   city: string;
   country: string;
-  shippingData: any;
+  shippingData: any; /// typa
+  orderNumber: number;
+  orderInfo: any; ///typa
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -33,6 +35,7 @@ interface OrderContextProps {
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
+  setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
   placeOrder: () => Promise<void>;
 }
 
@@ -46,6 +49,10 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [shippingData, setShippingData] = useState([]);
   const [shippingMethod, setShippingMethod] = useState("");
   const [orderItems, setOrderItems] = useState([]);
+  const [orderNumber, setOrderNumber] = useState(Number);
+  const [orderInfo, setOrderInfo] = useState([]);
+
+  console.log(orderInfo);
 
   const deliveryAddress = {
     street,
@@ -73,7 +80,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
       console.log(order);
       const data = await res.json();
 
-      console.log(data);
+      console.log(data.orderNumber);
+      setOrderNumber(data.orderNumber);
     } catch (err) {
       console.log(err);
       // Handle errors
@@ -106,6 +114,9 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         shippingData,
         setShippingMethod,
         setOrderItems,
+        orderNumber,
+        setOrderInfo,
+        orderInfo,
       }}
     >
       {children}
