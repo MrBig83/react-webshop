@@ -1,0 +1,19 @@
+.productcard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+}
+.ProductCardInfo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end; 
+}
+
+img {
+  width: fit-content;
+  height: 150px;
+}

@@ -15,42 +15,29 @@ import IProduct from "../assets/interfaces/IProduct";
 //   country: string;
 // }
 
+//Här typar vi alla variabler som används i contexten... tror jag
 interface ProductContextProps {
-    //Här typar vi alla variabler som används i contexten
     product: IProduct;
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   phoneNumber: number;
-//   street: string;
-//   zipcode: string;
-//   city: string;
+    products: any | null; //typa
+    getProducts: React.Dispatch<React.SetStateAction<[]>>;
+
 //   country: string;
 //   shippingData: any; /// typa
 //   orderNumber: number;
 //   orderInfo: any; ///typa
 //   setEmail: React.Dispatch<React.SetStateAction<string>>;
-//   setFirstname: React.Dispatch<React.SetStateAction<string>>;
-//   setLastname: React.Dispatch<React.SetStateAction<string>>;
-//   setPhoneNumber: React.Dispatch<React.SetStateAction<number>>;
-//   setStreet: React.Dispatch<React.SetStateAction<string>>;
-//   setZipcode: React.Dispatch<React.SetStateAction<string>>;
-//   setCity: React.Dispatch<React.SetStateAction<string>>;
-//   setCountry: React.Dispatch<React.SetStateAction<string>>;
-//   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
-//   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
-//   setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
 //   placeOrder: () => Promise<void>;
 }
 
 export const ProductContext = createContext<ProductContextProps | null>(null);
 
 const ProductContextProvider = ({ children }: PropsWithChildren) => {
+    const [products, setProducts] = useState([]);
     //Här skapas alla states som skall användas. Glöm inte rätt typning i sista parantesen.
 //   const [street, setStreet] = useState("");
 //   const [orderInfo, setOrderInfo] = useState([]);
 
-  console.log("Logga något kul om man vill... :P");
+//   console.log("Logga något kul om man vill... :P");
 
   //Om man skulle behöva objekt med flera variabler i, så är det perfekt att skapa dessa här. 
 //   const deliveryAddress = {
@@ -60,14 +47,19 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
 //     country,
 //   };
 
-//   const order = {
-//     deliveryAddress,
-//     shippingMethod,
-//     orderItems,
-//   };
-
 
 //Här skapar vi logik och funktioner som skall användas. Exempelvis att anropa databasen via ett API. 
+  const getProducts = async () => {
+        const res = await fetch(`/api/products`)
+        const products = await res.json()
+
+        setProducts(products);
+        
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 //   const placeOrder = async (): Promise<void> => {
 //     try {
 //       const res = await fetch("/api/orders", {
@@ -105,21 +97,10 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
     <ProductContext.Provider
     //Här ANTAR jag att man slänger in alla variabler och funktioner som vi vill komma åt utifrån. 
       value={{
-        // street,
-        // zipcode,
-        // city,
-        // country,
-        // setZipcode,
-        // setStreet,
-        // setCountry,
-        // setCity,
-        // placeOrder,
-        // shippingData,
-        // setShippingMethod,
-        // setOrderItems,
-        // orderNumber,
-        // setOrderInfo,
-        // orderInfo,
+        getProducts,
+        products,
+ 
+
       }}
     >
       {children}

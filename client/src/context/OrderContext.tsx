@@ -52,7 +52,6 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [orderNumber, setOrderNumber] = useState(Number);
   const [orderInfo, setOrderInfo] = useState([]);
 
-  console.log(orderInfo);
 
   const deliveryAddress = {
     street,

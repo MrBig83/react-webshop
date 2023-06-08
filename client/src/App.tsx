@@ -8,8 +8,10 @@ import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
 import CartProvider from "./context/CartContext";
 import UserContextProvider from "./context/UserContext";
 import OrderContextProvider from "./context/OrderContext";
+import ProductContextProvider from "./context/ProductContext"
 const App: React.FC = () => {
   return (
+    <ProductContextProvider>
     <OrderContextProvider>
       <UserContextProvider>
         <CartProvider>
@@ -22,6 +24,7 @@ const App: React.FC = () => {
         </CartProvider>
       </UserContextProvider>
     </OrderContextProvider>
+    </ProductContextProvider>
   );
 };
 

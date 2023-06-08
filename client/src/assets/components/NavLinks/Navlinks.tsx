@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { Drawer } from "antd";
 import { useContext, useState } from "react";
-
+import BtnAdminpanel from "../Buttons/BtnAdminpanel/BtnAdminpanel";
 import "./NavLink.css";
 import ShopingCart from "../ShopingCart/ShopingCart";
 import { UserContext } from "../../../context/UserContext";
@@ -41,6 +41,7 @@ function NavLinks() {
         </li>
       </ul>
       <ul className="menu-right">
+        <BtnAdminpanel />
         <li className="shopingcart-container">
           <div className={"shopingcart-icon"}>
             <ShoppingCartOutlined onClick={showDrawer} />
