@@ -5,7 +5,7 @@ import Products from "../Products/Products";
 import ShopingCart from "../ShopingCart/ShopingCart";
 import Contact from "../Contact/Contact";
 import Checkout from "../Checkout/Checkout";
-
+import OrderConfirm from "../OrderConfirm/OrderConfirm";
 import "./Main.css";
 
 const Main = () => {
@@ -18,6 +18,7 @@ const Main = () => {
           <Route path="/shopingcart" element={<ShopingCart />} />
           <Route path="/kontakta-oss" element={<Contact />} />
           <Route path="/kassa" element={<Checkout />} />
+          <Route path="/order" element={<OrderConfirm />} />
         </Routes>
         <div className="sectionLine"></div>
       </div>
