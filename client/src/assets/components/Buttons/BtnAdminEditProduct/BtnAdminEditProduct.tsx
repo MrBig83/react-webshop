@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import IProduct from "../../../interfaces/IProduct";
 
 import "./BtnAdminEditProduct.css";
 
 
-const BtnAdminEditProduct = () => {
+const BtnAdminEditProduct = ({ product }: { product: IProduct }) => {
 
 
   return (
