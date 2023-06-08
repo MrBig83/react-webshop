@@ -42,7 +42,7 @@ function NavLinks() {
       </ul>
       <ul className="menu-right">
         <li className="shopingcart-container">
-          <NavLink className={"shopingcart-icon"} to="">
+          <div className={"shopingcart-icon"}>
             <ShoppingCartOutlined onClick={showDrawer} />
             <Drawer
               title="Kundvagn"
@@ -51,8 +51,11 @@ function NavLinks() {
               open={open}
             >
               <ShopingCart />
+              <button>
+                <NavLink to="/kassa">Till kassa</NavLink>
+              </button>
             </Drawer>
-          </NavLink>
+          </div>
         </li>
         <li>
           <Login />
