@@ -1,17 +1,17 @@
 import { ICartItem } from "../assets/interfaces/ICartItem";
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
 
-interface IOrderData {
-  orderItems: ICartItem[];
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNumber: number;
-  street: string;
-  zipcode: string;
-  city: string;
-  country: string;
-}
+// interface IOrderData {
+//   orderItems: ICartItem[];
+//   firstName: string;
+//   lastName: string;
+//   email: string;
+//   phoneNumber: number;
+//   street: string;
+//   zipcode: string;
+//   city: string;
+//   country: string;
+// }
 
 interface OrderContextProps {
   firstName: string;
@@ -31,37 +31,32 @@ interface OrderContextProps {
   setZipcode: React.Dispatch<React.SetStateAction<string>>;
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
-  setShippingValue: React.Dispatch<React.SetStateAction<string>>;
+  setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
   placeOrder: () => Promise<void>;
-  //   data: IOrderData;
 }
 
 export const OrderContext = createContext<OrderContextProps | null>(null);
 
 const OrderContextProvider = ({ children }: PropsWithChildren) => {
-  const [firstName, setFirstname] = useState("");
-  const [lastName, setLastname] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState(Number);
   const [street, setStreet] = useState("");
   const [zipcode, setZipcode] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [shippingData, setShippingData] = useState([]);
-  const [shippingValue, setShippingValue] = useState("");
+  const [shippingMethod, setShippingMethod] = useState("");
   const [orderItems, setOrderItems] = useState([]);
 
-  const order = {
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
+  const deliveryAddress = {
     street,
     zipcode,
     city,
     country,
-    shippingValue,
+  };
+
+  const order = {
+    deliveryAddress,
+    shippingMethod,
     orderItems,
   };
 
@@ -85,41 +80,31 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  console.log(shippingValue);
-
   //shippingMethod
-  const shippingMethod = async () => {
+  const getShippingMethod = async () => {
     const res = await fetch("/api/shippingmethod");
     const shippingData = await res.json();
     setShippingData(shippingData);
   };
 
   useEffect(() => {
-    shippingMethod();
+    getShippingMethod();
   }, []);
 
   return (
     <OrderContext.Provider
       value={{
-        firstName,
-        lastName,
-        email,
-        phoneNumber,
         street,
         zipcode,
         city,
         country,
-        setFirstname,
-        setLastname,
-        setEmail,
-        setPhoneNumber,
         setZipcode,
         setStreet,
         setCountry,
         setCity,
         placeOrder,
         shippingData,
-        setShippingValue,
+        setShippingMethod,
         setOrderItems,
       }}
     >
