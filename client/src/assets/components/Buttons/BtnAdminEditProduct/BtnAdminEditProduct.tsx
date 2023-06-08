@@ -10,7 +10,8 @@ const BtnAdminEditProduct = () => {
   return (
 
     <button className="BtnAdminEditProduct" >
-        <NavLink to="/">Hem :P</NavLink>
+      Redigera
+        {/* <NavLink to="/">Redigera</NavLink> */}
     </button>
   ); 
 };

@@ -5,6 +5,7 @@ import {  ProductContext } from "../../../context/ProductContext"
 import IProduct from "../../interfaces/IProduct";
 import AdminProductCard from "../AdminProductCard/AdminProductCard"
 import { Link } from "react-router-dom";
+import AdminEditDrawer from "../AdminEditDrawer/AdminEditDrawer"
 
 
 import "./Adminpanel.css";
@@ -35,8 +36,8 @@ function AdminpanelProducts() {
       <div className="AdminProductList">
       {products.map((product: IProduct) => (
         <div className="ProductCardRender" key={product._id}>
-          
-            <AdminProductCard product={product} />
+          <AdminProductCard product={product} />
+          <AdminEditDrawer product={product}/>
           
         </div>
       ))}
