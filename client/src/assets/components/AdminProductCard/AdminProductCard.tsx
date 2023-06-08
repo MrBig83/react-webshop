@@ -11,8 +11,8 @@ function AdminProductCard({ product }: { product: IProduct }) {
        <div className="ProductCardInfo">
         <h3>{product.title}</h3>
         <p>{product.price}:-</p>
-
-        <BtnAdminEditProduct product={product}/>
+        {/* Knappen för att öppna sidopanelen finns i AdminProducts */}
+        {/* <BtnAdminEditProduct product={product}/> */}
       </div>  
   );
 }

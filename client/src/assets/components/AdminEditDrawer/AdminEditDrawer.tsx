@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
-
+import React, { useState, useContext } from 'react';
 import IProduct from '../../interfaces/IProduct';
-import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber } from 'antd';
+import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
+import {  ProductContext } from "../../../context/ProductContext"
+
+
+
 
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
+  
+  const UpdateDatabase = (values:object, product:IProduct) => {
+    console.log(values);
+    console.log(product._id);
+  }
 
   const showDrawer = () => {
     setOpen(true);
@@ -13,11 +21,21 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const onClose = () => {
     setOpen(false);
   };
+  
+  const onFinishFailed = (errorInfo: any) => {
+    console.log('Failed:', errorInfo);
+  };
 
+  const onChange = (e: RadioChangeEvent) => {
+    console.log('radio checked', e.target.value);
+    // setValue(e.target.value);
+  };
+  
+  // const [value, setValue] = useState(false);
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
-        Open
+        Redigera produkt
       </Button>
 
       <Drawer
@@ -30,7 +48,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
       >
         <Form 
             layout="vertical" hideRequiredMark
-            onFinish={(values) => updateDatabase(values, product._id)}
+            onFinish={(values) => UpdateDatabase(values, product)} //HÄR ska vi jobba. Funktion som gör en setState för att göra det enkelt? 
             onFinishFailed={onFinishFailed}
             initialValues={{
               ["title"]: product.title,

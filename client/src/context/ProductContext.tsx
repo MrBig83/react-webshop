@@ -33,6 +33,8 @@ export const ProductContext = createContext<ProductContextProps | null>(null);
 
 const ProductContextProvider = ({ children }: PropsWithChildren) => {
     const [products, setProducts] = useState([]);
+    // const [product, setProduct] = useState([]);
+
     //Här skapas alla states som skall användas. Glöm inte rätt typning i sista parantesen.
 //   const [street, setStreet] = useState("");
 //   const [orderInfo, setOrderInfo] = useState([]);
@@ -60,6 +62,8 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     getProducts();
   }, []);
+
+
 //   const placeOrder = async (): Promise<void> => {
 //     try {
 //       const res = await fetch("/api/orders", {
@@ -99,6 +103,7 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
       value={{
         getProducts,
         products,
+        
  
 
       }}
