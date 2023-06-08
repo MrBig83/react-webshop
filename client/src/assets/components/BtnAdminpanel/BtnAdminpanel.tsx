@@ -5,6 +5,7 @@ import Adminpanel from "../Adminpanel/Adminpanel"
 const BtnAdminpanel: React.FC = () => {
   const [open, setOpen] = useState(false);
   const [childrenDrawer, setChildrenDrawer] = useState(false);
+  const [childrenOrderDrawer, setOrderDrawer] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -17,9 +18,15 @@ const BtnAdminpanel: React.FC = () => {
   const showChildrenDrawer = () => {
     setChildrenDrawer(true);
   };
+  const showOrderDrawer = () => {
+    setOrderDrawer(true);
+  };
 
 
   const onChildrenDrawerClose = () => {
+    setChildrenDrawer(false);
+  };
+  const onOrderDrawerClose = () => {
     setChildrenDrawer(false);
   };
 
@@ -35,8 +42,8 @@ const BtnAdminpanel: React.FC = () => {
         </Button>
         <br />
         <br />
-        <Button type="primary" onClick={showChildrenDrawer}>
-          Administrera Användare
+        <Button type="primary" onClick={showOrderDrawer}>
+          Administrera Ordrar
         </Button>
 
         <Drawer
@@ -46,8 +53,17 @@ const BtnAdminpanel: React.FC = () => {
           onClose={onChildrenDrawerClose}
           open={childrenDrawer}
         >
+        <Drawer
+          title="Administrera ordrar"
+          width={620}
+          closable={false}
+          onClose={onOrderDrawerClose}
+          open={childrenOrderDrawer}
+        >
           
           <Adminpanel />
+          <Adminpanel />
+        </Drawer>
         </Drawer>
 
       </Drawer>

@@ -35,10 +35,10 @@ const ShoppingCart = () => {
         {items.map((item) => (
           <CartItem
             key={item.product?._id}
-            product={item}
+            product={item.product}
             onQuantityChange={updateItemQuantity}
             onRemove={removeItem}
-            item={item.product}
+            item={item}
             image={item.product.image}
             title={""}
             _id={""}

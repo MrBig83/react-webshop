@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import IProduct from "../assets/interfaces/IProduct";
 import { ICartItem } from "../assets/interfaces/ICartItem";
@@ -29,7 +30,7 @@ export const MyCartContext = createContext<CartContext>({
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
 
-const CartProvider = ({ children }: PropsWithChildren<{}>) => {
+const CartProvider = ({ children }: PropsWithChildren<object>) => { //<object> var innan : <{}>
   const [items, setItems] = useState<ICartItem[]>(cartFromLocalStorage);
   const [product] = useState<IProduct[]>([]);
 
