@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import IProduct from "../assets/interfaces/IProduct";
 import { ICartItem } from "../assets/interfaces/ICartItem";
 //BEHÖVS TYPAS FILEN ÄR RÖD?
@@ -6,6 +6,7 @@ import { ICartItem } from "../assets/interfaces/ICartItem";
 interface CartContext {
   items: ICartItem[];
   product: IProduct[];
+  shopingcartTotal: number;
   addItem: (item: ICartItem) => void;
   updateItemQuantity: (itemId: string, quantity: number) => void;
   itemIsInCart: (itemId: string) => boolean;
@@ -13,11 +14,13 @@ interface CartContext {
   removeItem: (itemId: string) => void;
   removeProduct: (productId: string) => void;
   productIsInCart: (productId: string) => boolean;
+  calculateTotal: () => void;
 }
 
 export const MyCartContext = createContext<CartContext>({
   items: [],
   product: [],
+  shopingcartTotal: 0,
   addItem: () => {},
   updateItemQuantity: () => {},
   itemIsInCart: () => false,
@@ -25,11 +28,19 @@ export const MyCartContext = createContext<CartContext>({
   removeItem: () => {},
   removeProduct: () => {},
   productIsInCart: () => false,
+  calculateTotal: () => {},
 });
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+
 const CartProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [items, setItems] = useState<ICartItem[]>([]);
+  const [items, setItems] = useState<ICartItem[]>(cartFromLocalStorage);
   const [product] = useState<IProduct[]>([]);
+  const [shopingcartTotal, setTotal] = useState(0);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items));
+  }, [items]);
 
   const removeItem = (itemId: string) => {
     const newItems = items.filter((item) => item.product?._id !== itemId);
@@ -85,11 +96,29 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     return items.some((item) => item.product?._id === productId);
   };
 
+  const calculateTotal = () => {
+    let calculatedTotal = 0;
+
+    items.forEach((item) => {
+      if (
+        typeof item.product?.price === "number" &&
+        typeof item.quantity === "number" &&
+        !isNaN(item.product?.price) &&
+        !isNaN(item.quantity)
+      ) {
+        calculatedTotal += item.product?.price * item.quantity;
+      }
+    });
+    setTotal(calculatedTotal);
+    return shopingcartTotal;
+  };
+
   return (
     <MyCartContext.Provider
       value={{
         items,
         product,
+        shopingcartTotal,
         addItem,
         updateItemQuantity,
         itemIsInCart,
@@ -97,6 +126,7 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
         removeItem,
         removeProduct,
         productIsInCart,
+        calculateTotal,
       }}
     >
       {children}
