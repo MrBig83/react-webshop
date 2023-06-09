@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import IProduct from '../../interfaces/IProduct';
 import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
 import {  ProductContext } from "../../../context/ProductContext"
@@ -7,12 +7,7 @@ import {  ProductContext } from "../../../context/ProductContext"
 
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
-  const { updateProduct } = useContext(ProductContext)!;
-  // const UpdateDatabase = ( values: { product: IProduct }) => { // ====== STRUL ======
-//   const { product } = useContext(ProductContext)!;
-  //   //console.log(values);
-  //   //console.log(product._id);
-  // }
+  const { updateProduct } = useContext(ProductContext);
 
   const showDrawer = () => {
     setOpen(true);
@@ -28,10 +23,8 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
 
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
-    // setValue(e.target.value);
   };
   
-  // const [value, setValue] = useState(false);
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
@@ -144,7 +137,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
           </Radio.Group>
         </Form.Item>
             </Col> 
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" onClick={onClose}>
               Spara
             </Button>
             <Button onClick={onClose}>Avbryt</Button>

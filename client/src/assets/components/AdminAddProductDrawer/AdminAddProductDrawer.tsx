@@ -1,13 +1,14 @@
-import React, { useState, useContext } from 'react';
-import IProduct from '../../interfaces/IProduct';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, useContext } from 'react';
+// import IProduct from '../../interfaces/IProduct';
 import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
 import {  ProductContext } from "../../../context/ProductContext"
 
 
 
-const AdminAddProductDrawer = ({ product }: { product: IProduct }) => {
+const AdminAddProductDrawer = () => {
   const [open, setOpen] = useState(false);
-  const { addProduct } = useContext(ProductContext)!;
+  const { addProduct } = useContext(ProductContext);
 
   const showDrawer = () => {
     setOpen(true);

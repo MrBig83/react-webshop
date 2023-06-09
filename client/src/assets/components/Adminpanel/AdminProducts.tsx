@@ -1,20 +1,17 @@
 import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
-// import { ProductContext} from "../../../context/ProductContext"
 import {  ProductContext } from "../../../context/ProductContext"
 import IProduct from "../../interfaces/IProduct";
 import AdminProductCard from "../AdminProductCard/AdminProductCard"
-import { Link } from "react-router-dom";
 import AdminEditDrawer from "../AdminEditDrawer/AdminEditDrawer"
 import AdminAddProductDrawer from "../AdminAddProductDrawer/AdminAddProductDrawer"
-
 
 import "./Adminpanel.css";
 
 function AdminpanelProducts() {
 
     const { products } = useContext(ProductContext);
-    const { data } = useContext(UserContext)!;  
+    const { data } = useContext(UserContext);  
     
     if(!data.isAdmin) {
         return (

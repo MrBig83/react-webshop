@@ -1,4 +1,3 @@
-import { ICartItem } from "../assets/interfaces/ICartItem";
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
 import IOrder from "../assets/interfaces/IOrder";
 
@@ -27,6 +26,7 @@ interface OrderContextProps {
   orderNumber: number;
   orderInfo: any; ///typa
   orders:IOrder[];
+  //setOrders: React.Dispatch<React.SetStateAction<string>>; // ==============================
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -36,10 +36,10 @@ interface OrderContextProps {
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
-  setOrderItems: React.Dispatch<React.SetStateAction<string>>;
-  setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
+  setOrderItems: React.Dispatch<React.SetStateAction<string>>; // =======================
+  setOrderInfo: React.Dispatch<React.SetStateAction<string>>; // =========================
   placeOrder: () => Promise<void>;
-  updateOrder: () => Promise<void>;
+  updateOrder: (values: IOrder, id: string) => Promise<void>;
 }
 
 export const OrderContext = createContext<OrderContextProps>(null as any);
@@ -51,9 +51,9 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [country, setCountry] = useState("");
   const [shippingData, setShippingData] = useState([]);
   const [shippingMethod, setShippingMethod] = useState("");
-  const [orderItems, setOrderItems] = useState([]);
+  const [orderItems, setOrderItems] = useState(""); //=======================
   const [orderNumber, setOrderNumber] = useState(Number);
-  const [orderInfo, setOrderInfo] = useState([]);
+  const [orderInfo, setOrderInfo] = useState(""); // =======================
   const [orders, setOrders] = useState([]);
 
 
@@ -111,7 +111,6 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
       
       getOrders();
   }
-
 
   //shippingMethod
   const getShippingMethod = async () => {

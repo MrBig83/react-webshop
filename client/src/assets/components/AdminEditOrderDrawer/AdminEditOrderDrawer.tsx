@@ -1,15 +1,11 @@
-import React, { useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import IOrder from '../../interfaces/IOrder';
-import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
+import { Button, Col, Drawer, Form, Input, Row, Radio, RadioChangeEvent } from 'antd';
 import {  OrderContext } from "../../../context/OrderContext"
-
-
 
 const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
   const [open, setOpen] = useState(false);
   const { updateOrder } = useContext(OrderContext)
-  // const { updateProduct } = useContext(ProductContext)!;
-
 
   const showDrawer = () => {
     setOpen(true);
@@ -45,11 +41,11 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
       >
         <Form 
             layout="vertical" hideRequiredMark
-            onFinish={(values) => updateOrder(values, order._id)} //HÄR ska vi jobba. Funktion som gör en setState för att göra det enkelt? 
+            onFinish={(values) => updateOrder(values, order._id)}
             onFinishFailed={onFinishFailed}
             initialValues={{
               ["_id"]: order._id,
-              ["shipped"]: false
+              // ["shipped"]: false
             }}
 
         >
@@ -59,7 +55,6 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
               <Form.Item
                 name="_id"
                 label="Id"
-                rules={[{ required: false,  }]}
               >
                 <Input disabled={true} defaultValue = {order._id} />
               </Form.Item>

@@ -24,7 +24,7 @@ interface UserContextProps {
   data: IuserData;
 }
 
-export const UserContext = createContext<UserContextProps | null>(null);
+export const UserContext = createContext<UserContextProps>(null as any);
 
 const UserContextProvider = ({ children }: PropsWithChildren) => {
   const [email, setEmail] = useState("");
