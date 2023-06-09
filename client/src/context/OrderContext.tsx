@@ -1,18 +1,6 @@
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
 import IOrder from "../assets/interfaces/IOrder";
 
-// interface IOrderData {
-//   orderItems: ICartItem[];
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   phoneNumber: number;
-//   street: string;
-//   zipcode: string;
-//   city: string;
-//   country: string;
-// }
-
 interface OrderContextProps {
   firstName: string;
   lastName: string;
@@ -25,8 +13,12 @@ interface OrderContextProps {
   shippingData: any; /// typa
   orderNumber: number;
   orderInfo: any; ///typa
+
   orders:IOrder[];
   //setOrders: React.Dispatch<React.SetStateAction<string>>; // ==============================
+
+  orderTotal: number;
+
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -36,8 +28,14 @@ interface OrderContextProps {
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
+
   setOrderItems: React.Dispatch<React.SetStateAction<string>>; // =======================
   setOrderInfo: React.Dispatch<React.SetStateAction<string>>; // =========================
+
+
+
+  setOrderTotal: React.Dispatch<React.SetStateAction<number>>;
+
   placeOrder: () => Promise<void>;
   updateOrder: (values: IOrder, id: string) => Promise<void>;
 }
@@ -53,8 +51,15 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [shippingMethod, setShippingMethod] = useState("");
   const [orderItems, setOrderItems] = useState(""); //=======================
   const [orderNumber, setOrderNumber] = useState(Number);
+
   const [orderInfo, setOrderInfo] = useState(""); // =======================
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState([]); // =====================
+
+
+
+  const [orderTotal, setOrderTotal] = useState(Number);
+
+
 
 
   const deliveryAddress = {
@@ -135,11 +140,13 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         setCountry,
         setCity,
         placeOrder,
-        shippingData,
         setShippingMethod,
         setOrderItems,
-        orderNumber,
         setOrderInfo,
+        setOrderTotal,
+        orderTotal,
+        shippingData,
+        orderNumber,
         orderInfo,
         setOrders, 
         getOrders,
