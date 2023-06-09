@@ -3,7 +3,6 @@ import { useContext } from "react";
 // import { NavLink } from "react-router-dom";
 import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
-import '../Buttons/btnStyle.css'
 // import ProductCard from "../ProductCard/ProductCard";
 // import Products from "../Products/Products";
 //BEHÖVS TYPAS FILEN ÄR RÖD?
@@ -49,7 +48,6 @@ const ShoppingCart = () => {
         ))}
       </div>
       <h3>Totalbelopp: {calculateTotal()} kr</h3>
-      <button className="btnStyle">Lägg order</button>
     </>
   );
 };
