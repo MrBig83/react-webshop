@@ -13,7 +13,7 @@ const Products = () => {
       const data = await response.json();
 
       setProducts(data);
-      console.log(data);
+      
     };
     fetchProducts();
   }, []);
