@@ -2,15 +2,26 @@
     margin-left: 3rem;
     display: flex;
     cursor:context-menu;
+    margin-top: 1rem;
     
 }
-.SingleProduct .title {
-    padding-top: 4rem;
+
+.title img {
+   max-height: 350px;
+   margin-top: 1rem;
+   padding-top: 4rem;
+
+}
+
+.info > h3 {
+    font-size: 23px;
 }
 
 .info {
     margin: 5rem;
+    font-size: 17px;
 }
 .info button {
     align-items: flex-end;
+    margin-top: 1rem;
 }
