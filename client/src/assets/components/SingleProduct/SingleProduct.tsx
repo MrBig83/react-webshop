@@ -6,7 +6,8 @@ import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import IProduct from "../../interfaces/IProduct";
 // import Products from "../Products/Products";
 
-const defaultProduct: IProduct = {
+const defaultProduct: IProduct = {  
+  product: {},
   _id: "",
   categories: [],
   description: "",
@@ -14,6 +15,7 @@ const defaultProduct: IProduct = {
   inStock: 0,
   price: 0,
   title: "",
+  quantity: 0,
 };
 
 const SingleProduct = () => {

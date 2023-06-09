@@ -8,19 +8,19 @@ const Cartproduct: React.FC<ICartItem> = ({
   onRemove,
 }) => {
   const handleQuantityChange = (quantity: number) => {
-    onQuantityChange(item.product._id, quantity);
+    onQuantityChange(item._id, quantity);
   };
 
   const handleRemove = () => {
-    onRemove(item.product._id);
+    onRemove(item._id);
   };
 
   return (
-    <div>
-      <img src={item.product.image} alt={item.product.title} />
-      <h3>{item.product.title}</h3>
+    <div className="cartItemCard">
+      <img src={item.image} alt={item.title} />
+      <h3>{item.title}</h3>
       <p>Antal: {item.quantity ?? 1}</p>
-      <p>Pris: {item.product.price * (item.quantity ?? 1)}</p>
+      <p>Pris: {item.price * (item.quantity ?? 1)}</p>
       <BtnsInCart
         label="+"
         onClick={() =>

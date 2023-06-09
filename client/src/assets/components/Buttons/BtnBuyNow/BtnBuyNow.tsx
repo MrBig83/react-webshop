@@ -24,6 +24,7 @@ const BtnBuyNow = ({ product }: { product: IProduct }) => {
     }
 
     addProduct(product);
+    
   };
 
   return (
