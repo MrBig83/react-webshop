@@ -1,7 +1,7 @@
 import { Button, Form, Input, Select, Spin } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import { NavLink } from "react-router-dom";
 import '../Buttons/BtnStyle/btnStyle.css'
@@ -16,13 +16,22 @@ const CheckoutForm = () => {
     setShippingMethod,
     setOrderItems,
     setOrderInfo,
+    setOrderTotal,
   } = useContext(OrderContext)!;
 
   const [loading, setLoading] = useState(false);
 
   const { data } = useContext(UserContext)!;
-  const { shippingData } = useContext(OrderContext)!;
-  const { items } = useContext(MyCartContext);
+  const { shippingData, orderTotal } = useContext(OrderContext)!;
+  const { items, shopingcartTotal } = useContext(MyCartContext);
+
+  const claculateOrderTotal = (value: string) => {
+    const parsedValue = JSON.parse(value);
+    const shippingPrice = parsedValue.price;
+    const orderTotal = shopingcartTotal + shippingPrice;
+    setOrderTotal(orderTotal);
+    console.log(parsedValue);
+  };
 
   setOrderInfo(items);
 
@@ -30,18 +39,20 @@ const CheckoutForm = () => {
     product: p._id,
     quantity: p.quantity,
   }));
-  console.log(OrderItems);
 
   const handleSubmit = () => {
     setLoading(true);
     placeOrder();
+
     setLoading(false);
   };
 
-  const handleDropdownChange = (value: string | ((prevValue: string) => string)) => {
-    console.log("Selected value:", value);
-    setShippingMethod(value);
+  const handleDropdownChange = (value: string) => {
+    const parsedValue = JSON.parse(value);
+    console.log("Selected value:", parsedValue);
+    setShippingMethod(parsedValue.id);
     setOrderItems(OrderItems);
+    claculateOrderTotal(value);
   };
 
   ///Detta löste felen som var innan 
@@ -77,15 +88,23 @@ const CheckoutForm = () => {
           >
             <Select
               defaultValue="Välj fraktsätt"
-              style={{ minWidth: 150 }}
+              style={{ minWidth: 300 }}
               onChange={handleDropdownChange}
               placeholder="Select province"
             >
-              {shippingData.map((d) => (
-                <option key={d._id} value={d._id}>
-                  {d.company}
-                </option>
-              ))}
+              {shippingData
+                .map((d) => ({
+                  id: d._id,
+                  price: d.price,
+                  company: d.company,
+                  deliveryTimeInHours: d.deliveryTimeInHours,
+                }))
+                .map((option) => (
+                  <option key={option.id} value={JSON.stringify(option)}>
+                    {option.company} {option.price}:- leveranstid{" "}
+                    {option.deliveryTimeInHours} h
+                  </option>
+                ))}
             </Select>
           </Form.Item>
 
@@ -93,7 +112,7 @@ const CheckoutForm = () => {
             label="Förnamn"
             name="Förnamn"
             initialValue={data.firstName}
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: "Ange förnamn" }]}
           >
             <Input onChange={(e) => setFirstname(e.target.value)} />
           </Form.Item>
@@ -102,7 +121,7 @@ const CheckoutForm = () => {
             label="Efternamn"
             name="Efternamn"
             initialValue={data.lastName}
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: "Ange efternamn" }]}
           >
             <Input onChange={(e) => setLastname(e.target.value)} />
           </Form.Item>
@@ -111,7 +130,7 @@ const CheckoutForm = () => {
             label="Email"
             name="Email"
             initialValue={data.email}
-            rules={[{ required: true, message: "Please input your username!" }]}
+            rules={[{ required: true, message: "Ange Email" }]}
           >
             <Input onChange={(e) => setEmail(e.target.value)} />
           </Form.Item>
@@ -119,7 +138,7 @@ const CheckoutForm = () => {
           <Form.Item
             label="Gata"
             name="Gata"
-            rules={[{ required: true, message: "Skriv in tel" }]}
+            rules={[{ required: true, message: "Ange Gata" }]}
           >
             <Input onChange={(e) => setStreet(e.target.value)} />
           </Form.Item>
@@ -127,7 +146,7 @@ const CheckoutForm = () => {
           <Form.Item
             label="Postnummer"
             name="Postnummer"
-            rules={[{ required: true, message: "Skriv in tel" }]}
+            rules={[{ required: true, message: "Ange postnummer" }]}
           >
             <Input onChange={(e) => setZipcode(e.target.value)} />
           </Form.Item>
@@ -135,7 +154,7 @@ const CheckoutForm = () => {
           <Form.Item
             label="Stad"
             name="Stad"
-            rules={[{ required: true, message: "Skriv in tel" }]}
+            rules={[{ required: true, message: "Ange stad" }]}
           >
             <Input onChange={(e) => setCity(e.target.value)} />
           </Form.Item>
@@ -143,7 +162,7 @@ const CheckoutForm = () => {
           <Form.Item
             label="Land"
             name="Land"
-            rules={[{ required: true, message: "Skriv in tel" }]}
+            rules={[{ required: true, message: "Ange land" }]}
           >
             <Input onChange={(e) => setCountry(e.target.value)} />
           </Form.Item>
@@ -151,10 +170,12 @@ const CheckoutForm = () => {
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button className="btnStyle" onClick={handleSubmit} type="primary" htmlType="submit">
               <NavLink to="/order">Lägg order</NavLink>
+              {/* usenavigate */}
             </Button>
           </Form.Item>
         </Form>
       )}
+      <h3>Totalbelop med frakt: {orderTotal}</h3>
     </div>
   );
 };
