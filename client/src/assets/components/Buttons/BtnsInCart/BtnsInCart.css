@@ -1,3 +1,19 @@
 .custom-button {
-  /* //LITE STYLING HÄR */
+  display: inline-block;
+  padding: .7em 2em ;
+  background: #d7d6d6;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: .8rem;
+  letter-spacing: 2px;
+  font-weight: var(--fw-bold);
+  transition: transform 200ms ease-in-out;
+  border: none;
+  border-radius: .2rem;  
+}
+
+.custom-button:hover {
+transform: scale(1.1);
+background-color: #7e7d7d9d ;
 }
