@@ -8,11 +8,6 @@ import {  ProductContext } from "../../../context/ProductContext"
 const AdminAddProductDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
   const { addProduct } = useContext(ProductContext)!;
-  // const UpdateDatabase = ( values: { product: IProduct }) => { // ====== STRUL ======
-//   const { product } = useContext(ProductContext)!;
-  //   //console.log(values);
-  //   //console.log(product._id);
-  // }
 
   const showDrawer = () => {
     setOpen(true);
@@ -28,10 +23,8 @@ const AdminAddProductDrawer = ({ product }: { product: IProduct }) => {
 
   const onChange = (e: RadioChangeEvent) => {
     console.log('radio checked', e.target.value);
-    // setValue(e.target.value);
   };
   
-  // const [value, setValue] = useState(false);
   return (
     <>
       <Button type="primary" onClick={showDrawer}>
@@ -50,7 +43,6 @@ const AdminAddProductDrawer = ({ product }: { product: IProduct }) => {
             layout="vertical" hideRequiredMark
             onFinish={(values) => addProduct(values)}
             onFinishFailed={onFinishFailed}
-
 
         >
           <Row gutter={16}>

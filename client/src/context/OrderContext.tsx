@@ -1,5 +1,6 @@
 import { ICartItem } from "../assets/interfaces/ICartItem";
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
+import IOrder from "../assets/interfaces/IOrder";
 
 // interface IOrderData {
 //   orderItems: ICartItem[];
@@ -25,6 +26,7 @@ interface OrderContextProps {
   shippingData: any; /// typa
   orderNumber: number;
   orderInfo: any; ///typa
+  orders:IOrder[];
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -37,9 +39,10 @@ interface OrderContextProps {
   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
   setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
   placeOrder: () => Promise<void>;
+  updateOrder: () => Promise<void>;
 }
 
-export const OrderContext = createContext<OrderContextProps | null>(null);
+export const OrderContext = createContext<OrderContextProps>(null as any);
 
 const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [street, setStreet] = useState("");
@@ -51,6 +54,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderNumber, setOrderNumber] = useState(Number);
   const [orderInfo, setOrderInfo] = useState([]);
+  const [orders, setOrders] = useState([]);
 
 
   const deliveryAddress = {
@@ -87,6 +91,28 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
+  const getOrders = async () => {
+      const res = await fetch("/api/orders");
+      const orders = await res.json();
+      setOrders(orders);
+  };
+  useEffect(() => {
+    getOrders();
+  }, []);
+  
+  async function updateOrder(values:IOrder, id:string){
+    await fetch (`/api/orders/${id}`,{
+        method: "PUT", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      })      
+      
+      getOrders();
+  }
+
+
   //shippingMethod
   const getShippingMethod = async () => {
     const res = await fetch("/api/shippingmethod");
@@ -116,6 +142,10 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         orderNumber,
         setOrderInfo,
         orderInfo,
+        setOrders, 
+        getOrders,
+        orders,
+        updateOrder,
       }}
     >
       {children}

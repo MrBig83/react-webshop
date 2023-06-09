@@ -23,7 +23,7 @@ function AdminpanelProducts() {
     }
     
   return (
-    <>
+    <div className="AdminPanelProductList">
       <h1>Administrera produkter här:</h1>
       <div className="AdminProductList">
         <AdminAddProductDrawer />
@@ -38,7 +38,7 @@ function AdminpanelProducts() {
       </div>
       
 
-    </>
+    </div>
   );
 }
 

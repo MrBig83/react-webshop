@@ -17,8 +17,8 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-  "email": "lasse@lasse.se",
-  "password": "lasse"
+  "email": "admin@admin.se",
+  "password": "admin"
 }
 
 ###
@@ -63,5 +63,8 @@ GET http://localhost:3000/api/products/646c94579836a36c85514f06
 ###
 
 GET http://localhost:3000/api/products/
+
+###
+GET http://localhost:3000/api/orders/
 
 ###
