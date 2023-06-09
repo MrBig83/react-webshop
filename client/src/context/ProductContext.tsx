@@ -33,7 +33,7 @@ export const ProductContext = createContext<ProductContextProps | null>(null);
 
 const ProductContextProvider = ({ children }: PropsWithChildren) => {
     const [products, setProducts] = useState([]);
-    // const [product, setProduct] = useState([]);
+    const [product, setProduct] = useState([]);
 
     //Här skapas alla states som skall användas. Glöm inte rätt typning i sista parantesen.
 //   const [street, setStreet] = useState("");
@@ -103,6 +103,7 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
       value={{
         getProducts,
         products,
+        product, 
         
  
 
