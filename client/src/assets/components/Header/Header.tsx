@@ -1,4 +1,5 @@
 import NavLinks from "../NavLinks/Navlinks";
+import { NavLink } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
@@ -6,7 +7,7 @@ const Header = () => {
     <>
       <div className="Store-title">
         <div className="image_div">
-          <img className="logo" src="/matjo_logga.svg" alt="logo" />
+        <NavLink to="/"><img className="logo" src="/matjo_logga.svg" alt="logo" /></NavLink>
         </div>
       </div>
       <div>
