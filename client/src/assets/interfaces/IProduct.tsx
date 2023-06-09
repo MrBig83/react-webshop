@@ -1,5 +1,5 @@
 export default interface IProduct {
-  product: {};
+  product: IProduct;
   _id: string;
   categories: [];
   description: string;
