@@ -28,10 +28,10 @@ function NavLinks() {
       </p>
       <ul>
         <li>
-          <NavLink to="/">hem</NavLink>
+          <NavLink to="/">Shop</NavLink>
         </li>
         <li>
-          <NavLink to="/produkter">produkter</NavLink>
+          <NavLink to="/news">Nyheter</NavLink>
         </li>
         <li>
           <NavLink to="/rea">rea</NavLink>
