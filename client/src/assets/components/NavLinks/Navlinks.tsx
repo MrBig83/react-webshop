@@ -41,8 +41,8 @@ function NavLinks() {
         </li>
       </ul>
       <ul className="menu-right">
-      
-          <BtnAdminpanel />
+      {(data.isAdmin ? <BtnAdminpanel /> : "" )}
+          
       
 
         <li className="shopingcart-container">

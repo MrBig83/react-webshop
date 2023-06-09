@@ -5,6 +5,7 @@ interface ProductContextProps {
     products: IProduct[] | null;
     getProducts: () => Promise<void>;
     updateProduct: (values:IProduct, id:string) => Promise<void>;
+    addProduct: (values:IProduct) => Promise<void>;
 }
 
 export const ProductContext = createContext<ProductContextProps >(null as any);
@@ -32,7 +33,20 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
       const res = response.json()
       console.log(res);
       getProducts();
-}
+  }
+  
+  async function addProduct(values:IProduct){
+    const response = await fetch (`/api/products/`,{
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(values)
+      })      
+      const res = response.json()
+      console.log(res);
+      getProducts();
+  }
 
   return (
     <ProductContext.Provider
@@ -40,6 +54,7 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
         getProducts,
         products,
         updateProduct,
+        addProduct,
       }}
     >
       {children}
