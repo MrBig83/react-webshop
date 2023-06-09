@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import IProduct from "../assets/interfaces/IProduct";
 import { ICartItem } from "../assets/interfaces/ICartItem";
 //BEHÖVS TYPAS FILEN ÄR RÖD?
@@ -27,9 +27,15 @@ export const MyCartContext = createContext<CartContext>({
   productIsInCart: () => false,
 });
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
+
 const CartProvider = ({ children }: PropsWithChildren<{}>) => {
-  const [items, setItems] = useState<ICartItem[]>([]);
+  const [items, setItems] = useState<ICartItem[]>(cartFromLocalStorage);
   const [product] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(items));
+  }, [items]);
 
   const removeItem = (itemId: string) => {
     const newItems = items.filter((item) => item.product?._id !== itemId);

@@ -7,23 +7,21 @@ import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
 
 import CartProvider from "./context/CartContext";
 import UserContextProvider from "./context/UserContext";
+import OrderContextProvider from "./context/OrderContext";
 const App: React.FC = () => {
   return (
-    <UserContextProvider>
-     <CartProvider>
-
-      <Layout className="layout">
-        <Header />
-        <NavCarousel />
-        <Main />
-        <Footer />
-      </Layout>
-
-    </CartProvider>
-
-   
-     </UserContextProvider>
-
+    <OrderContextProvider>
+      <UserContextProvider>
+        <CartProvider>
+          <Layout className="layout">
+            <Header />
+            <NavCarousel />
+            <Main />
+            <Footer />
+          </Layout>
+        </CartProvider>
+      </UserContextProvider>
+    </OrderContextProvider>
   );
 };
 
