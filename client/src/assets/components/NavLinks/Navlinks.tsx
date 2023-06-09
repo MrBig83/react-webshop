@@ -56,7 +56,7 @@ function NavLinks() {
             >
               <ShopingCart />
               <button>
-                <NavLink to="/kassa">Till kassa</NavLink>
+                <NavLink to="/kassa" onClick={onClose}>Till kassa</NavLink>
               </button>
             </Drawer>
           </div>
