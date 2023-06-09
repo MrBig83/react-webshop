@@ -4,6 +4,7 @@ import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import { NavLink } from "react-router-dom";
+import '../Buttons/BtnStyle/btnStyle.css'
 
 const CheckoutForm = () => {
   const {
@@ -26,7 +27,7 @@ const CheckoutForm = () => {
   setOrderInfo(items);
 
   const OrderItems = items.map((p) => ({
-    product: p.product._id,
+    product: p._id,
     quantity: p.quantity,
   }));
   console.log(OrderItems);
@@ -37,11 +38,23 @@ const CheckoutForm = () => {
     setLoading(false);
   };
 
-  const handleDropdownChange = (value) => {
+  const handleDropdownChange = (value: string | ((prevValue: string) => string)) => {
     console.log("Selected value:", value);
     setShippingMethod(value);
     setOrderItems(OrderItems);
   };
+
+  function setLastname(_value: string): void {
+    throw new Error("Function not implemented.");
+  }
+
+  function setFirstname(_value: string): void {
+    throw new Error("Function not implemented.");
+  }
+
+  function setEmail(_value: string): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <div>
