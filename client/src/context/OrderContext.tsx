@@ -1,17 +1,4 @@
-import { ICartItem } from "../assets/interfaces/ICartItem";
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
-
-// interface IOrderData {
-//   orderItems: ICartItem[];
-//   firstName: string;
-//   lastName: string;
-//   email: string;
-//   phoneNumber: number;
-//   street: string;
-//   zipcode: string;
-//   city: string;
-//   country: string;
-// }
 
 interface OrderContextProps {
   firstName: string;
@@ -25,6 +12,7 @@ interface OrderContextProps {
   shippingData: any; /// typa
   orderNumber: number;
   orderInfo: any; ///typa
+  orderTotal: number;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   setFirstname: React.Dispatch<React.SetStateAction<string>>;
   setLastname: React.Dispatch<React.SetStateAction<string>>;
@@ -36,6 +24,7 @@ interface OrderContextProps {
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
   setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
+  setOrderTotal: React.Dispatch<React.SetStateAction<number>>;
   placeOrder: () => Promise<void>;
 }
 
@@ -51,8 +40,9 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [orderItems, setOrderItems] = useState([]);
   const [orderNumber, setOrderNumber] = useState(Number);
   const [orderInfo, setOrderInfo] = useState([]);
+  const [orderTotal, setOrderTotal] = useState(Number);
 
-  console.log(orderInfo);
+  console.log(orderTotal);
 
   const deliveryAddress = {
     street,
@@ -111,11 +101,13 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         setCountry,
         setCity,
         placeOrder,
-        shippingData,
         setShippingMethod,
         setOrderItems,
-        orderNumber,
         setOrderInfo,
+        setOrderTotal,
+        orderTotal,
+        shippingData,
+        orderNumber,
         orderInfo,
       }}
     >
