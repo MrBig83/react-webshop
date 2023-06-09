@@ -1,0 +1,13 @@
+.AdminProductList {
+    
+    width: 300px;
+
+    
+}
+.AdminPanel{
+    display: flex;
+    
+}
+.AdminPanelProductList {
+    margin-right: 8rem;
+}
