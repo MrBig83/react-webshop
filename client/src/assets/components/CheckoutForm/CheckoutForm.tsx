@@ -44,6 +44,7 @@ const CheckoutForm = () => {
     setOrderItems(OrderItems);
   };
 
+  ///Detta löste felen som var innan 
   function setLastname(_value: string): void {
     throw new Error("Function not implemented.");
   }
@@ -148,7 +149,7 @@ const CheckoutForm = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button onClick={handleSubmit} type="primary" htmlType="submit">
+            <Button className="btnStyle" onClick={handleSubmit} type="primary" htmlType="submit">
               <NavLink to="/order">Lägg order</NavLink>
             </Button>
           </Form.Item>
