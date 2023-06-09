@@ -1,4 +1,4 @@
-.btnbuynow {
+.btnStyle {
     display: inline-block;
     padding: .7em 2em ;
     background: #d7d6d6;
@@ -13,7 +13,7 @@
     border-radius: .2rem;
 }
 
-.btnbuynow:hover {
+.btnStyle:hover {
     /* transform: scale(1.1); */
     background-color: #7e7d7d9d ;
 }

@@ -8,11 +8,11 @@ const contentStyle: React.CSSProperties = {
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
-  background: "#c0bfe4",
+  background: "#f6f6f6f6",
 };
 const imageStyle: React.CSSProperties = {
   ...contentStyle,
-  objectFit: "cover",
+  objectFit: "contain",
 };
 const NavCarousel: React.FC = () => (
   <Carousel autoplay>

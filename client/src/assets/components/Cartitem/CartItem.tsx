@@ -16,7 +16,7 @@ const Cartproduct: React.FC<ICartItem> = ({
   };
 
   return (
-    <div>
+    <div className="cartItem">
       <img src={item.product.image} alt={item.product.title} />
       <h3>{item.product.title}</h3>
       <p>Antal: {item.quantity ?? 1}</p>
