@@ -1,7 +1,17 @@
 import { OrderContext } from "../../../context/OrderContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
 const OrderConfirm = () => {
   const { orderNumber, orderInfo } = useContext(OrderContext)!;
+  const navigate = useNavigate();
+
+  //   början  på redirect funktion
+  const redirectUser = (orderNumber: number) => {
+    useEffect(() => {
+      if ((orderNumber = 0)) navigate("/");
+    });
+  };
 
   return (
     <div>
