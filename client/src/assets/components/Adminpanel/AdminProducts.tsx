@@ -12,11 +12,8 @@ import "./Adminpanel.css";
 
 function AdminpanelProducts() {
 
-    const { products } = useContext(ProductContext)!;
-    const { data } = useContext(UserContext)!; //typas (skall vara IuserData)
-
-    // console.log(products);
-    
+    const { products } = useContext(ProductContext);
+    const { data } = useContext(UserContext)!;  
     
     if(!data.isAdmin) {
         return (
@@ -24,28 +21,24 @@ function AdminpanelProducts() {
         )
     }
     
-
-
-
-
-
-    
   return (
     <>
       <h1>Administrera produkter här:</h1>
       <div className="AdminProductList">
-      {products.map((product: IProduct) => (
+
+      {products ? products.map((product: IProduct) => (
         <div className="ProductCardRender" key={product._id}>
           <AdminProductCard product={product} />
           <AdminEditDrawer product={product}/>
           
         </div>
-      ))}
+
+      )) :null }
       </div>
       
 
     </>
   );
-};
+}
 
 export default AdminpanelProducts;

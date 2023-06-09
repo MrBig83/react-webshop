@@ -41,7 +41,10 @@ function NavLinks() {
         </li>
       </ul>
       <ul className="menu-right">
-        <BtnAdminpanel />
+      
+          <BtnAdminpanel />
+      
+
         <li className="shopingcart-container">
           <div className={"shopingcart-icon"}>
             <ShoppingCartOutlined onClick={showDrawer} />

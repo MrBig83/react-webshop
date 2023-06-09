@@ -5,14 +5,14 @@ import {  ProductContext } from "../../../context/ProductContext"
 
 
 
-
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
-  
-  const UpdateDatabase = (values:object, product:IProduct) => {
-    console.log(values);
-    console.log(product._id);
-  }
+  const { updateProduct } = useContext(ProductContext)!;
+  // const UpdateDatabase = ( values: { product: IProduct }) => { // ====== STRUL ======
+//   const { product } = useContext(ProductContext)!;
+  //   //console.log(values);
+  //   //console.log(product._id);
+  // }
 
   const showDrawer = () => {
     setOpen(true);
@@ -48,7 +48,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
       >
         <Form 
             layout="vertical" hideRequiredMark
-            onFinish={(values) => UpdateDatabase(values, product)} //HÄR ska vi jobba. Funktion som gör en setState för att göra det enkelt? 
+            onFinish={(values) => updateProduct(values, product._id)} //HÄR ska vi jobba. Funktion som gör en setState för att göra det enkelt? 
             onFinishFailed={onFinishFailed}
             initialValues={{
               ["title"]: product.title,
