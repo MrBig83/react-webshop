@@ -1,17 +1,21 @@
 import React from "react";
 import { Carousel } from "antd";
-
+import "./NavCarousel.css";
 const contentStyle: React.CSSProperties = {
-  height: "30rem",
+  height: "50vh",
   width: "100%",
   display: "flex",
   color: "#fff",
-  lineHeight: "160px",
   textAlign: "center",
+  justifyContent: "center",
+  alignItems: "center",
   background: "#c0bfe4",
+  // marginTop: "30px",
 };
 const imageStyle: React.CSSProperties = {
   ...contentStyle,
+  maxWidth: "100%",
+  maxHeight: "100%",
   objectFit: "cover",
 };
 const NavCarousel: React.FC = () => (
