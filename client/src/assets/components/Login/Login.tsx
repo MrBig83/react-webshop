@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Drawer } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
 import { UserContext } from "../../../context/UserContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "./Login.css";
 
 const Login = () => {
   const { data } = useContext(UserContext);
   const [open, setOpen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [logOut, setLogOut] = useState(false);
 
   const showDrawer = () => {
     setOpen(true);
@@ -17,6 +19,17 @@ const Login = () => {
   const onClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    setLoggedIn(Boolean(data.firstName));
+    setLogOut(Boolean(!data.firstName));
+  }, [data.firstName]);
+
+  useEffect(() => {
+    if (loggedIn || logOut) {
+      setOpen(false);
+    }
+  }, [loggedIn, logOut]);
   return (
     <div className="login-container">
       <UserOutlined onClick={showDrawer} />
