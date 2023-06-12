@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext, PropsWithChildren } from "react";
+
 import IOrder from "../assets/interfaces/IOrder";
+
 
 interface OrderContextProps {
   firstName: string;
@@ -13,6 +15,7 @@ interface OrderContextProps {
   shippingData: any; /// typa
   orderNumber: number;
   orderInfo: any; ///typa
+
 
   orders:IOrder[];
   //setOrders: React.Dispatch<React.SetStateAction<string>>; // ==============================
@@ -29,15 +32,14 @@ interface OrderContextProps {
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
 
-  setOrderItems: React.Dispatch<React.SetStateAction<string>>; // =======================
-  setOrderInfo: React.Dispatch<React.SetStateAction<string>>; // =========================
-
-
-
+  setOrderItems: React.Dispatch<React.SetStateAction<string>>;
+  setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
   setOrderTotal: React.Dispatch<React.SetStateAction<number>>;
-
   placeOrder: () => Promise<void>;
+
+ 
   updateOrder: (values: IOrder, id: string) => Promise<void>;
+
 }
 
 export const OrderContext = createContext<OrderContextProps>(null as any);
@@ -49,15 +51,23 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [country, setCountry] = useState("");
   const [shippingData, setShippingData] = useState([]);
   const [shippingMethod, setShippingMethod] = useState("");
-  const [orderItems, setOrderItems] = useState(""); //=======================
+  const [orderItems, setOrderItems] = useState([]);
   const [orderNumber, setOrderNumber] = useState(Number);
+  const [orderInfo, setOrderInfo] = useState([]);
+  const [orderTotal, setOrderTotal] = useState(Number);
 
-  const [orderInfo, setOrderInfo] = useState(""); // =======================
+  console.log(orderTotal);
+
+  //const [orderItems, setOrderItems] = useState(""); //=======================
+ // const [orderNumber, setOrderNumber] = useState(Number);
+
+  //const [orderInfo, setOrderInfo] = useState(""); // =======================
   const [orders, setOrders] = useState([]); // =====================
 
 
 
-  const [orderTotal, setOrderTotal] = useState(Number);
+  //const [orderTotal, setOrderTotal] = useState(Number);
+
 
 
 
@@ -95,6 +105,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
       // Handle errors
     }
   };
+
 
   const getOrders = async () => {
       const res = await fetch("/api/orders");
@@ -148,6 +159,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         shippingData,
         orderNumber,
         orderInfo,
+
         setOrders, 
         getOrders,
         orders,

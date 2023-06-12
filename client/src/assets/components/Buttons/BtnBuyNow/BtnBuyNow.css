@@ -8,3 +8,7 @@
     justify-content: center;
     cursor: pointer;
 }
+
+.btnbuynow:active {
+    background-color: rgb(137, 188, 232);
+}
