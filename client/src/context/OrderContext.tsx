@@ -2,7 +2,6 @@ import { useState, useEffect, createContext, PropsWithChildren } from "react";
 
 import IOrder from "../assets/interfaces/IOrder";
 
-
 interface OrderContextProps {
   firstName: string;
   lastName: string;
@@ -15,9 +14,8 @@ interface OrderContextProps {
   shippingData: any; /// typa
   orderNumber: number;
   orderInfo: any; ///typa
-
-
-  orders:IOrder[];
+  loading: boolean;
+  orders: IOrder[];
   //setOrders: React.Dispatch<React.SetStateAction<string>>; // ==============================
 
   orderTotal: number;
@@ -37,9 +35,7 @@ interface OrderContextProps {
   setOrderTotal: React.Dispatch<React.SetStateAction<number>>;
   placeOrder: () => Promise<void>;
 
- 
   updateOrder: (values: IOrder, id: string) => Promise<void>;
-
 }
 
 export const OrderContext = createContext<OrderContextProps>(null as any);
@@ -55,22 +51,15 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [orderNumber, setOrderNumber] = useState(Number);
   const [orderInfo, setOrderInfo] = useState([]);
   const [orderTotal, setOrderTotal] = useState(Number);
-
-  console.log(orderTotal);
+  const [loading, setLoading] = useState(false);
 
   //const [orderItems, setOrderItems] = useState(""); //=======================
- // const [orderNumber, setOrderNumber] = useState(Number);
+  // const [orderNumber, setOrderNumber] = useState(Number);
 
   //const [orderInfo, setOrderInfo] = useState(""); // =======================
   const [orders, setOrders] = useState([]); // =====================
 
-
-
   //const [orderTotal, setOrderTotal] = useState(Number);
-
-
-
-
 
   const deliveryAddress = {
     street,
@@ -86,6 +75,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   };
 
   const placeOrder = async (): Promise<void> => {
+    setLoading(true);
     try {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -100,32 +90,32 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
 
       console.log(data.orderNumber);
       setOrderNumber(data.orderNumber);
+      setLoading(false);
     } catch (err) {
       console.log(err);
       // Handle errors
     }
   };
 
-
   const getOrders = async () => {
-      const res = await fetch("/api/orders");
-      const orders = await res.json();
-      setOrders(orders);
+    const res = await fetch("/api/orders");
+    const orders = await res.json();
+    setOrders(orders);
   };
   useEffect(() => {
     getOrders();
   }, []);
-  
-  async function updateOrder(values:IOrder, id:string){
-    await fetch (`/api/orders/${id}`,{
-        method: "PUT", 
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(values)
-      })      
-      
-      getOrders();
+
+  async function updateOrder(values: IOrder, id: string) {
+    await fetch(`/api/orders/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(values),
+    });
+
+    getOrders();
   }
 
   //shippingMethod
@@ -159,8 +149,8 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         shippingData,
         orderNumber,
         orderInfo,
-
-        setOrders, 
+        loading,
+        setOrders,
         getOrders,
         orders,
         updateOrder,

@@ -5,15 +5,15 @@
   justify-content: space-evenly;
   width: 250px;
   height: 350px;
-  margin: .5rem;
+  margin: 0.5rem;
   padding: 1rem;
   /* border: 1px solid #c0bfbd83; */
 }
-.ProductCardInfo{
+.ProductCardInfo {
   display: flex;
   flex-direction: column;
   align-items: center; 
-  margin: 0.5rem;
+  padding: .3rem;
 }
 
 .productcard > img {
@@ -24,7 +24,7 @@
 }
 
 .productcard > img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .productcard h3 {
