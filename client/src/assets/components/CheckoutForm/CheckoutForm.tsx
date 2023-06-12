@@ -3,10 +3,11 @@ import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
+
   const {
     setZipcode,
     setStreet,
@@ -24,8 +25,6 @@ const CheckoutForm = () => {
   const { items, shopingcartTotal } = useContext(MyCartContext);
 
   const [submittable, setSubmittable] = useState(false);
-
-  // Watch all values
   const values = Form.useWatch([], form);
 
   const claculateOrderTotal = (value: string) => {
@@ -92,22 +91,21 @@ const CheckoutForm = () => {
             onChange={handleDropdownChange}
             placeholder="Select province"
           >
-
-              {shippingData
-                .map((d) => ({
-                  id: d._id,
-                  price: d.price,
-                  company: d.company,
-                  deliveryTimeInHours: d.deliveryTimeInHours,
-                }))
-                .map((option) => (
-                  <option key={option.id} value={JSON.stringify(option)}>
-                    {option.company} {option.price}:- leveranstid{" "}
-                    {option.deliveryTimeInHours} h
-                  </option>
-                ))}
-            </Select>
-          </Form.Item>
+            {shippingData
+              .map((d) => ({
+                id: d._id,
+                price: d.price,
+                company: d.company,
+                deliveryTimeInHours: d.deliveryTimeInHours,
+              }))
+              .map((option) => (
+                <option key={option.id} value={JSON.stringify(option)}>
+                  {option.company} {option.price}:- leveranstid{" "}
+                  {option.deliveryTimeInHours} h
+                </option>
+              ))}
+          </Select>
+        </Form.Item>
 
         <Form.Item
           label="Förnamn"
@@ -131,7 +129,7 @@ const CheckoutForm = () => {
           label="Email"
           name="Email"
           initialValue={data.email}
-          rules={[{ required: true, message: "Ange Email" }]}
+          rules={[{ required: true, type: "email", message: "Ange Email" }]}
         >
           <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
@@ -181,8 +179,6 @@ const CheckoutForm = () => {
         </Form.Item>
       </Form>
 
-          
-      
       <h3>Totalbelop med frakt: {orderTotal}</h3>
     </div>
   );

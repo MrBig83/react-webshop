@@ -85,10 +85,10 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         body: JSON.stringify(order),
       });
 
-      console.log(order);
+      // console.log(order);
       const data = await res.json();
 
-      console.log(data.orderNumber);
+      console.log(data);
       setOrderNumber(data.orderNumber);
       setLoading(false);
     } catch (err) {
