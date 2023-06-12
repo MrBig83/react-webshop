@@ -24,7 +24,7 @@ function AdminpanelOrders() {
           <div className="OrderCardRender" key={order._id}>
             <div className="AdminOrder">
             <AdminOrderCard order={order} />
-            <AdminEditOrderDrawer order={order} />
+            {/* <AdminEditOrderDrawer order={order} /> */}
             </div>
           </div>
         )) :null }
