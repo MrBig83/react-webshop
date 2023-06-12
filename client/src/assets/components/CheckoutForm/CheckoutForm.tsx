@@ -92,14 +92,7 @@ const CheckoutForm = () => {
             onChange={handleDropdownChange}
             placeholder="Select province"
           >
-<<<<<<< HEAD
-            <Select
-              defaultValue="Välj fraktsätt"
-              style={{ minWidth: 300 }}
-              onChange={handleDropdownChange}
-              placeholder="Select province"
-              
-            >
+
               {shippingData
                 .map((d) => ({
                   id: d._id,
@@ -115,23 +108,6 @@ const CheckoutForm = () => {
                 ))}
             </Select>
           </Form.Item>
-=======
-            {shippingData
-              .map((d) => ({
-                id: d._id,
-                price: d.price,
-                company: d.company,
-                deliveryTimeInHours: d.deliveryTimeInHours,
-              }))
-              .map((option) => (
-                <option key={option.id} value={JSON.stringify(option)}>
-                  {option.company} {option.price}:- leveranstid{" "}
-                  {option.deliveryTimeInHours} h
-                </option>
-              ))}
-          </Select>
-        </Form.Item>
->>>>>>> 8f02f77d31ebe161224b0e08668026c9089a2977
 
         <Form.Item
           label="Förnamn"
@@ -205,68 +181,8 @@ const CheckoutForm = () => {
         </Form.Item>
       </Form>
 
-<<<<<<< HEAD
-          <Form.Item
-            label="Efternamn"
-            name="Efternamn"
-            initialValue={data.lastName}
-            rules={[{ required: true, message: "Ange efternamn" }]}
-          >
-            <Input onChange={(e) => setLastname(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item
-            label="Email"
-            name="Email"
-            initialValue={data.email}
-            rules={[{ required: true, message: "Ange Email" }]}
-          >
-            <Input onChange={(e) => setEmail(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item
-            label="Gata"
-            name="Gata"
-            rules={[{ required: true, message: "Ange Gata" }]}
-          >
-            <Input onChange={(e) => setStreet(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item
-            label="Postnummer"
-            name="Postnummer"
-            rules={[{ required: true, message: "Ange postnummer" }]}
-          >
-            <Input onChange={(e) => setZipcode(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item
-            label="Stad"
-            name="Stad"
-            rules={[{ required: true, message: "Ange stad" }]}
-          >
-            <Input onChange={(e) => setCity(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item
-            label="Land"
-            name="Land"
-            rules={[{ required: true, message: "Ange land" }]}
-          >
-            <Input onChange={(e) => setCountry(e.target.value)} />
-          </Form.Item>
-
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            
-            <Button onClick={handleSubmit} type="primary" htmlType="submit">
-              <NavLink to="/order">Lägg order</NavLink>
-              {/* usenavigate */}
-            </Button>
-          </Form.Item>
-        </Form>
-      )}
-=======
->>>>>>> 8f02f77d31ebe161224b0e08668026c9089a2977
+          
+      
       <h3>Totalbelop med frakt: {orderTotal}</h3>
     </div>
   );
