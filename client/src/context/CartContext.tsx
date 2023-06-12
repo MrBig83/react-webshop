@@ -15,6 +15,7 @@ interface CartContext {
   removeProduct: (productId: string) => void;
   productIsInCart: (productId: string) => boolean;
   calculateTotal: () => void;
+  emptyCart: () => void;
 }
 
 export const MyCartContext = createContext<CartContext>({
@@ -29,6 +30,7 @@ export const MyCartContext = createContext<CartContext>({
   removeProduct: () => {},
   productIsInCart: () => false,
   calculateTotal: () => {},
+  emptyCart: () => [],
 });
 
 const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]");
@@ -113,6 +115,10 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     return shopingcartTotal;
   };
 
+  const emptyCart = () => {
+    setItems([]);
+  };
+
   return (
     <MyCartContext.Provider
       value={{
@@ -127,6 +133,7 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
         removeProduct,
         productIsInCart,
         calculateTotal,
+        emptyCart,
       }}
     >
       {children}

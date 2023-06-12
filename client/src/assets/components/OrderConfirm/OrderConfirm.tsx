@@ -1,10 +1,15 @@
+import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 const OrderConfirm = () => {
+
+
+  const { emptyCart } = useContext(MyCartContext);
+
   const { orderNumber, orderInfo, loading } = useContext(OrderContext)!;
-console.log(orderInfo)
+
   const navigate = useNavigate();
 
   //   början  på redirect funktion
@@ -15,10 +20,11 @@ console.log(orderInfo)
   };
 
 
-   
+  useEffect(() => {
+    emptyCart([]);
+    localStorage.clear();
+  }, []);
 
-
-  localStorage.clear()
   return (
     <div>
       <h1>Orderbekräftelse</h1>
