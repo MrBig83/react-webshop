@@ -1,5 +1,5 @@
 export default interface IProduct {
-  product: IProduct;
+  product?: IProduct;
   _id: string;
   categories: [];
   description: string;
@@ -7,5 +7,5 @@ export default interface IProduct {
   inStock: number;
   price: number;
   title: string;
-  quantity: number;
+  quantity?: number;
 }
