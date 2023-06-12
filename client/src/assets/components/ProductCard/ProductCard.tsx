@@ -6,7 +6,7 @@ function ProductCard({ product }: { product: IProduct }) {
   // ================== Behövs typas! =================
 let lager = "";
 
-if (product.inStock > 1) {
+if (product.inStock < 1) {
   lager = "Slut i lager"
 } else if (product.inStock < 5) {
   lager = "Få i lager"
