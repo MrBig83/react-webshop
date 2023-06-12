@@ -33,7 +33,7 @@ const SingleProduct = () => {
     <div className="SingleProduct">
       <Breadcrumbs />
       <div className="title">
-        <img src={product.image} height={500} />
+        <img src={product.image}/>
       </div>
       <div className="info">
         <h3>{product.title}</h3>

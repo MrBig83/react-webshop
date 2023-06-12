@@ -1,12 +1,12 @@
 ul {
   display: flex;
   list-style-type: none;
-  gap: 2rem;
+  gap: 3rem;
   /* margin-right: 0.8rem; */
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 
 a.active {
@@ -29,10 +29,12 @@ svg {
 .menu-container {
   display: flex;
   justify-content: space-between;
+  margin-bottom: .5rem;
 }
 .menu-right {
   display: flex;
   gap: 0.5rem;
+  padding-left: 3rem;
 }
 
 .menu-left {
@@ -55,5 +57,4 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }

@@ -1,1 +1,10 @@
-/* lite styling här */
+.cartItem img {
+    width: fit-content;
+    max-height: 80px;
+    /* overflow: hidden; */
+}
+
+.cartItem {
+    margin-top: 1rem;
+ 
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Carousel } from "antd";
-import "./NavCarousel.css";
 const contentStyle: React.CSSProperties = {
   height: "50vh",
   width: "100%",
@@ -9,7 +8,7 @@ const contentStyle: React.CSSProperties = {
   textAlign: "center",
   justifyContent: "center",
   alignItems: "center",
-  background: "#c0bfe4",
+  background: "#f6f6f6f6",
   // marginTop: "30px",
 };
 const imageStyle: React.CSSProperties = {
