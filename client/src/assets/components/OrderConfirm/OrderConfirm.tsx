@@ -10,7 +10,6 @@ const OrderConfirm = () => {
 
   const { orderNumber, orderInfo, loading } = useContext(OrderContext)!;
 
-
   const navigate = useNavigate();
 
   //   början  på redirect funktion
@@ -19,6 +18,7 @@ const OrderConfirm = () => {
       if ((orderNumber = 0)) navigate("/");
     });
   };
+
 
   useEffect(() => {
     emptyCart([]);
@@ -39,6 +39,7 @@ const OrderConfirm = () => {
                 {p.product.title} x {p.quantity}
               </p>
               <p>{p.product.price}:-</p>
+              
             </div>
           ))}
         </div>

@@ -28,7 +28,7 @@ const CheckoutForm = () => {
 
   // Watch all values
   const values = Form.useWatch([], form);
-
+  console.log(values)
   const claculateOrderTotal = (value: string) => {
     const parsedValue = JSON.parse(value);
     const shippingPrice = parsedValue.price;
@@ -49,7 +49,7 @@ const CheckoutForm = () => {
   const handleSubmit = () => {
     placeOrder();
 
-    Navigate("/order");
+    Navigate("/order", {replace: true});
   };
 
   const handleDropdownChange = (value: string) => {
