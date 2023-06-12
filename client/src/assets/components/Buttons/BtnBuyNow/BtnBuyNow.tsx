@@ -28,7 +28,7 @@ const BtnBuyNow = ({ product }: { product: IProduct }) => {
 
   return (
     <button className="btnbuynow" onClick={buyNow}>
-      {productInCart ? "remove" : "add"}
+      {productInCart ? "Ta bort" : "Lägg i varukorgen"}
     </button>
   );
 };

@@ -4,6 +4,7 @@ import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import { NavLink } from "react-router-dom";
+import "../../components/Buttons/BtnStyle/BtnStyle.css";
 
 const CheckoutForm = () => {
   const {
@@ -72,6 +73,7 @@ const CheckoutForm = () => {
             noStyle
             rules={[{ required: true, message: "Province is required" }]}
           >
+    
             <Select
               defaultValue="Välj fraktsätt"
               style={{ minWidth: 300 }}
@@ -155,7 +157,7 @@ const CheckoutForm = () => {
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
 
-            <Button onClick={handleSubmit} type="primary" htmlType="submit">
+            <Button className="btnStyle" onClick={handleSubmit} type="primary" htmlType="submit">
               <NavLink to="/order">Lägg order</NavLink>
               {/* usenavigate */}
             </Button>
