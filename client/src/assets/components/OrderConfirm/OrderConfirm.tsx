@@ -1,17 +1,23 @@
+import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const OrderConfirm = () => {
   const { orderNumber, orderInfo } = useContext(OrderContext)!;
-  const navigate = useNavigate();
+  const { emptyCart } = useContext(MyCartContext);
+  // const navigate = useNavigate();
 
   //   början  på redirect funktion
-  const redirectUser = (orderNumber: number) => {
-    useEffect(() => {
-      if ((orderNumber = 0)) navigate("/");
-    });
-  };
+  // const redirectUser = (orderNumber: number) => {
+  //   useEffect(() => {
+  //     if ((orderNumber = 0)) navigate("/");
+  //   });
+  // };
+
+  useEffect(() => {
+    emptyCart([]);
+  });
 
   return (
     <div>
