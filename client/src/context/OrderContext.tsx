@@ -90,6 +90,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
 
       console.log(data.orderNumber);
       setOrderNumber(data.orderNumber);
+      console.log(data.orderItems)
       setLoading(false);
     } catch (err) {
       console.log(err);
