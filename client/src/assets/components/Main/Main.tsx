@@ -6,6 +6,11 @@ import ShopingCart from "../ShopingCart/ShopingCart";
 import Contact from "../Contact/Contact";
 import Checkout from "../Checkout/Checkout";
 import OrderConfirm from "../OrderConfirm/OrderConfirm";
+
+import Adminpanel from "../Adminpanel/Adminpanel"
+import News from "../News/News";
+import Rea from "../Rea/Rea"
+
 import "./Main.css";
 
 const Main = () => {
@@ -19,6 +24,10 @@ const Main = () => {
           <Route path="/kontakta-oss" element={<Contact />} />
           <Route path="/kassa" element={<Checkout />} />
           <Route path="/order" element={<OrderConfirm />} />
+
+          <Route path="/adminpanel" element={<Adminpanel />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/rea" element={<Rea />} />
         </Routes>
         <div className="sectionLine"></div>
       </div>

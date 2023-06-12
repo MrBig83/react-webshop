@@ -35,9 +35,26 @@ svg {
   display: flex;
   gap: 0.5rem;
   padding-left: 3rem;
-
 }
 
 .menu-left {
   width: 150px;
+}
+
+.shopingcart-container {
+  position: relative;
+}
+
+.shopingcart-icon > p {
+  position: absolute;
+  background-color: rgb(222, 215, 121);
+  color: rgb(23, 23, 23);
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  top: -20px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

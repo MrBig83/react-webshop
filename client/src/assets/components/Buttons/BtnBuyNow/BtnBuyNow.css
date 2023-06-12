@@ -16,3 +16,7 @@
     /* transform: scale(1.1); */
     background-color: #7e7d7d9d ;
 }
+
+.btnbuynow:active {
+    background-color: rgb(137, 188, 232);
+}

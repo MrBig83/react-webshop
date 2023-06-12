@@ -1,18 +1,21 @@
 import React from "react";
 import { Carousel } from "antd";
-
 const contentStyle: React.CSSProperties = {
-  height: "30rem",
+  height: "50vh",
   width: "100%",
   display: "flex",
   color: "#fff",
-  lineHeight: "160px",
   textAlign: "center",
+  justifyContent: "center",
+  alignItems: "center",
   background: "#f6f6f6f6",
+  // marginTop: "30px",
 };
 const imageStyle: React.CSSProperties = {
   ...contentStyle,
-  objectFit: "contain",
+  maxWidth: "100%",
+  maxHeight: "100%",
+  objectFit: "cover",
 };
 const NavCarousel: React.FC = () => (
   <Carousel autoplay>

@@ -154,6 +154,7 @@ const CheckoutForm = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+
             <Button onClick={handleSubmit} type="primary" htmlType="submit">
               <NavLink to="/order">Lägg order</NavLink>
               {/* usenavigate */}
