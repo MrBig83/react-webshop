@@ -1,9 +1,10 @@
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Spin } from "antd";
 const OrderConfirm = () => {
-  const { orderNumber, orderInfo } = useContext(OrderContext)!;
+  const { orderNumber, orderInfo, loading } = useContext(OrderContext)!;
+
   const navigate = useNavigate();
 
   //   början  på redirect funktion
@@ -16,15 +17,21 @@ const OrderConfirm = () => {
   return (
     <div>
       <h1>Orderbekräftelse</h1>
-      <h3>Ordernummer: {orderNumber}</h3>
-      {orderInfo.map((p) => (
+      {loading ? (
+        <Spin tip="Processing order..." />
+      ) : (
         <div>
-          <p>
-            {p.product.title} x {p.quantity}
-          </p>
-          <p>{p.product.price}:-</p>
+          <h3>Ordernummer: {orderNumber}</h3>
+          {orderInfo.map((p) => (
+            <div>
+              <p>
+                {p.product.title} x {p.quantity}
+              </p>
+              <p>{p.product.price}:-</p>
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 };
