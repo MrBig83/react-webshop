@@ -15,6 +15,7 @@ interface CartContext {
   removeProduct: (productId: string) => void;
   productIsInCart: (productId: string) => boolean;
   calculateTotal: () => void;
+  emptyCart: () => void;
 }
 
 export const MyCartContext = createContext<CartContext>({
@@ -116,7 +117,6 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
 
   const emptyCart = () => {
     setItems([]);
-    localStorage.removeItem("cart");
   };
 
   return (
