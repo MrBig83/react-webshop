@@ -1,16 +1,21 @@
 import { NavLink } from "react-router-dom";
 import Login from "../Login/Login";
-
+import ShopingCart from "../ShopingCart/ShopingCart";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-
+import { UserContext } from "../../../context/UserContext";
 import { Drawer } from "antd";
 import { useContext, useState } from "react";
+
+import MobileMenu from "../MobileMenu/MobileMenu";
+import "./NavLink.css";
+
 import BtnAdminpanel from "../Buttons/BtnAdminpanel/BtnAdminpanel";
 import "./NavLink.css";
 import ShopingCart from "../ShopingCart/ShopingCart";
 import { UserContext } from "../../../context/UserContext";
 import Item from "antd/es/list/Item";
 import { MyCartContext } from "../../../context/CartContext";
+
 
 function NavLinks() {
   const { data } = useContext(UserContext)!;
@@ -24,19 +29,22 @@ function NavLinks() {
    }, 0);
    console.log(sum);
 
-            const showDrawer = () => {
-              setOpen(true);
-            };
-            
-            const onClose = () => {
-              setOpen(false);
-            };
-            return (
-              <div className="menu-container">
-      <p className="menu-left">
-        {data.firstName} {data.lastName}
-      </p>
-      <ul>
+  const showDrawer = () => {
+    setOpen(true);
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+  return (
+    <div className="menu-container">
+      <div className="menu-left">
+        <MobileMenu />
+        <p>
+          {data.firstName} {data.lastName}
+        </p>
+      </div>
+      <ul className="main-menu">
         <li>
           <NavLink to="/">Shop</NavLink>
         </li>
