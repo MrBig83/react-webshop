@@ -1,6 +1,7 @@
 import BtnAdminEditProduct from "../Buttons/BtnAdminEditProduct/BtnAdminEditProduct"
 import AdminEditOrderDrawer from "../AdminEditOrderDrawer/AdminEditOrderDrawer"
 import "./AdminOrderCard.css";
+import "../Buttons/BtnStyle/BtnStyle.css"
 // import {  ProductContext } from "../../../context/ProductContext"
 
 import IProduct from "../../interfaces/IProduct";
@@ -19,7 +20,7 @@ function AdminOrderCard({ order }: { order: any }) {
         
         :<>
           <p>Färdig</p> 
-          <button>Orden är klar</button>
+          <button className="btnStyleCompleted">Orden är klar</button>
         </>
         )}
         
