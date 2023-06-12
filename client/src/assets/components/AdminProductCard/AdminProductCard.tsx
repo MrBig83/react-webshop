@@ -8,7 +8,7 @@ function AdminProductCard({ product }: { product: IProduct }) {
   // const { products } = useContext(ProductContext)!;
 
   return (
-       <div className="ProductCardInfo">
+       <div className="adminProductCardInfo">
         <h3>{product.title}</h3>
         <p>{product.price}:-</p>
         {/* Knappen för att öppna sidopanelen finns i AdminProducts */}
