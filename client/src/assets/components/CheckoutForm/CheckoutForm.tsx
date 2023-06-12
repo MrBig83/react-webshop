@@ -28,13 +28,11 @@ const CheckoutForm = () => {
 
   // Watch all values
   const values = Form.useWatch([], form);
-  console.log(values)
   const claculateOrderTotal = (value: string) => {
     const parsedValue = JSON.parse(value);
     const shippingPrice = parsedValue.price;
     const orderTotal = shopingcartTotal + shippingPrice;
     setOrderTotal(orderTotal);
-    console.log(parsedValue);
   };
 
   setOrderInfo(items);
@@ -54,7 +52,6 @@ const CheckoutForm = () => {
 
   const handleDropdownChange = (value: string) => {
     const parsedValue = JSON.parse(value);
-    console.log("Selected value:", parsedValue);
     setShippingMethod(parsedValue.id);
     setOrderItems(OrderItems);
     claculateOrderTotal(value);
