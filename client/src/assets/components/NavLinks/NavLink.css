@@ -1,12 +1,12 @@
 ul {
   display: flex;
   list-style-type: none;
-  gap: 2rem;
+  gap: 3rem;
   /* margin-right: 0.8rem; */
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 3rem;
 }
 
 a.active {
@@ -29,11 +29,14 @@ svg {
 .menu-container {
   display: flex;
   justify-content: space-between;
+
   align-items: center;
+
 }
 .menu-right {
   display: flex;
   gap: 0.5rem;
+  padding-left: 3rem;
 }
 
 .shopingcart-icon :hover {
@@ -51,4 +54,22 @@ svg {
   .main-menu {
     display: none;
   }
+}
+
+.shopingcart-container {
+  position: relative;
+}
+
+.shopingcart-icon > p {
+  position: absolute;
+  background-color: rgb(222, 215, 121);
+  color: rgb(23, 23, 23);
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  top: -20px;
+  right: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
