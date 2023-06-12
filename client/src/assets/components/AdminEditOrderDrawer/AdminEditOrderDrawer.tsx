@@ -23,6 +23,7 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
     console.log('radio checked', e.target.value);
     // setValue(e.target.value);
   };
+  console.log(order.orderNumber);
   
   // const [value, setValue] = useState(false);
   return (
@@ -57,6 +58,17 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
                 label="Id"
               >
                 <Input disabled={true} defaultValue = {order._id} />
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+
+            <Col span={12}>
+              <Form.Item
+                name="orderNumber"
+                label="Ordernummer:"
+              >
+                <Input disabled={true} defaultValue = {order.orderNumber} />
               </Form.Item>
             </Col>
           </Row>

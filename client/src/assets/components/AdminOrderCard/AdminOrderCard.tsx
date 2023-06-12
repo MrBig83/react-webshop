@@ -1,4 +1,5 @@
 import BtnAdminEditProduct from "../Buttons/BtnAdminEditProduct/BtnAdminEditProduct"
+import AdminEditOrderDrawer from "../AdminEditOrderDrawer/AdminEditOrderDrawer"
 import "./AdminOrderCard.css";
 // import {  ProductContext } from "../../../context/ProductContext"
 
@@ -10,9 +11,19 @@ function AdminOrderCard({ order }: { order: any }) {
   return (
        <div className="OrderCardInfo">
         <h3>{order.orderNumber}</h3>
-        {(order.shipped ? <p>Färdig</p> : <p>Behöver behandlas!</p> )}
-        {/* Knappen för att öppna sidopanelen finns i AdminProducts */}
-        {/* <BtnAdminEditProduct product={product}/> */}
+        {(!order.shipped ? 
+        <>
+          <p>Behöver behandlas!</p> 
+          <AdminEditOrderDrawer order={order} />  
+        </>
+        
+        :<>
+          <p>Färdig</p> 
+          <button>Orden är klar</button>
+        </>
+        )}
+        
+
       </div>  
   );
 }

@@ -77,6 +77,7 @@ const CheckoutForm = () => {
               style={{ minWidth: 300 }}
               onChange={handleDropdownChange}
               placeholder="Select province"
+              
             >
               {shippingData
                 .map((d) => ({
@@ -154,7 +155,7 @@ const CheckoutForm = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-
+            
             <Button onClick={handleSubmit} type="primary" htmlType="submit">
               <NavLink to="/order">Lägg order</NavLink>
               {/* usenavigate */}

@@ -22,7 +22,7 @@ function AdminpanelOrders() {
         {orders ? orders.map((order:IOrder) => (
           <div className="OrderCardRender" key={order._id}>
             <AdminOrderCard order={order} />
-            <AdminEditOrderDrawer order={order} />
+            {/* <AdminEditOrderDrawer order={order} /> */}
           </div>
         )) :null }
       </div>
