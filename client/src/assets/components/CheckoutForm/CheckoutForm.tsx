@@ -3,7 +3,8 @@ import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import "../../components/Buttons/BtnStyle/BtnStyle.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
@@ -26,13 +27,11 @@ const CheckoutForm = () => {
 
   const [submittable, setSubmittable] = useState(false);
   const values = Form.useWatch([], form);
-
   const claculateOrderTotal = (value: string) => {
     const parsedValue = JSON.parse(value);
     const shippingPrice = parsedValue.price;
     const orderTotal = shopingcartTotal + shippingPrice;
     setOrderTotal(orderTotal);
-    console.log(parsedValue);
   };
 
   setOrderInfo(items);
@@ -47,12 +46,11 @@ const CheckoutForm = () => {
   const handleSubmit = () => {
     placeOrder();
 
-    Navigate("/order");
+    Navigate("/order", { replace: true });
   };
 
   const handleDropdownChange = (value: string) => {
     const parsedValue = JSON.parse(value);
-    console.log("Selected value:", parsedValue);
     setShippingMethod(parsedValue.id);
     setOrderItems(OrderItems);
     claculateOrderTotal(value);

@@ -1,6 +1,6 @@
 .btnbuynow {
     display: inline-block;
-    padding: .7em 2em ;
+    padding: .9em .9em;
     background: #d7d6d6;
     color: #000;
     text-decoration: none;
@@ -10,13 +10,10 @@
     /* transition: transform 200ms ease-in-out; */
     border: none;
     border-radius: .2rem;
+    font-size: 12px;
 }
 
 .btnbuynow:hover {
     /* transform: scale(1.1); */
     background-color: #7e7d7d9d ;
-}
-
-.btnbuynow:active {
-    background-color: rgb(137, 188, 232);
 }

@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
+import "./ShopingCart.css";
 // import ProductCard from "../ProductCard/ProductCard";
 // import Products from "../Products/Products";
 //BEHÖVS TYPAS FILEN ÄR RÖD?

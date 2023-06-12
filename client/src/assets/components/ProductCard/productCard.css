@@ -12,8 +12,8 @@
 .ProductCardInfo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0.5rem;
+  align-items: center; 
+  padding: .3rem;
 }
 
 .productcard > img {
@@ -24,7 +24,7 @@
 }
 
 .productcard > img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .productcard h3 {

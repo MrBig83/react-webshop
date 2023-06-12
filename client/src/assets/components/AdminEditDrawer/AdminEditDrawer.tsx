@@ -5,6 +5,7 @@ import {  ProductContext } from "../../../context/ProductContext"
 
 
 
+
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
   const { updateProduct } = useContext(ProductContext);
@@ -27,7 +28,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
+      <Button className='btnStyle' type="primary" onClick={showDrawer}>
         Redigera produkt
       </Button>
 
@@ -137,10 +138,10 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
           </Radio.Group>
         </Form.Item>
             </Col> 
-          <Button type="primary" htmlType="submit" onClick={onClose}>
+          <Button className='btnStyle' type="primary" htmlType="submit" onClick={onClose}>
               Spara
             </Button>
-            <Button onClick={onClose}>Avbryt</Button>
+            <Button className='btnStyle' onClick={onClose}>Avbryt</Button>
         </Form>
       </Drawer>
     </>

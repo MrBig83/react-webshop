@@ -21,14 +21,20 @@ function AdminpanelProducts() {
     
   return (
     <div className="AdminPanelProductList">
-      <h1>Administrera produkter här:</h1>
+
+   <div className="newProductAdmin"> 
+   <h1>Lägg till ny produkt:</h1>
+  <AdminAddProductDrawer />
+   </div>
+  
       <div className="AdminProductList">
-        <AdminAddProductDrawer />
+      <h1>Administrera produkter:</h1>
       {products ? products.map((product: IProduct) => (
         <div className="ProductCardRender" key={product._id}>
+          <div className="AdminProduct">
           <AdminProductCard product={product} />
           <AdminEditDrawer product={product}/>
-          
+          </div>         
         </div>
 
       )) :null }

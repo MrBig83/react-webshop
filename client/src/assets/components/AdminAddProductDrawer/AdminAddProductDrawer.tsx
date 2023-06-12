@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useContext } from 'react';
 // import IProduct from '../../interfaces/IProduct';
+import "../Buttons/BtnStyle/BtnStyle.css"
 import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
 import {  ProductContext } from "../../../context/ProductContext"
 
@@ -28,7 +29,7 @@ const AdminAddProductDrawer = () => {
   
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
+      <Button className='btnStyle' type="primary" onClick={showDrawer}>
         Lägg till produkt
       </Button>
 
@@ -129,10 +130,10 @@ const AdminAddProductDrawer = () => {
           </Radio.Group>
         </Form.Item>
             </Col> 
-          <Button type="primary" htmlType="submit" onClick={onClose}>
+          <Button className='btnStyle' type="primary" htmlType="submit" onClick={onClose}>
               Spara
             </Button>
-            <Button onClick={onClose}>Avbryt</Button>
+            <Button className='btnStyle' onClick={onClose}>Avbryt</Button>
         </Form>
       </Drawer>
     </>

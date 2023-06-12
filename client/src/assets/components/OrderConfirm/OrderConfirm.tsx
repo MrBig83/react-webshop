@@ -1,8 +1,13 @@
+import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 const OrderConfirm = () => {
+
+
+  const { emptyCart } = useContext(MyCartContext);
+
   const { orderNumber, orderInfo, loading } = useContext(OrderContext)!;
 
   const navigate = useNavigate();
@@ -13,6 +18,12 @@ const OrderConfirm = () => {
       if ((orderNumber = 0)) navigate("/");
     });
   };
+
+
+  useEffect(() => {
+    emptyCart([]);
+    localStorage.clear();
+  }, []);
 
   return (
     <div>
@@ -28,6 +39,7 @@ const OrderConfirm = () => {
                 {p.product.title} x {p.quantity}
               </p>
               <p>{p.product.price}:-</p>
+              
             </div>
           ))}
         </div>

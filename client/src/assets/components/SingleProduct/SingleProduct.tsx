@@ -29,6 +29,17 @@ const SingleProduct = () => {
     fetchProduct();
   }, [product, id]);
 
+  let lager = "";
+
+  if (product.inStock < 1) {
+    lager = "Slut i lager"
+  } else if (product.inStock < 5) {
+    lager = "Få i lager"
+  }
+  if (product.inStock >= 5) {
+    lager = "Finns i lager"
+  }
+
   return (
     <div className="SingleProduct">
       <Breadcrumbs />
@@ -39,6 +50,7 @@ const SingleProduct = () => {
         <h3>{product.title}</h3>
         <p>{product.description}</p>
         <p>{product.price} :-</p>
+        <p>{lager}</p>
         <BtnBuyNow product={product} />
       </div>
       <br />

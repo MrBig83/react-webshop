@@ -16,13 +16,16 @@ function AdminpanelOrders() {
     
   return (
     <>
-      <h1>Administrera ordrar här:</h1>
+   
       <div className="AdminOrderList">
+      <h1>Administrera ordrar:</h1>
           
         {orders ? orders.map((order:IOrder) => (
           <div className="OrderCardRender" key={order._id}>
+            <div className="AdminOrder">
             <AdminOrderCard order={order} />
             {/* <AdminEditOrderDrawer order={order} /> */}
+            </div>
           </div>
         )) :null }
       </div>
