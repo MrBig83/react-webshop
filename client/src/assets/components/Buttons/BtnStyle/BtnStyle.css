@@ -7,7 +7,6 @@
     cursor: pointer;
     font-size: .8rem;
     letter-spacing: 2px;
-    font-weight: var(--fw-bold);
     /* transition: transform 200ms ease-in-out; */
     border: none;
     border-radius: .2rem;
