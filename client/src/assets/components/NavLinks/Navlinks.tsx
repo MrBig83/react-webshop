@@ -5,7 +5,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import { Drawer } from "antd";
 import { useContext, useState } from "react";
-
+import BtnAdminpanel from "../Buttons/BtnAdminpanel/BtnAdminpanel";
 import "./NavLink.css";
 import ShopingCart from "../ShopingCart/ShopingCart";
 import { UserContext } from "../../../context/UserContext";
@@ -38,10 +38,10 @@ function NavLinks() {
       </p>
       <ul>
         <li>
-          <NavLink to="/">hem</NavLink>
+          <NavLink to="/">Shop</NavLink>
         </li>
         <li>
-          <NavLink to="/produkter">produkter</NavLink>
+          <NavLink to="/news">Nyheter</NavLink>
         </li>
         <li>
           <NavLink to="/rea">rea</NavLink>
@@ -51,6 +51,10 @@ function NavLinks() {
         </li>
       </ul>
       <ul className="menu-right">
+      {(data.isAdmin ? <BtnAdminpanel /> : "" )}
+          
+      
+
         <li className="shopingcart-container">
           <div className={"shopingcart-icon"}>
             <ShoppingCartOutlined onClick={showDrawer} />
@@ -63,7 +67,7 @@ function NavLinks() {
               >
               <ShopingCart />
               <button>
-                <NavLink to="/kassa">Till kassa</NavLink>
+                <NavLink to="/kassa" onClick={onClose}>Till kassa</NavLink>
               </button>
             </Drawer>
           </div>
