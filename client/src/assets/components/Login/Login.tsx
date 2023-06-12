@@ -1,10 +1,13 @@
-import { UserOutlined } from "@ant-design/icons"
+import { UserOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import { Drawer } from "antd";
 import LoginForm from "../LoginForm/LoginForm";
+import { UserContext } from "../../../context/UserContext";
+import { useContext } from "react";
 
 const Login = () => {
+  const { data } = useContext(UserContext);
   const [open, setOpen] = useState(false);
 
   const showDrawer = () => {
@@ -14,18 +17,19 @@ const Login = () => {
   const onClose = () => {
     setOpen(false);
   };
-  return ( 
-            <NavLink to=''>
-            <UserOutlined onClick={showDrawer} />
-            <Drawer
-            title='Login'
-            placement="right"
-            onClose={onClose}
-            open={open}>
-              <LoginForm />
-            </Drawer>
-            </NavLink>  
-  )
-}
+  return (
+    <NavLink to="">
+      <UserOutlined onClick={showDrawer} />
+      <Drawer
+        title={data.firstName ? `${data.firstName}` : "Logga in"}
+        placement="right"
+        onClose={onClose}
+        open={open}
+      >
+        <LoginForm />
+      </Drawer>
+    </NavLink>
+  );
+};
 
-export default Login
+export default Login;

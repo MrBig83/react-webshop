@@ -1,82 +1,64 @@
+import React, { useContext } from "react";
+import { Button, Form, Input } from "antd";
+import { UserContext } from "../../../context/UserContext";
 
-import { useState } from 'react';
-import { Button, Checkbox, Form, Input } from 'antd';
+const LoginForm: React.FC = () => {
+  const { email, password, setEmail, setPassword, login, logOut, auth, data } =
+    useContext(UserContext)!;
 
-//const handleEmailChange =
-
-const onFinish = (values: any) => {
-  console.log('Success:', values);
-};
-const onFinishFailed = (errorInfo: any) => {
-  console.log('Failed:', errorInfo);
-};
-
-const LoginForm = () => {
-  const [email, setEmail] = useState ("")
-  const [password, setPassword] = useState ("")
-  
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-
-      try {
-
-        const res = await fetch("/api/users/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({email: email, password: password } )
-        })
-        const data = await res.json()
-        console.log(data)
-      
-        
-      }catch (err) {
-        console.log(err)
-      }
+  const handleSubmit = async () => {
+    await auth();
+    if (!data._id) {
+      await login();
+    } else {
+      await logOut();
     }
-      
-      
-      return (
-        <div>
-  <Form onSubmit={handleSubmit}
-    name="basic"
-    labelCol={{ span: 8 }}
-    wrapperCol={{ span: 16 }}
-    style={{ maxWidth: 600 }}
-    initialValues={{ remember: true }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off">
-    <Form.Item
-      label="Username"
-      name="username"
-      onChange={(e) => setEmail(e.target.value)}
-     //onChange={(e) => console.log(e.target.value)}
-      rules={[{ required: true, message: 'Please input your username!' }]}>
-      <Input />
-        
-    </Form.Item>
+  };
 
-    <Form.Item
-      label="Password"
-      name="password"
-      onChange={(e) => setPassword(e.target.value)}
-      //onChange={(e) => console.log(e.target.value)}
-      rules={[{ required: true, message: 'Please input your password!' }]} >
-      <Input.Password />
-    </Form.Item>
+  return (
+    <div>
+      {data.firstName ? (
+        <div style={{ display: "none" }}>Hidden element</div>
+      ) : (
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          initialValues={{ remember: true }}
+          autoComplete="on"
+        >
+          <Form.Item
+            label="E-postadress"
+            name="username"
+            initialValue={email}
+            rules={[
+              { required: true, message: "Var god fyll i din e-postadress" },
+            ]}
+          >
+            <Input onChange={(e) => setEmail(e.target.value)} />
+          </Form.Item>
 
-    <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
+          <Form.Item
+            label="Lösenord"
+            name="password"
+            initialValue={password}
+            rules={[
+              { required: true, message: "Var god fyll i ditt lösenord" },
+            ]}
+          >
+            <Input.Password onChange={(e) => setPassword(e.target.value)} />
+          </Form.Item>
 
-    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-      <Button onClick={handleSubmit} type="primary" htmlType="submit">Submit</Button>
-    </Form.Item>
-  </Form>
+          <Form.Item wrapperCol={{ offset: 8, span: 16 }}></Form.Item>
+        </Form>
+      )}
+      <Button onClick={handleSubmit} type="primary" htmlType="submit">
+        {data._id ? "logga ut" : "logga in"}
+      </Button>
+      <div></div>
+    </div>
+  );
+};
 
-      </div>
-    )
-  }
-export default LoginForm
+export default LoginForm;

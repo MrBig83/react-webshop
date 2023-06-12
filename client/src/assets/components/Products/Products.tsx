@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import "./Products.css";
-import IProduct from "../../interfaces/Interfaces";
-import BtnBuyNow from "../BtnBuyNow/BtnBuyNow";
+import IProduct from "../../interfaces/IProduct";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -14,27 +13,25 @@ const Products = () => {
       const data = await response.json();
 
       setProducts(data);
+      
     };
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    // console.log(products);
-  }, [products]);
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  useEffect(() => {}, [products]);
 
   return (
-    <div>
-      <div className="ProductList">
-        {products.map((product: IProduct) => (
-          <div className="ProductCardRender">
-          <Link key={product._id} to={`/${product._id}`}>
+    <div className="ProductList">
+      {products.map((product: IProduct) => (
+        <div className="ProductCardRender" key={product._id}>
+          <Link to={`/${product._id}`}>
             <ProductCard product={product} />
           </Link>
-      <BtnBuyNow />
-      </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
+
 export default Products;
