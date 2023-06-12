@@ -1,11 +1,7 @@
 import BtnAdminEditProduct from "../Buttons/BtnAdminEditProduct/BtnAdminEditProduct"
-
 import AdminEditOrderDrawer from "../AdminEditOrderDrawer/AdminEditOrderDrawer"
-
 import "./AdminOrderCard.css";
-
 import "../Buttons/BtnStyle/BtnStyle.css"
-
 // import {  ProductContext } from "../../../context/ProductContext"
 
 
@@ -28,33 +24,18 @@ function AdminOrderCard({ order }: { order: any }) {
 
         <h3>{order.orderNumber}</h3>
 
-        {(!order.shipped ?
-
+        {(!order.shipped ? 
         <>
-
-          <p>Behöver behandlas!</p>
-
+          <p>Behöver behandlas!</p> 
           <AdminEditOrderDrawer order={order} />  
-
         </>
-
-       
-
+        
         :<>
-
-          <p>Färdig</p>
-
+          <p>Färdig</p> 
           <button className="btnStyleCompleted">Orden är klar</button>
-
         </>
-
         )}
-
-       
-
-
-
-
+        
       </div>  
 
   );
