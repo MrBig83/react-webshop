@@ -3,6 +3,7 @@ import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
+import "../../components/Buttons/BtnStyle/BtnStyle.css";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
@@ -92,7 +93,6 @@ const CheckoutForm = () => {
             onChange={handleDropdownChange}
             placeholder="Select province"
           >
-
               {shippingData
                 .map((d) => ({
                   id: d._id,
@@ -180,8 +180,6 @@ const CheckoutForm = () => {
           </Button>
         </Form.Item>
       </Form>
-
-          
       
       <h3>Totalbelop med frakt: {orderTotal}</h3>
     </div>

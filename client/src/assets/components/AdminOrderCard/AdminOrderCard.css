@@ -1,20 +1,17 @@
-.productcard {
+.AdminOrder{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 300px;
-}
-.ProductCardInfo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end; 
-  border-bottom: 1px solid rgb(180, 180, 180);
+  gap: 1rem;
 }
 
-img {
-  width: fit-content;
-  height: 150px;
+.OrderCardInfo p {
+  font-size: 16px;
+  font-weight: 600;
 }
+
+.OrderCardInfo h3 {
+  font-size: 18px;
+
+}
+

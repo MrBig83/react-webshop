@@ -1,6 +1,6 @@
 .btnStyle {
     display: inline-block;
-    padding: .7em 2em ;
+    padding: 2rem, 2rem;
     background: #d7d6d6;
     color: #000;
     text-decoration: none;
@@ -16,6 +16,7 @@
     /* transform: scale(1.1); */
     background-color: #7e7d7d9d ;
 }
+
 .btnStyleCompleted {
     display: inline-block;
     padding: .7em 2em ;
