@@ -13,12 +13,12 @@ import "./NavLink.css";
 import { MyCartContext } from "../../../context/CartContext";
 
 function NavLinks() {
-  const { data } = useContext(UserContext)!;
+  const { data } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const { items } = useContext(MyCartContext);
 
-  let quant = items.map((i) => i.quantity);
-  let sum = quant.reduce(function (a, b) {
+  const quant = items.map((i) => i.quantity);
+  const sum = quant.reduce(function (a, b) {
     return a + b;
   }, 0);
 
@@ -65,11 +65,15 @@ function NavLinks() {
               open={open}
             >
               <ShopingCart />
+              
+              {sum >0 ? <>
               <button>
                 <NavLink to="/kassa" onClick={onClose}>
                   Till kassa
                 </NavLink>
               </button>
+              </> :
+               <p>Inga varor i varukorgen</p>} 
             </Drawer>
           </div>
         </li>
