@@ -17,7 +17,7 @@ const OrderConfirm = () => {
 
   useEffect(() => {
     emptyCart([]);
-  });
+  }, []);
 
   return (
     <div>

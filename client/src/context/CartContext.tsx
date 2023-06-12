@@ -116,6 +116,7 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
 
   const emptyCart = () => {
     setItems([]);
+    localStorage.removeItem("cart");
   };
 
   return (
