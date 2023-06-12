@@ -36,6 +36,10 @@ svg {
   gap: 0.5rem;
 }
 
+.shopingcart-icon :hover {
+  border-bottom: 1px solid black;
+}
+
 .menu-left {
   width: 150px;
   display: flex;

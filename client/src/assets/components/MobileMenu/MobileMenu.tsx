@@ -18,7 +18,7 @@ const MobileMenu = () => {
       <div className="menu-icon">
         <MenuOutlined onClick={showDrawer} />
       </div>
-      <Drawer placement="left" open={open} width={"100%"}>
+      <Drawer placement="left" open={open} onClose={onClose} width={"100%"}>
         <ul className="mobile-menu">
           <li>
             <NavLink onClick={onClose} to="/">
