@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select, Spin } from "antd";
+import { Button, Form, Input, InputNumber, Select, Spin } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
@@ -8,6 +8,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
+
   const {
     setZipcode,
     setStreet,
@@ -25,8 +26,6 @@ const CheckoutForm = () => {
   const { items, shopingcartTotal } = useContext(MyCartContext);
 
   const [submittable, setSubmittable] = useState(false);
-
-  // Watch all values
   const values = Form.useWatch([], form);
   const claculateOrderTotal = (value: string) => {
     const parsedValue = JSON.parse(value);
@@ -47,7 +46,7 @@ const CheckoutForm = () => {
   const handleSubmit = () => {
     placeOrder();
 
-    Navigate("/order", {replace: true});
+    Navigate("/order", { replace: true });
   };
 
   const handleDropdownChange = (value: string) => {
@@ -80,9 +79,9 @@ const CheckoutForm = () => {
         autoComplete="on"
       >
         <Form.Item
-          name={["address", "province"]}
+          name={["Frakt metod"]}
           noStyle
-          rules={[{ required: true, message: "Province is required" }]}
+          rules={[{ required: true, message: "Ange leverans metod" }]}
         >
           <Select
             defaultValue="Välj fraktsätt"
@@ -90,27 +89,35 @@ const CheckoutForm = () => {
             onChange={handleDropdownChange}
             placeholder="Select province"
           >
-              {shippingData
-                .map((d) => ({
-                  id: d._id,
-                  price: d.price,
-                  company: d.company,
-                  deliveryTimeInHours: d.deliveryTimeInHours,
-                }))
-                .map((option) => (
-                  <option key={option.id} value={JSON.stringify(option)}>
-                    {option.company} {option.price}:- leveranstid{" "}
-                    {option.deliveryTimeInHours} h
-                  </option>
-                ))}
-            </Select>
-          </Form.Item>
+            {shippingData
+              .map((d) => ({
+                id: d._id,
+                price: d.price,
+                company: d.company,
+                deliveryTimeInHours: d.deliveryTimeInHours,
+              }))
+              .map((option) => (
+                <option key={option.id} value={JSON.stringify(option)}>
+                  {option.company} {option.price}:- leveranstid{" "}
+                  {option.deliveryTimeInHours} h
+                </option>
+              ))}
+          </Select>
+        </Form.Item>
 
         <Form.Item
           label="Förnamn"
           name="Förnamn"
           initialValue={data.firstName}
-          rules={[{ required: true, message: "Ange förnamn" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange förnamn",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setFirstname(e.target.value)} />
         </Form.Item>
@@ -119,7 +126,15 @@ const CheckoutForm = () => {
           label="Efternamn"
           name="Efternamn"
           initialValue={data.lastName}
-          rules={[{ required: true, message: "Ange efternamn" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange efternamn",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setLastname(e.target.value)} />
         </Form.Item>
@@ -128,7 +143,7 @@ const CheckoutForm = () => {
           label="Email"
           name="Email"
           initialValue={data.email}
-          rules={[{ required: true, message: "Ange Email" }]}
+          rules={[{ required: true, type: "email", message: "Ange Email" }]}
         >
           <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
@@ -144,15 +159,25 @@ const CheckoutForm = () => {
         <Form.Item
           label="Postnummer"
           name="Postnummer"
-          rules={[{ required: true, message: "Ange postnummer" }]}
+          rules={[
+            { required: true, type: "number", message: "Ange postnummer" },
+          ]}
         >
-          <Input onChange={(e) => setZipcode(e.target.value)} />
+          <InputNumber onChange={(e) => setZipcode(e.target.value)} />
         </Form.Item>
 
         <Form.Item
           label="Stad"
           name="Stad"
-          rules={[{ required: true, message: "Ange stad" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange stad",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setCity(e.target.value)} />
         </Form.Item>
@@ -160,7 +185,15 @@ const CheckoutForm = () => {
         <Form.Item
           label="Land"
           name="Land"
-          rules={[{ required: true, message: "Ange land" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange land",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
@@ -177,7 +210,7 @@ const CheckoutForm = () => {
           </Button>
         </Form.Item>
       </Form>
-      
+
       <h3>Totalbelop med frakt: {orderTotal}</h3>
     </div>
   );
