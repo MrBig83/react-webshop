@@ -55,8 +55,7 @@ const CheckoutForm = () => {
     const parsedValue = JSON.parse(value);
     setShippingMethod(parsedValue.id);
     setShippingTime(parsedValue);
-    
-    
+
     setOrderItems(OrderItems);
     claculateOrderTotal(value);
   };
@@ -182,9 +181,6 @@ const CheckoutForm = () => {
             {
               required: true,
               message: "Ange stad",
-              pattern: new RegExp(
-                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
-              ),
             },
           ]}
         >
@@ -198,9 +194,6 @@ const CheckoutForm = () => {
             {
               required: true,
               message: "Ange land",
-              pattern: new RegExp(
-                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
-              ),
             },
           ]}
         >
