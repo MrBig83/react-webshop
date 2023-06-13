@@ -1,5 +1,6 @@
 import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
+import { UserContext } from "../../../context/UserContext";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
@@ -9,7 +10,7 @@ const OrderConfirm = () => {
   const { emptyCart } = useContext(MyCartContext);
 
   const { orderNumber, orderInfo, loading, street, zipcode, country, city} = useContext(OrderContext)!;
-
+  const { data } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -40,10 +41,13 @@ const OrderConfirm = () => {
                 {p.product.title} x {p.quantity}
               </p>
               <p>{p.product.price}:-</p>
+              <p>Förnamn: {data.firstName}</p>
+              <p>Efternamn: {data.lastName}</p>
+              <p>Email: {data.email}</p>
               <p>Gata: {street}</p>
-              <p>Land: {country}</p>
-              <p>Stad: {city}</p>
               <p>Postnummer: {zipcode}</p> 
+              <p>Stad: {city}</p>
+              <p>Land: {country}</p>
             </div>
           ))}
         </div>
