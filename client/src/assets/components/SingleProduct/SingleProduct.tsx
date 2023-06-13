@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css";
-import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import IProduct from "../../interfaces/IProduct";
 // import Products from "../Products/Products";
@@ -29,9 +28,19 @@ const SingleProduct = () => {
     fetchProduct();
   }, [product, id]);
 
+  let lager = "";
+
+  if (product.inStock < 1) {
+    lager = "Slut i lager"
+  } else if (product.inStock < 5) {
+    lager = "Få i lager"
+  }
+  if (product.inStock >= 5) {
+    lager = "Finns i lager"
+  }
+
   return (
     <div className="SingleProduct">
-      <Breadcrumbs />
       <div className="title">
         <img src={product.image}/>
       </div>
@@ -39,6 +48,7 @@ const SingleProduct = () => {
         <h3>{product.title}</h3>
         <p>{product.description}</p>
         <p>{product.price} :-</p>
+        <p>{lager}</p>
         <BtnBuyNow product={product} />
       </div>
       <br />

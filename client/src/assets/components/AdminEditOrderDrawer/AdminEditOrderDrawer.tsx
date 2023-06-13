@@ -21,10 +21,10 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
   };
 
   const onChange = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
+    
     // setValue(e.target.value);
   };
-  console.log(order.orderNumber);
+  
   
   // const [value, setValue] = useState(false);
   return (
