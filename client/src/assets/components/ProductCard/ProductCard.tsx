@@ -1,11 +1,17 @@
 import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
+import "../Buttons/BtnStyle/BtnStyle.css"
 // import { ICartItem } from "../../interfaces/ICartItem";
 import IProduct from "../../interfaces/IProduct";
 function ProductCard({ product }: { product: IProduct }) {
   // ================== Behövs typas! =================
 let lager = "";
 let lagerBool = true
+
+const buyNow = (event: any) => {
+  //kan man ha any här?
+  event.preventDefault();
+}
 
 if (product.inStock < 1) {
   lager = "Slut i lager"
@@ -27,8 +33,7 @@ if (product.inStock >= 5) {
         <p>{lager}</p>
         {lagerBool ? 
         <BtnBuyNow product={product} />
-        : ""} 
-        {/* Amandas lekplats */}
+        : <button className="disabled" onClick={buyNow}>Kan ej köpas</button> } 
       </div>
     </div>
   );
