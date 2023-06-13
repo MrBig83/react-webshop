@@ -1,6 +1,6 @@
 .btnStyle {
     display: inline-block;
-    padding: 2rem, 2rem;
+    padding: .7em 2em ;
     background: #d7d6d6;
     color: #000;
     text-decoration: none;
@@ -29,4 +29,22 @@
     /* transition: transform 200ms ease-in-out; */
     border: none;
     border-radius: .2rem;
+}
+
+.btnStyleAdmin {
+    display: inline-block;
+    padding: .5em 2em ;
+    background: #a4c4e998;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    /* transition: transform 200ms ease-in-out; */
+    border: none;
+    border-radius: .2rem;
+}
+
+.btnStyleAdmin:hover {
+    background: #1f67b998;
 }
