@@ -123,7 +123,7 @@ const CheckoutForm = () => {
             },
           ]}
         >
-          <Input onChange={(e) => setFirstname(e.target.value)} />
+          <Input onChange={(e) => e.target.value} />
         </Form.Item>
 
         <Form.Item
@@ -140,7 +140,7 @@ const CheckoutForm = () => {
             },
           ]}
         >
-          <Input onChange={(e) => setLastname(e.target.value)} />
+          <Input onChange={(e) => e.target.value} />
         </Form.Item>
 
         <Form.Item
@@ -149,7 +149,7 @@ const CheckoutForm = () => {
           initialValue={data.email}
           rules={[{ required: true, type: "email", message: "Ange Email" }]}
         >
-          <Input onChange={(e) => setEmail(e.target.value)} />
+          <Input onChange={(e) => e.target.value} />
         </Form.Item>
 
         <Form.Item
