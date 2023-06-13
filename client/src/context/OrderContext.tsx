@@ -29,6 +29,7 @@ interface OrderContextProps {
   setCity: React.Dispatch<React.SetStateAction<string>>;
   setCountry: React.Dispatch<React.SetStateAction<string>>;
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
+  setShippingTime: React.Dispatch<React.SetStateAction<string>>;
 
   setOrderItems: React.Dispatch<React.SetStateAction<string>>;
   setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
@@ -47,6 +48,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [country, setCountry] = useState("");
   const [shippingData, setShippingData] = useState([]);
   const [shippingMethod, setShippingMethod] = useState("");
+  const [shippingTime, setShippingTime] = useState("");
   const [orderItems, setOrderItems] = useState([]);
   const [orderNumber, setOrderNumber] = useState(Number);
   const [orderInfo, setOrderInfo] = useState([]);
@@ -140,6 +142,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         setCity,
         placeOrder,
         setShippingMethod,
+        setShippingTime,
         setOrderItems,
         setOrderInfo,
         setOrderTotal,
@@ -152,6 +155,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
         getOrders,
         orders,
         updateOrder,
+        shippingTime
       }}
     >
       {children}
