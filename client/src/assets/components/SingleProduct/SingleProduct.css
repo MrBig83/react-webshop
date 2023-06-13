@@ -1,16 +1,35 @@
 .SingleProduct {
-    margin-left: 3rem;
     display: flex;
     cursor:context-menu;
+    margin-left: 3rem;
+    /* padding: 3rem; */
+    padding-top: 2rem;
     
 }
-.SingleProduct .title {
-    padding-top: 4rem;
+
+.SingleProduct > .title img{
+   max-height: 350px;
+   margin-top: 8rem;
+   overflow: hidden;
+}
+
+.SingleProduct h3 {
+    font-size: 23px;
 }
 
 .info {
     margin: 5rem;
+    font-size: 17px;
+    padding: 1rem;
+
 }
+
+.SingleProduct Link {
+text-decoration: none;
+}
+
+
 .info button {
     align-items: flex-end;
+    margin-top: 1rem;
 }

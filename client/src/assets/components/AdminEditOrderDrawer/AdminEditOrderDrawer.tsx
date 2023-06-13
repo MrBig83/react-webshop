@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import IOrder from '../../interfaces/IOrder';
 import { Button, Col, Drawer, Form, Input, Row, Radio, RadioChangeEvent } from 'antd';
 import {  OrderContext } from "../../../context/OrderContext"
+import "../Buttons/BtnStyle/BtnStyle.css"
 
 const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
   const [open, setOpen] = useState(false);
@@ -20,14 +21,15 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
   };
 
   const onChange = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
+    
     // setValue(e.target.value);
   };
+  
   
   // const [value, setValue] = useState(false);
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
+      <Button className='btnStyle' type="primary" onClick={showDrawer}>
         Redigera Order
       </Button>
 
@@ -60,6 +62,17 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
               </Form.Item>
             </Col>
           </Row>
+          <Row gutter={16}>
+
+            <Col span={12}>
+              <Form.Item
+                name="orderNumber"
+                label="Ordernummer:"
+              >
+                <Input disabled={true} defaultValue = {order.orderNumber} />
+              </Form.Item>
+            </Col>
+          </Row>
             <Col span={24}>
             <Form.Item 
             label="Skickad?"
@@ -70,10 +83,10 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
           </Radio.Group>
         </Form.Item>
             </Col> 
-          <Button type="primary" htmlType="submit" onClick={onClose}>
+          <Button className='btnStyle' type="primary" htmlType="submit" onClick={onClose}>
               Spara
             </Button>
-            <Button onClick={onClose}>Avbryt</Button>
+            <Button className='btnStyle' onClick={onClose}>Avbryt</Button>
         </Form>
       </Drawer>
     </>

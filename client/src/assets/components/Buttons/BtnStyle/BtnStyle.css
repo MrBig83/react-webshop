@@ -1,0 +1,32 @@
+.btnStyle {
+    display: inline-block;
+    padding: 2rem, 2rem;
+    background: #d7d6d6;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    /* transition: transform 200ms ease-in-out; */
+    border: none;
+    border-radius: .2rem;
+}
+
+.btnStyle:hover {
+    /* transform: scale(1.1); */
+    background-color: #7e7d7d9d ;
+}
+
+.btnStyleCompleted {
+    display: inline-block;
+    padding: .7em 2em ;
+    background: #b0ddb4;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    /* transition: transform 200ms ease-in-out; */
+    border: none;
+    border-radius: .2rem;
+}

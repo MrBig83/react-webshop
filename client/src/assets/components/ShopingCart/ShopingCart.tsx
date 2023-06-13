@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import CartItem from "../Cartitem/CartItem";
+import "./ShopingCart.css";
 // import ProductCard from "../ProductCard/ProductCard";
 // import Products from "../Products/Products";
 //BEHÖVS TYPAS FILEN ÄR RÖD?
@@ -9,8 +10,8 @@ const ShoppingCart = () => {
   const { items, updateItemQuantity, removeItem, calculateTotal } =
     useContext(MyCartContext);
 
-  console.log("items:", items);
-  console.log("total:", calculateTotal());
+  // console.log("items:", items);
+  // console.log("total:", calculateTotal());
 
   return (
     <>
@@ -31,7 +32,7 @@ const ShoppingCart = () => {
           />
         ))}
       </div>
-      <h3>Totalbelopp: {calculateTotal()} kr</h3>
+      <h3>Kundvagns belopp: {calculateTotal()} kr</h3>
     </>
   );
 };
