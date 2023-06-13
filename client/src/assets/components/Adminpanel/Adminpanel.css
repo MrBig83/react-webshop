@@ -3,7 +3,7 @@
     display: flex;  
 }
 
-AdminProductList,
+.AdminProductList,
 .AdminOrderList {
     width: 300px;  
 }

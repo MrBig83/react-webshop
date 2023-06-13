@@ -33,7 +33,7 @@
 
 .btnStyleAdmin {
     display: inline-block;
-    padding: .5em 2em ;
+    padding: .4em 1.8em ;
     background: #a4c4e998;
     color: #000;
     text-decoration: none;
@@ -48,3 +48,20 @@
 .btnStyleAdmin:hover {
     background: #1f67b998;
 }
+
+@media (max-width: 900px) {
+
+    .btnStyleAdmin {
+        display: inline-block;
+        padding: .3em 1em ;
+        background: #a4c4e998;
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+        font-size: .7rem;
+        letter-spacing: 2px;
+        /* transition: transform 200ms ease-in-out; */
+        border: none;
+        border-radius: .2rem;
+    }
+  }
