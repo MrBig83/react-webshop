@@ -9,7 +9,9 @@ const OrderConfirm = () => {
 
   const { emptyCart } = useContext(MyCartContext);
 
-  const { orderNumber, orderInfo, loading, shippingTime } = useContext(OrderContext);
+  const { orderNumber, orderInfo, loading, street, zipcode, country, city, shippingTime} = useContext(OrderContext)!;
+
+
 
   const navigate = useNavigate();
 
@@ -47,10 +49,17 @@ const OrderConfirm = () => {
                 {p.product.title} x {p.quantity}
               </p>
               <p>{p.product.price}:-</p>
+
               <p>Leveransdatum: {futureDate.toLocaleDateString()} </p>
               
               
               
+
+              <p>Gata: {street}</p>
+              <p>Land: {country}</p>
+              <p>Stad: {city}</p>
+              <p>Postnummer: {zipcode}</p> 
+
             </div>
           ))}
         </div>
