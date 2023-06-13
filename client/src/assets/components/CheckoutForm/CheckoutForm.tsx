@@ -19,6 +19,7 @@ const CheckoutForm = () => {
     setOrderItems,
     setOrderInfo,
     setOrderTotal,
+    setShippingTime,
   } = useContext(OrderContext);
 
   const { data } = useContext(UserContext);
@@ -52,6 +53,9 @@ const CheckoutForm = () => {
   const handleDropdownChange = (value: string) => {
     const parsedValue = JSON.parse(value);
     setShippingMethod(parsedValue.id);
+    setShippingTime(parsedValue);
+    
+    
     setOrderItems(OrderItems);
     claculateOrderTotal(value);
   };
