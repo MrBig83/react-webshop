@@ -54,7 +54,7 @@ svg {
 
 .shopingcart-icon > p {
   position: absolute;
-  background-color: rgb(222, 215, 121);
+  background: #a4c4e998;
   color: rgb(23, 23, 23);
   border-radius: 50%;
   height: 1rem;
@@ -76,11 +76,30 @@ svg {
   .main-menu li {
     font-size: 12px;
   }
+
+  .menu-left p {
+    font-size: 13px;
+  }
+
+  .shopingcart-icon > p {
+    position: absolute;
+    background: #a4c4e9d5;
+    color: rgb(23, 23, 23);
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    top: -22px;
+    right: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 800px) {
   .main-menu {
     display: none;
   }
+
 }
 

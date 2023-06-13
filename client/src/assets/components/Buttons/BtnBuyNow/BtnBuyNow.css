@@ -1,7 +1,7 @@
 .btnbuynow {
     display: inline-block;
-    padding: .9em .9em;
-    background: #d7d6d6;
+    padding: .8em 2em;
+    background: #d7d6d6bb;
     color: #000;
     text-decoration: none;
     cursor: pointer;

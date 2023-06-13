@@ -5,6 +5,8 @@ import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import "../../components/Buttons/BtnStyle/BtnStyle.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import './CheckoutForm.css'
+import Column from "antd/es/table/Column";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
@@ -73,15 +75,16 @@ const CheckoutForm = () => {
       <Form
         form={form}
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 17 }}
+        style={{ maxWidth: 600}}
         initialValues={{ remember: true }}
         autoComplete="on"
       >
-        <Form.Item
+      
+        <Form.Item 
           name={["address", "province"]}
-          noStyle
+          style={{ display: "flex", flexDirection: "column", padding: "2rem 0 0 0" }}
           rules={[{ required: true, message: "Province is required" }]}
         >
           <Select
@@ -106,6 +109,7 @@ const CheckoutForm = () => {
             </Select>
           </Form.Item>
 
+   
         <Form.Item
           label="Förnamn"
           name="Förnamn"
@@ -164,6 +168,7 @@ const CheckoutForm = () => {
         >
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
+
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button

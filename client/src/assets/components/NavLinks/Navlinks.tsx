@@ -67,9 +67,9 @@ function NavLinks() {
               <ShopingCart />
               
               {sum >0 ? <>
-              <button>
+              <button className="btnStyle">
                 <NavLink to="/kassa" onClick={onClose}>
-                  Till kassa
+                  Till kassan
                 </NavLink>
               </button>
               </> :
