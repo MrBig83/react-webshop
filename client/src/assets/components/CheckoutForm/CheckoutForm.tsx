@@ -18,10 +18,10 @@ const CheckoutForm = () => {
     setOrderItems,
     setOrderInfo,
     setOrderTotal,
-  } = useContext(OrderContext)!;
+  } = useContext(OrderContext);
 
-  const { data } = useContext(UserContext)!;
-  const { shippingData, orderTotal, loading } = useContext(OrderContext)!;
+  const { data } = useContext(UserContext);
+  const { shippingData, orderTotal, loading } = useContext(OrderContext);
   const { items, shopingcartTotal } = useContext(MyCartContext);
 
   const [submittable, setSubmittable] = useState(false);
