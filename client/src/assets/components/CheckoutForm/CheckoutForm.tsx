@@ -1,4 +1,4 @@
-import { Button, Form, Input, InputNumber, Select, Spin } from "antd";
+import { Button, Form, Input, Select, Spin } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
@@ -27,6 +27,7 @@ const CheckoutForm = () => {
 
   const [submittable, setSubmittable] = useState(false);
   const values = Form.useWatch([], form);
+
   const claculateOrderTotal = (value: string) => {
     const parsedValue = JSON.parse(value);
     const shippingPrice = parsedValue.price;
@@ -160,10 +161,14 @@ const CheckoutForm = () => {
           label="Postnummer"
           name="Postnummer"
           rules={[
-            { required: true, type: "number", message: "Ange postnummer" },
+            {
+              required: true,
+              pattern: new RegExp(/^[0-9]+$/),
+              message: "Ange postnummer",
+            },
           ]}
         >
-          <InputNumber onChange={(e) => setZipcode(e.target.value)} />
+          <Input onChange={(e) => setZipcode(e.target.value)} />
         </Form.Item>
 
         <Form.Item
