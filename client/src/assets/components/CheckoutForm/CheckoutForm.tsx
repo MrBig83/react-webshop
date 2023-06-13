@@ -1,4 +1,4 @@
-import { Button, Form, Input, Select, Spin } from "antd";
+import { Button, Form, Input, InputNumber, Select, Spin } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
@@ -79,9 +79,9 @@ const CheckoutForm = () => {
         autoComplete="on"
       >
         <Form.Item
-          name={["address", "province"]}
+          name={["Frakt metod"]}
           noStyle
-          rules={[{ required: true, message: "Province is required" }]}
+          rules={[{ required: true, message: "Ange leverans metod" }]}
         >
           <Select
             defaultValue="Välj fraktsätt"
@@ -109,7 +109,15 @@ const CheckoutForm = () => {
           label="Förnamn"
           name="Förnamn"
           initialValue={data.firstName}
-          rules={[{ required: true, message: "Ange förnamn" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange förnamn",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setFirstname(e.target.value)} />
         </Form.Item>
@@ -118,7 +126,15 @@ const CheckoutForm = () => {
           label="Efternamn"
           name="Efternamn"
           initialValue={data.lastName}
-          rules={[{ required: true, message: "Ange efternamn" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange efternamn",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setLastname(e.target.value)} />
         </Form.Item>
@@ -143,15 +159,25 @@ const CheckoutForm = () => {
         <Form.Item
           label="Postnummer"
           name="Postnummer"
-          rules={[{ required: true, message: "Ange postnummer" }]}
+          rules={[
+            { required: true, type: "number", message: "Ange postnummer" },
+          ]}
         >
-          <Input onChange={(e) => setZipcode(e.target.value)} />
+          <InputNumber onChange={(e) => setZipcode(e.target.value)} />
         </Form.Item>
 
         <Form.Item
           label="Stad"
           name="Stad"
-          rules={[{ required: true, message: "Ange stad" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange stad",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setCity(e.target.value)} />
         </Form.Item>
@@ -159,7 +185,15 @@ const CheckoutForm = () => {
         <Form.Item
           label="Land"
           name="Land"
-          rules={[{ required: true, message: "Ange land" }]}
+          rules={[
+            {
+              required: true,
+              message: "Ange land",
+              pattern: new RegExp(
+                /^[a-zA-Z@~`!@#$%^&*()_=+\\\\';:\"\\/?>.<,-]+$/i
+              ),
+            },
+          ]}
         >
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
