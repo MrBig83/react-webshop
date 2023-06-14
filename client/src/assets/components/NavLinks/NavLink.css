@@ -2,11 +2,10 @@ ul {
   display: flex;
   list-style-type: none;
   gap: 3rem;
-  /* margin-right: 0.8rem; */
   text-transform: uppercase;
   justify-content: center;
   align-items: center;
-  margin-right: 3rem;
+  margin-right: 2rem;
 }
 
 a.active {
@@ -28,15 +27,14 @@ svg {
 
 .menu-container {
   display: flex;
-  justify-content: space-between;
-
+  justify-content: space-around;
   align-items: center;
 
 }
 .menu-right {
   display: flex;
   gap: 0.5rem;
-  padding-left: 3rem;
+  max-width: 150px;
 }
 
 .shopingcart-icon :hover {
@@ -44,16 +42,10 @@ svg {
 }
 
 .menu-left {
-  width: 150px;
+  max-width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media (max-width: 600px) {
-  .main-menu {
-    display: none;
-  }
 }
 
 .shopingcart-container {
@@ -62,7 +54,7 @@ svg {
 
 .shopingcart-icon > p {
   position: absolute;
-  background-color: rgb(222, 215, 121);
+  background: #a4c4e998;
   color: rgb(23, 23, 23);
   border-radius: 50%;
   height: 1rem;
@@ -73,3 +65,41 @@ svg {
   align-items: center;
   justify-content: center;
 }
+
+/** ---------- mindre skärmar -------------**/
+@media (max-width: 1000px) {
+  svg {
+    width: 30px;
+    font-size: 18px;
+  }
+
+  .main-menu li {
+    font-size: 12px;
+  }
+
+  .menu-left p {
+    font-size: 13px;
+  }
+
+  .shopingcart-icon > p {
+    position: absolute;
+    background: #a4c4e9d5;
+    color: rgb(23, 23, 23);
+    border-radius: 50%;
+    height: 1rem;
+    width: 1rem;
+    top: -22px;
+    right: -3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-menu {
+    display: none;
+  }
+
+}
+

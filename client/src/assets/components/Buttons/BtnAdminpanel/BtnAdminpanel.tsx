@@ -8,7 +8,7 @@ const BtnAdminpanel = () => {
 
 
   return (
-    <button className="BtnAdminpanel" >
+    <button className="btnStyleAdmin" >
         <NavLink to="/adminpanel">Adminpanel</NavLink>
     </button>
   );
