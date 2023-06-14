@@ -2,7 +2,7 @@ import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { UserContext } from "../../../context/UserContext";
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
 import './OrderConfirm.css'
 const OrderConfirm = () => {
@@ -35,7 +35,7 @@ const OrderConfirm = () => {
     <div>
       <h1>Orderbekräftelse</h1>
       {loading ? (
-        <Spin tip="Processing order..." />
+        <Spin />
       ) : (
         <div>
           <h3>Ordernummer: {orderNumber}</h3>

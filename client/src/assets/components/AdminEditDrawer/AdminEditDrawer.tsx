@@ -3,9 +3,6 @@ import IProduct from '../../interfaces/IProduct';
 import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
 import {  ProductContext } from "../../../context/ProductContext"
 
-
-
-
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
   const { updateProduct } = useContext(ProductContext);
@@ -31,14 +28,12 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
       <Button className='btnStyle' type="primary" onClick={showDrawer}>
         Redigera
       </Button>
-
       <Drawer
         title="Redigera produkt"
         width={720}
         onClose={onClose}
         open={open}
         bodyStyle={{ paddingBottom: 80 }}
-
       >
         <Form 
             layout="vertical" hideRequiredMark
@@ -53,11 +48,9 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
               ["description"]: product.description, 
               ["deleted"]: false
             }}
-
         >
           <Row gutter={16}>
             <Col span={12}>
-
               <Form.Item
                 name="title"
                 label="Titel"
@@ -71,8 +64,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 name="price"
                 label="Pris"
                 rules={[{ required: false,  }]}
-              >
-                
+              >          
                 <InputNumber defaultValue = {product.price} />
               </Form.Item>
             </Col>
@@ -109,7 +101,6 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-
             </Col>
           </Row>
           <Row gutter={16}>
@@ -147,5 +138,4 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
     </>
   );
 };
-
 export default AdminEditDrawer;

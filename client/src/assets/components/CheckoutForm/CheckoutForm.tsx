@@ -35,8 +35,10 @@ const CheckoutForm = () => {
     const orderTotal = shopingcartTotal + shippingPrice;
     setOrderTotal(orderTotal);
   };
+  useEffect(() =>{
 
-  setOrderInfo(items);
+    setOrderInfo(items);
+  })
 
   const OrderItems = items.map((p) => ({
     product: p.product._id,
@@ -87,10 +89,10 @@ const CheckoutForm = () => {
           rules={[{ required: true, message: "Ange leverans metod" }]}
         >
           <Select
-            defaultValue="Välj fraktsätt"
-            style={{ minWidth: 300 }}
+            //intialValue="Välj fraktsätt"
+            style={{ minWidth: 300, paddingBottom: 10 }}
             onChange={handleDropdownChange}
-            placeholder="Select province"
+            placeholder="Välj fraktsätt"
           >
             {shippingData
               .map((d) => ({
@@ -100,10 +102,10 @@ const CheckoutForm = () => {
                 deliveryTimeInHours: d.deliveryTimeInHours,
               }))
               .map((option) => (
-                <option key={option.id} value={JSON.stringify(option)}>
+                <Select.Option key={option.id} value={JSON.stringify(option)}>
                   {option.company} {option.price}:- leveranstid{" "}
                   {option.deliveryTimeInHours} h
-                </option>
+                </Select.Option>
               ))}
           </Select>
         </Form.Item>
@@ -219,7 +221,7 @@ const CheckoutForm = () => {
         </Form.Item>
       </Form>
 
-      <h3>Totalbelop med frakt: {orderTotal}</h3>
+      <h3>Totalbelop med frakt: {orderTotal} kr</h3>
     </div>
   );
 };

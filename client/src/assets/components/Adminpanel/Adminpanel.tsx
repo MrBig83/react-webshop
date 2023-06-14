@@ -6,13 +6,12 @@ import AdminpanelOrders from "./AdminOrders";
 import "./Adminpanel.css";
 
 const Adminpanel = () => {
-    const { data } = useContext(UserContext); //typas (skall vara likadant som order och product)
+    const { data } = useContext(UserContext); 
     if(!data.isAdmin) {
         return (
             <h1>Du får inte vara här.</h1>
         )
     }
-    
   return (
     <>
     <div className="admin-title">
