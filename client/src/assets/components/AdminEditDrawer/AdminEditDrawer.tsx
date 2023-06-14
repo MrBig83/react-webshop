@@ -56,7 +56,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Titel"
                 rules={[{ required: false, message: "Fyll i produkttitel" }]}
               >
-                <Input defaultValue = {product.title} />
+                <Input value = {product.title} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -65,7 +65,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Pris"
                 rules={[{ required: false,  }]}
               >          
-                <InputNumber defaultValue = {product.price} />
+                <InputNumber value = {product.price} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -74,7 +74,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Id"
                 rules={[{ required: false,  }]}
               >
-                <Input disabled={true} defaultValue = {product._id} />
+                <Input disabled={true} value = {product._id} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -83,7 +83,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Saldo"
                 rules={[{ required: false,  }]}
               >
-                <InputNumber defaultValue = {product.inStock} />
+                <InputNumber value = {product.inStock} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -94,7 +94,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
               >
                 <Input
                   style={{ width: '100%' }}
-                defaultValue={product.image}
+                value={product.image}
                 />
               </Form.Item>
             </Col>
@@ -115,7 +115,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                   },
                 ]}
               >
-                <Input.TextArea rows={4} defaultValue={product.description} />
+                <Input.TextArea rows={4} value={product.description} />
               </Form.Item>
               </Col>
           </Row>
