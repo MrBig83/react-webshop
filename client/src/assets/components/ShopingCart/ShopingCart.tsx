@@ -31,7 +31,7 @@ const ShoppingCart = () => {
           />
         ))}
       </div>
-      <h3>Totalbelopp: {calculateTotal()} kr</h3>
+      <h3>Kundvagns belopp: {calculateTotal()} kr</h3>
     </>
   );
 };
