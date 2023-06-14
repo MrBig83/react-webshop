@@ -75,9 +75,9 @@ const CheckoutForm = () => {
       <Form
         form={form}
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 17 }}
+        style={{ maxWidth: 600}}
         initialValues={{ remember: true }}
         autoComplete="on"
       >
@@ -107,6 +107,7 @@ const CheckoutForm = () => {
               ))}
           </Select>
         </Form.Item>
+
 
         <Form.Item
           label="Förnamn"
@@ -203,6 +204,7 @@ const CheckoutForm = () => {
         >
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
+
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button

@@ -8,7 +8,6 @@ const ShoppingCart = () => {
 
   return (
     <>
-      <h2>Dina varor</h2>
       <div>
         {items.map((item) => (
           <CartItem

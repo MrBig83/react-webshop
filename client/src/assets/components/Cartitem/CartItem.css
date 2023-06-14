@@ -1,12 +1,15 @@
 .cartItem img {
     width: fit-content;
-    max-height: 80px;
-    /* overflow: hidden; */
+    max-height: 75px;
 }
 
 .cartItem {
     margin-top: 1rem;
-    padding-top: .6rem;
+    padding-top: 1em;
     padding-bottom: .5rem;
+    max-width: 250px;
+}
 
+.cartItem h3 {
+    font-size: 15px;
 }

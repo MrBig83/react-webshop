@@ -18,3 +18,19 @@
   height: 20rem; 
   justify-content: space-around;
 }
+
+@media (max-width: 900px) {
+  .logo {
+    width: auto; /* Ange den önskade bredden här */
+    height: 15rem; /* Låt höjden anpassas automatiskt för att behålla proportionerna */
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 1000px) {
+  .logo {
+    width: auto; /* Ange den önskade bredden här */
+    height: 18rem; /* Låt höjden anpassas automatiskt för att behålla proportionerna */
+    justify-content: space-around;
+  }
+}

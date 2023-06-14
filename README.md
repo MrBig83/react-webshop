@@ -1,4 +1,4 @@
-# .matjo makeup - Grupp 3
+# matjo. makeup - Grupp 3
 
 För att starta: 
 * Extrahera zip-filen.  

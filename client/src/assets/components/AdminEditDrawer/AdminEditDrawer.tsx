@@ -29,7 +29,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   return (
     <>
       <Button className='btnStyle' type="primary" onClick={showDrawer}>
-        Redigera produkt
+        Redigera
       </Button>
 
       <Drawer
