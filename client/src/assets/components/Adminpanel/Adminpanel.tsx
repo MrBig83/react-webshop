@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { UserContext } from "../../../context/UserContext";
 import AdminpanelProducts from "./AdminProducts"
 import AdminpanelOrders from "./AdminOrders";
-
 import "./Adminpanel.css";
 
 const Adminpanel = () => {

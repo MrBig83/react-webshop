@@ -50,7 +50,7 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
                 name="_id"
                 label="Id"
               >
-                <Input disabled={true} defaultValue = {order._id} />
+                <Input disabled={true} value = {order._id} />
               </Form.Item>
             </Col>
           </Row>
@@ -61,7 +61,7 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
                 name="orderNumber"
                 label="Ordernummer:"
               >
-                <Input disabled={true} defaultValue = {order.orderNumber} />
+                <Input disabled={true} value = {order.orderNumber} />
               </Form.Item>
             </Col>
           </Row>
@@ -69,7 +69,7 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
             <Form.Item 
             label="Skickad?"
             name="shipped">
-          <Radio.Group onChange={onChange} defaultValue={false}>
+          <Radio.Group onChange={onChange} value={false}>
             <Radio value={true}> Ja </Radio>
             <Radio value={false}> Nej </Radio>
           </Radio.Group>
