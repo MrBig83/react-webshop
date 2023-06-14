@@ -24,7 +24,6 @@ const AdminAddProductDrawer = () => {
   };
 
   const onChange = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
   };
   
   return (
@@ -32,24 +31,20 @@ const AdminAddProductDrawer = () => {
       <Button className='btnStyle' type="primary" onClick={showDrawer}>
         Lägg till produkt
       </Button>
-
       <Drawer
         title="Redigera produkt"
         width={720}
         onClose={onClose}
         open={open}
         bodyStyle={{ paddingBottom: 80 }}
-
       >
         <Form 
             layout="vertical" hideRequiredMark
             onFinish={(values) => addProduct(values)}
             onFinishFailed={onFinishFailed}
-
         >
           <Row gutter={16}>
             <Col span={12}>
-
               <Form.Item
                 name="title"
                 label="Titel"
@@ -101,7 +96,6 @@ const AdminAddProductDrawer = () => {
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-
             </Col>
           </Row>
           <Row gutter={16}>
@@ -139,5 +133,4 @@ const AdminAddProductDrawer = () => {
     </>
   );
 };
-
 export default AdminAddProductDrawer;

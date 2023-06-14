@@ -1,10 +1,26 @@
 .btnbuynow {
     display: inline-block;
+    padding: .8em 2em;
+    background: #d7d6d6bb;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: .8rem;
+    letter-spacing: 2px;
+    border: none;
+    border-radius: .2rem;
+    font-size: 12px;
+}
+
+.btnbuynow:hover {
+    background-color: #7e7d7d9d ;
+}
+.disabled {
+    display: inline-block;
     padding: .9em .9em;
     background: #d7d6d6;
     color: #000;
     text-decoration: none;
-    cursor: pointer;
     font-size: .8rem;
     letter-spacing: 2px;
     /* transition: transform 200ms ease-in-out; */
@@ -12,8 +28,21 @@
     border-radius: .2rem;
     font-size: 12px;
 }
-
-.btnbuynow:hover {
-    /* transform: scale(1.1); */
+/* .disabled:hover {
+    transform: scale(1.1);
     background-color: #7e7d7d9d ;
-}
+} */
+
+@media (max-width: 900px) {
+    .btnbuynow {
+        font-size: 11px;
+        padding: .9em .9em;
+    }
+    }
+
+    @media (max-width: 780px) {
+        .btnbuynow {
+            font-size: 11px;
+            padding: .9em .9em;
+        }
+        }

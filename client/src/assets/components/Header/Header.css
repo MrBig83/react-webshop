@@ -9,13 +9,13 @@
 .menu-container {
   display: flex;
   background-color: white;
-  /* border-top: 1px solid rgb(228, 223, 223); */
   border-bottom: 1px solid rgb(0, 0, 0);
   width: 100%;
 }
 
-.logo {
-  width: auto; /* Ange den önskade bredden här */
-  height: 20rem; /* Låt höjden anpassas automatiskt för att behålla proportionerna */
-  justify-content: space-around;
+img.logo{
+object-fit: cover;
+  height: 10rem;
+  width: 20rem;
 }
+

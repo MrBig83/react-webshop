@@ -3,9 +3,6 @@ import IProduct from '../../interfaces/IProduct';
 import { Button, Col, Drawer, Form, Input, Row, Radio, InputNumber, RadioChangeEvent } from 'antd';
 import {  ProductContext } from "../../../context/ProductContext"
 
-
-
-
 const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   const [open, setOpen] = useState(false);
   const { updateProduct } = useContext(ProductContext);
@@ -29,16 +26,14 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
   return (
     <>
       <Button className='btnStyle' type="primary" onClick={showDrawer}>
-        Redigera produkt
+        Redigera
       </Button>
-
       <Drawer
         title="Redigera produkt"
         width={720}
         onClose={onClose}
         open={open}
         bodyStyle={{ paddingBottom: 80 }}
-
       >
         <Form 
             layout="vertical" hideRequiredMark
@@ -53,17 +48,15 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
               ["description"]: product.description, 
               ["deleted"]: false
             }}
-
         >
           <Row gutter={16}>
             <Col span={12}>
-
               <Form.Item
                 name="title"
                 label="Titel"
                 rules={[{ required: false, message: "Fyll i produkttitel" }]}
               >
-                <Input defaultValue = {product.title} />
+                <Input value = {product.title} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -71,9 +64,8 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 name="price"
                 label="Pris"
                 rules={[{ required: false,  }]}
-              >
-                
-                <InputNumber defaultValue = {product.price} />
+              >          
+                <InputNumber value = {product.price} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -82,7 +74,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Id"
                 rules={[{ required: false,  }]}
               >
-                <Input disabled={true} defaultValue = {product._id} />
+                <Input disabled={true} value = {product._id} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -91,7 +83,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                 label="Saldo"
                 rules={[{ required: false,  }]}
               >
-                <InputNumber defaultValue = {product.inStock} />
+                <InputNumber value = {product.inStock} />
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -102,14 +94,13 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
               >
                 <Input
                   style={{ width: '100%' }}
-                defaultValue={product.image}
+                value={product.image}
                 />
               </Form.Item>
             </Col>
           </Row>
           <Row gutter={16}>
             <Col span={12}>
-
             </Col>
           </Row>
           <Row gutter={16}>
@@ -124,7 +115,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
                   },
                 ]}
               >
-                <Input.TextArea rows={4} defaultValue={product.description} />
+                <Input.TextArea rows={4} value={product.description} />
               </Form.Item>
               </Col>
           </Row>
@@ -147,5 +138,4 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
     </>
   );
 };
-
 export default AdminEditDrawer;

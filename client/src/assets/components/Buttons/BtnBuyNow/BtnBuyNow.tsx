@@ -24,10 +24,14 @@ const BtnBuyNow = ({ product }: { product: IProduct }) => {
     }
 
     addProduct(product);
+
+ 
   };
 
+
   return (
-    <button className="btnbuynow" onClick={buyNow}>
+    
+    <button className="btnbuynow" onClick={buyNow} >
       {productInCart ? "Tillagd" : "Lägg i varukorgen"}
     </button>
   );

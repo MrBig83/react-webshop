@@ -3,7 +3,6 @@ import { Link, useParams } from "react-router-dom";
 import "./SingleProduct.css";
 import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import IProduct from "../../interfaces/IProduct";
-// import Products from "../Products/Products";
 
 const defaultProduct: IProduct = {
   _id: "",
@@ -53,7 +52,9 @@ const SingleProduct = () => {
       </div>
       <br />
       <br />
+      <div className="link-singleproduct">
       <Link to={`/`}>Tillbaka till huvudsidan</Link>
+      </div>
     </div>
   );
 };

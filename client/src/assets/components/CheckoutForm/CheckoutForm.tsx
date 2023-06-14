@@ -1,10 +1,10 @@
-import { Button, Form, Input, Select, Spin } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import "../../components/Buttons/BtnStyle/BtnStyle.css";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
@@ -23,7 +23,7 @@ const CheckoutForm = () => {
   } = useContext(OrderContext);
 
   const { data } = useContext(UserContext);
-  const { shippingData, orderTotal, loading } = useContext(OrderContext);
+  const { shippingData, orderTotal } = useContext(OrderContext);
   const { items, shopingcartTotal } = useContext(MyCartContext);
 
   const [submittable, setSubmittable] = useState(false);
@@ -35,8 +35,10 @@ const CheckoutForm = () => {
     const orderTotal = shopingcartTotal + shippingPrice;
     setOrderTotal(orderTotal);
   };
+  useEffect(() =>{
 
-  setOrderInfo(items);
+    setOrderInfo(items);
+  })
 
   const OrderItems = items.map((p) => ({
     product: p.product._id,
@@ -47,7 +49,6 @@ const CheckoutForm = () => {
 
   const handleSubmit = () => {
     placeOrder();
-
     Navigate("/order", { replace: true });
   };
 
@@ -76,9 +77,9 @@ const CheckoutForm = () => {
       <Form
         form={form}
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
+        labelCol={{ span: 9 }}
+        wrapperCol={{ span: 17 }}
+        style={{ maxWidth: 600}}
         initialValues={{ remember: true }}
         autoComplete="on"
       >
@@ -88,10 +89,10 @@ const CheckoutForm = () => {
           rules={[{ required: true, message: "Ange leverans metod" }]}
         >
           <Select
-            defaultValue="Välj fraktsätt"
-            style={{ minWidth: 300 }}
+            //intialValue="Välj fraktsätt"
+            style={{ minWidth: 300, paddingBottom: 10 }}
             onChange={handleDropdownChange}
-            placeholder="Select province"
+            placeholder="Välj fraktsätt"
           >
             {shippingData
               .map((d) => ({
@@ -101,13 +102,14 @@ const CheckoutForm = () => {
                 deliveryTimeInHours: d.deliveryTimeInHours,
               }))
               .map((option) => (
-                <option key={option.id} value={JSON.stringify(option)}>
+                <Select.Option key={option.id} value={JSON.stringify(option)}>
                   {option.company} {option.price}:- leveranstid{" "}
                   {option.deliveryTimeInHours} h
-                </option>
+                </Select.Option>
               ))}
           </Select>
         </Form.Item>
+
 
         <Form.Item
           label="Förnamn"
@@ -166,9 +168,14 @@ const CheckoutForm = () => {
           rules={[
             {
               required: true,
-              pattern: new RegExp(/^[0-9]+$/),
+              pattern: new RegExp(/^[0-9]+$/),      
               message: "Ange postnummer",
             },
+            {
+              min: 5,
+              max: 5, 
+              message: "Postnummer måste vara 5 siffror"
+            }
           ]}
         >
           <Input onChange={(e) => setZipcode(e.target.value)} />
@@ -200,6 +207,7 @@ const CheckoutForm = () => {
           <Input onChange={(e) => setCountry(e.target.value)} />
         </Form.Item>
 
+
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button
             onClick={handleSubmit}
@@ -213,7 +221,7 @@ const CheckoutForm = () => {
         </Form.Item>
       </Form>
 
-      <h3>Totalbelop med frakt: {orderTotal}</h3>
+      <h3>Totalbelop med frakt: {orderTotal} kr</h3>
     </div>
   );
 };

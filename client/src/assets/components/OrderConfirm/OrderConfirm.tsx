@@ -1,10 +1,10 @@
 import { MyCartContext } from "../../../context/CartContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { UserContext } from "../../../context/UserContext";
-import shippingTime from "../../../context/OrderContext";
 import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { Spin } from "antd";
+import './OrderConfirm.css'
 const OrderConfirm = () => {
   const { emptyCart } = useContext(MyCartContext);
 
@@ -20,20 +20,11 @@ const OrderConfirm = () => {
     shippingTime,
   } = useContext(OrderContext)!;
 
-
-
-  const navigate = useNavigate();
   const current = new Date();
   const futureDate = new Date(
     current.getTime() + shippingTime.deliveryTimeInHours * 60 * 60 * 1000
   );
 
-  //   början  på redirect funktion
-  const redirectUser = (orderNumber: number) => {
-    useEffect(() => {
-      if ((orderNumber = 0)) navigate("/");
-    });
-  };
 
   useEffect(() => {
     emptyCart([]);
@@ -44,16 +35,16 @@ const OrderConfirm = () => {
     <div>
       <h1>Orderbekräftelse</h1>
       {loading ? (
-        <Spin tip="Processing order..." />
+        <Spin />
       ) : (
         <div>
           <h3>Ordernummer: {orderNumber}</h3>
-          {orderInfo.map((p) => (
-            <div>
-              <p>
-                {p.product.title} x {p.quantity}
-              </p>
-              <p>{p.product.price}:-</p>
+          {orderInfo.map((p, index) => (
+            <div key={index}>
+              <li>
+               {p.quantity} x <b>{p.product.title}</b> {p.product.price}:-
+              </li>
+              <li></li>
             </div>
           ))}
           <p>Leverantör {shippingTime.company}</p>

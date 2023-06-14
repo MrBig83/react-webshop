@@ -1,18 +1,12 @@
-import BtnAdminEditProduct from "../Buttons/BtnAdminEditProduct/BtnAdminEditProduct"
-import "./AdminProductCard.css";
-// import {  ProductContext } from "../../../context/ProductContext"
 
+import "./AdminProductCard.css";
 import IProduct from "../../interfaces/IProduct";
 function AdminProductCard({ product }: { product: IProduct }) {
-  // ================== Behövs typas! =================
-  // const { products } = useContext(ProductContext)!;
 
   return (
        <div className="adminProductCardInfo">
         <h3>{product.title}</h3>
         <p>{product.price}:-</p>
-        {/* Knappen för att öppna sidopanelen finns i AdminProducts */}
-        {/* <BtnAdminEditProduct product={product}/> */}
       </div>  
   );
 }
