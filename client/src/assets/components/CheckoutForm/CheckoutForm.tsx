@@ -5,6 +5,7 @@ import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import "../../components/Buttons/BtnStyle/BtnStyle.css";
 import { NavLink, useNavigate } from "react-router-dom";
+import './CheckoutForm.css'
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
