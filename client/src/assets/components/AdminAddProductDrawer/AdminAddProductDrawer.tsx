@@ -24,7 +24,6 @@ const AdminAddProductDrawer = () => {
   };
 
   const onChange = (e: RadioChangeEvent) => {
-    console.log('radio checked', e.target.value);
   };
   
   return (
