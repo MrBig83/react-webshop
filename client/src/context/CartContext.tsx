@@ -13,7 +13,7 @@ interface CartContext {
   removeItem: (itemId: string) => void;
   removeProduct: (productId: string) => void;
   productIsInCart: (productId: string) => boolean;
-  calculateTotal: () => void;
+  calculateTotal: () => number;
   emptyCart: () => void;
 }
 

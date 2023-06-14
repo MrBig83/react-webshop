@@ -22,12 +22,12 @@ const MobileMenu = () => {
         <ul className="mobile-menu">
           <li>
             <NavLink onClick={onClose} to="/">
-              hem
+              shop
             </NavLink>
           </li>
           <li>
-            <NavLink onClick={onClose} to="/produkter">
-              produkter
+            <NavLink onClick={onClose} to="/news">
+              nyheter
             </NavLink>
           </li>
           <li>

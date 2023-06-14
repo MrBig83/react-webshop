@@ -9,8 +9,8 @@
   padding: 1em;
   background-color: rgba(243, 243, 243, 0.349);
   border-radius: 1.5em;
-  /* border: 1px solid #c0bfbd83; */
 }
+
 .ProductCardInfo {
   display: flex;
   flex-direction: column;

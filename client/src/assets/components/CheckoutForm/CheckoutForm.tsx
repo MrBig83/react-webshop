@@ -1,13 +1,10 @@
-import { Button, Form, Input, Select, Spin } from "antd";
+import { Button, Form, Input, Select } from "antd";
 import { UserContext } from "../../../context/UserContext";
 import { OrderContext } from "../../../context/OrderContext";
 import { useContext, useState, useEffect } from "react";
 import { MyCartContext } from "../../../context/CartContext";
 import "../../components/Buttons/BtnStyle/BtnStyle.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import './CheckoutForm.css'
-import './CheckoutForm.css'
-import Column from "antd/es/table/Column";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
   const [form] = Form.useForm();
@@ -26,7 +23,7 @@ const CheckoutForm = () => {
   } = useContext(OrderContext);
 
   const { data } = useContext(UserContext);
-  const { shippingData, orderTotal, loading } = useContext(OrderContext);
+  const { shippingData, orderTotal } = useContext(OrderContext);
   const { items, shopingcartTotal } = useContext(MyCartContext);
 
   const [submittable, setSubmittable] = useState(false);
@@ -50,7 +47,6 @@ const CheckoutForm = () => {
 
   const handleSubmit = () => {
     placeOrder();
-
     Navigate("/order", { replace: true });
   };
 
@@ -170,9 +166,14 @@ const CheckoutForm = () => {
           rules={[
             {
               required: true,
-              pattern: new RegExp(/^[0-9]+$/),
+              pattern: new RegExp(/^[0-9]+$/),      
               message: "Ange postnummer",
             },
+            {
+              min: 5,
+              max: 5, 
+              message: "Postnummer måste vara 5 siffror"
+            }
           ]}
         >
           <Input onChange={(e) => setZipcode(e.target.value)} />

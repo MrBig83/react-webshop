@@ -52,18 +52,14 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
       setData(data);
     } catch (err) {
       console.log(err);
-      // Handle errors
     }
   };
-
-  //här loggar vi ut
 
   const logOut = async (): Promise<void> => {
     await fetch("/api/users/logout", {
       method: "POST",
     });
     const data: IuserData = {
-      // Update the assignment
       email: "",
       firstName: "",
       isAdmin: false,

@@ -1,10 +1,8 @@
 import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
 import "../Buttons/BtnStyle/BtnStyle.css"
-// import { ICartItem } from "../../interfaces/ICartItem";
 import IProduct from "../../interfaces/IProduct";
 function ProductCard({ product }: { product: IProduct }) {
-  // ================== Behövs typas! =================
 let lager = "";
 let lagerBool = true
 
