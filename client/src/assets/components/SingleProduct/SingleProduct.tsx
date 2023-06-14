@@ -53,7 +53,9 @@ const SingleProduct = () => {
       </div>
       <br />
       <br />
+      <div className="link-singleproduct">
       <Link to={`/`}>Tillbaka till huvudsidan</Link>
+      </div>
     </div>
   );
 };

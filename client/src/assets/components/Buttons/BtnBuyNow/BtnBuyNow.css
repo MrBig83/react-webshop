@@ -34,3 +34,17 @@
     transform: scale(1.1);
     background-color: #7e7d7d9d ;
 } */
+
+@media (max-width: 900px) {
+    .btnbuynow {
+        font-size: 11px;
+        padding: .9em .9em;
+    }
+    }
+
+    @media (max-width: 780px) {
+        .btnbuynow {
+            font-size: 11px;
+            padding: .9em .9em;
+        }
+        }

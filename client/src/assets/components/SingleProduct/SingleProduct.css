@@ -7,7 +7,7 @@
     
 }
 
-.SingleProduct > .title img{
+.SingleProduct .title img{
    max-height: 200px;
    margin-top: 8rem;
    overflow: hidden;
@@ -24,8 +24,9 @@
 
 }
 
-.SingleProduct Link {
+.link-singleproduct {
 text-decoration: none;
+padding-right: 1em;
 }
 
 
@@ -33,3 +34,110 @@ text-decoration: none;
     align-items: flex-end;
     margin-top: 1rem;
 }
+
+
+@media (max-width: 900px) {
+
+    .SingleProduct .title img{
+        max-height: 200px;
+        margin-top: 7rem;
+        overflow: hidden;
+     }
+
+     .SingleProduct h3 {
+        font-size: 18px;
+    }
+
+    .info {
+        margin: 4rem;
+        font-size: 14px;
+        padding: 1rem;    
+    }
+     
+
+  }
+
+  @media (max-width: 500px) {
+    .SingleProduct {
+        display: flex;
+        flex-direction: column;
+        cursor:context-menu;
+        margin: 2rem;
+        padding-top: 1rem;
+    }
+
+    .SingleProduct .title img{
+        max-height: 170px;
+        /* padding-left: 4em; */
+
+     }
+
+     .SingleProduct .title{
+        text-align: center;
+        /* padding-left: 4em; */
+
+     }
+
+    .SingleProduct h3 {
+        font-size: 16px;
+    }
+
+    .info {
+        margin: 0rem;
+        font-size: 13px;
+        text-align: center;
+    
+    }
+
+    .link-singleproduct {
+        text-decoration: none;
+        
+        font-size: 12px;
+        text-align: center;
+        font-weight: 600;
+
+        }
+    }
+   
+    @media (max-width: 740px) {
+        .SingleProduct {
+            display: flex;
+            flex-direction: column;
+            cursor:context-menu;
+            margin: 2rem;
+            padding-top: 1rem;
+        }
+    
+        .SingleProduct .title img{
+            max-height: 200px;
+            /* padding-left: 4em; */
+    
+         }
+    
+         .SingleProduct .title{
+            text-align: center;
+            /* padding-left: 4em; */
+    
+         }
+    
+        .SingleProduct h3 {
+            font-size: 20px;
+        }
+    
+        .info {
+            margin: 0rem;
+            font-size: 15px;
+            text-align: center;
+        
+        }
+    
+        .link-singleproduct {
+            text-decoration: none;
+            
+            font-size: 12px;
+            text-align: center;
+            font-weight: 600;
+    
+            }
+        }
+       
