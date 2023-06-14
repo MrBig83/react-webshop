@@ -21,12 +21,8 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
   };
 
   const onChange = (e: RadioChangeEvent) => {
-    
-    // setValue(e.target.value);
+ 
   };
-  
-  
-  // const [value, setValue] = useState(false);
   return (
     <>
       <Button className='btnStyle' type="primary" onClick={showDrawer}>
@@ -39,7 +35,6 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
         onClose={onClose}
         open={open}
         bodyStyle={{ paddingBottom: 80 }}
-
       >
         <Form 
             layout="vertical" hideRequiredMark
@@ -47,12 +42,9 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
             onFinishFailed={onFinishFailed}
             initialValues={{
               ["_id"]: order._id,
-              // ["shipped"]: false
             }}
-
         >
           <Row gutter={16}>
-
             <Col span={12}>
               <Form.Item
                 name="_id"
@@ -92,5 +84,4 @@ const AdminEditOrderDrawer = ({ order }: { order: IOrder }) => {
     </>
   );
 };
-
 export default AdminEditOrderDrawer;

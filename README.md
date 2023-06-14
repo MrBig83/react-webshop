@@ -15,13 +15,15 @@ Lösenord: lasse
 (Lasse är inte admin)
 
 Som admin har du tillgång till adminpanelen, där du kan lägga till, ta bort och redigera produkter. 
-Du kan även markera en order som levererad. 
+Du kan även markera en order som levererad.
+Adminpanelen är anpassad för desktop och surfplatta, då vi tänker att man inte sitter på sin mobil och administrerar ordrar och produkter.
 
 Som kund kan du klicka dig in på varje produkt för att läsa mer om den. Klicka på "Lägg i varukorg" för att lägga till en produkt i varukorgen. 
-Om du sedan klickar på den lilla varukor-ikonen högst upp till höger så ser du varorna i varukorgen. Där kan du även öka eller minska antalet av varje specifik produkt. 
+Om du sedan klickar på den lilla varukorg-ikonen högst upp till höger så ser du varorna i varukorgen. Där kan du även öka eller minska antalet av varje specifik produkt. 
 
 Klicka på Till kassan för att starta utckeckningsflödet och komma till Kassa-sidan där du fyller i önskad leveransadress och fraktsätt. 
 Klicka sedan på Lägg order för att slutföra ditt köp och komma till orderbekräftelsen. OBS! Härifrån kan du inte återgå till kassa-sidan utan du navigeras till startsidan. Kundvagnen töms vid lagd order. 
+
 
 Mycket nöje! 
 Hälsningar Amanda, Oscar, Jonas, Therese och Martin i grupp 3. 
