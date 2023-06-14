@@ -49,7 +49,7 @@ const OrderConfirm = () => {
         <div>
           <h3>Ordernummer: {orderNumber}</h3>
           {orderInfo.map((p) => (
-            <div>
+            <div key={p.id}>
               <p>
                 {p.product.title} x {p.quantity}
               </p>
