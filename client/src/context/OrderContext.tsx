@@ -11,12 +11,12 @@ interface OrderContextProps {
   zipcode: string;
   city: string;
   country: string;
-  shippingData: any; /// typa
+  shippingData: {};
   orderNumber: number;
-  orderInfo: any; ///typa
+  shippingTime: string;
+  orderInfo: [];
   loading: boolean;
   orders: IOrder[];
-  //setOrders: React.Dispatch<React.SetStateAction<string>>; // ==============================
 
   orderTotal: number;
 
@@ -31,8 +31,10 @@ interface OrderContextProps {
   setShippingMethod: React.Dispatch<React.SetStateAction<string>>;
   setShippingTime: React.Dispatch<React.SetStateAction<string>>;
 
-  setOrderItems: React.Dispatch<React.SetStateAction<string>>;
-  setOrderInfo: React.Dispatch<React.SetStateAction<string>>;
+  getOrders: React.Dispatch<React.SetStateAction<never[]>>;
+  setOrders: React.Dispatch<React.SetStateAction<never[]>>;
+  setOrderItems: React.Dispatch<React.SetStateAction<never[]>>;
+  setOrderInfo: React.Dispatch<React.SetStateAction<never[]>>;
   setOrderTotal: React.Dispatch<React.SetStateAction<number>>;
   placeOrder: () => Promise<void>;
 
@@ -54,15 +56,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const [orderInfo, setOrderInfo] = useState([]);
   const [orderTotal, setOrderTotal] = useState(Number);
   const [loading, setLoading] = useState(false);
-
-  //const [orderItems, setOrderItems] = useState(""); //=======================
-  // const [orderNumber, setOrderNumber] = useState(Number);
-
-  //const [orderInfo, setOrderInfo] = useState(""); // =======================
-  const [orders, setOrders] = useState([]); // =====================
-
-  //const [orderTotal, setOrderTotal] = useState(Number);
-
+  const [orders, setOrders] = useState([]); 
   const deliveryAddress = {
     street,
     zipcode,
@@ -120,7 +114,6 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
     getOrders();
   }
 
-  //shippingMethod
   const getShippingMethod = async () => {
     const res = await fetch("/api/shippingmethod");
     const shippingData = await res.json();

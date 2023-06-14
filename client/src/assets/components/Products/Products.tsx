@@ -18,7 +18,6 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
   useEffect(() => {}, [products]);
 
   return (

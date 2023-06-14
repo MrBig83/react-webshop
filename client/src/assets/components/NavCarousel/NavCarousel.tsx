@@ -9,7 +9,6 @@ const contentStyle: React.CSSProperties = {
   justifyContent: "center",
   alignItems: "center",
   background: "#f6f6f6f6",
-  // marginTop: "30px",
 };
 const imageStyle: React.CSSProperties = {
   ...contentStyle,

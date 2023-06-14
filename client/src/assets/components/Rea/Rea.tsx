@@ -1,4 +1,4 @@
-import "./Rea.css";
+
 const Rea = () => {
   return (
     <>

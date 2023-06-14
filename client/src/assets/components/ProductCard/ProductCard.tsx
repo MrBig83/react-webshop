@@ -1,9 +1,7 @@
 import BtnBuyNow from "../Buttons/BtnBuyNow/BtnBuyNow";
 import "./productCard.css";
-// import { ICartItem } from "../../interfaces/ICartItem";
 import IProduct from "../../interfaces/IProduct";
 function ProductCard({ product }: { product: IProduct }) {
-  // ================== Behövs typas! =================
 let lager = "";
 
 if (product.inStock < 1) {
