@@ -1,7 +1,8 @@
 import React from "react";
 import { Carousel } from "antd";
+// import "./NavCarousel.css";
 const contentStyle: React.CSSProperties = {
-  height: "50vh",
+  height: "auto",
   width: "100%",
   display: "flex",
   color: "#fff",
@@ -10,14 +11,16 @@ const contentStyle: React.CSSProperties = {
   alignItems: "center",
   background: "#f6f6f6f6",
 };
+
 const imageStyle: React.CSSProperties = {
   ...contentStyle,
-  maxWidth: "100%",
-  maxHeight: "100%",
+  minWidth: "100%",
+  maxHeight: "60vh",
   objectFit: "cover",
+  justifyContent: "center",
 };
 const NavCarousel: React.FC = () => (
-  <Carousel autoplay>
+  <Carousel autoplay className="navcarousel">
     <div>
       <img
         className="slideone"
