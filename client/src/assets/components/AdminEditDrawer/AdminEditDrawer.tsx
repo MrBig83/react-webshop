@@ -123,7 +123,7 @@ const AdminEditDrawer = ({ product }: { product: IProduct }) => {
             <Form.Item 
             label="Borttagen?"
             name="deleted">
-          <Radio.Group onChange={onChange} defaultValue={false}>
+          <Radio.Group onChange={onChange} value={false}>
             <Radio value={true}> Ja </Radio>
             <Radio value={false}> Nej </Radio>
           </Radio.Group>
