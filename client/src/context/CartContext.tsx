@@ -97,7 +97,6 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
     return items.some((item) => item.product?._id === productId);
   };
 
-  
   const calculateTotal = () => {
     let calculatedTotal = 0;
 
@@ -108,13 +107,12 @@ const CartProvider = ({ children }: PropsWithChildren<{}>) => {
         !isNaN(item.product?.price) &&
         !isNaN(item.quantity)
       ) {
-
-        useEffect(() => {
-          calculatedTotal += item.product?.price * item.quantity;
-          setTotal(calculatedTotal);
-        })
+        calculatedTotal += item.product?.price * item.quantity;
       }
     });
+    useEffect(() => {
+      setTotal(calculatedTotal);
+    }, [calculateTotal]);
     return shopingcartTotal;
   };
 
