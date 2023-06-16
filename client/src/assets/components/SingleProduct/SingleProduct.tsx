@@ -28,15 +28,22 @@ const SingleProduct = () => {
   }, [product, id]);
 
   let lager = "";
+let lagerBool = true
 
-  if (product.inStock < 1) {
-    lager = "Slut i lager"
-  } else if (product.inStock < 5) {
-    lager = "Få i lager"
-  }
-  if (product.inStock >= 5) {
-    lager = "Finns i lager"
-  }
+const buyNow = (event: any) => {
+  //kan man ha any här?
+  event.preventDefault();
+}
+
+if (product.inStock < 1) {
+  lager = "Slut i lager"
+  lagerBool = false
+} else if (product.inStock < 5) {
+  lager = "Få i lager"
+}
+if (product.inStock >= 5) {
+  lager = "Finns i lager"
+}
 
   return (
     <div className="SingleProduct">
@@ -48,7 +55,9 @@ const SingleProduct = () => {
         <p>{product.description}</p>
         <p>{product.price} :-</p>
         <p>{lager}</p>
+        {lagerBool ? 
         <BtnBuyNow product={product} />
+        : <button className="disabled" onClick={buyNow}>Kan ej köpas</button> } 
       </div>
       <br />
       <br />

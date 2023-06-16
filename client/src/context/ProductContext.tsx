@@ -43,7 +43,6 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
       body: JSON.stringify(values),
     });
     const res = response.json();
-    console.log(res);
 
     getProducts();
   }
