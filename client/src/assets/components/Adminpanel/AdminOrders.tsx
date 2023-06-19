@@ -8,9 +8,11 @@ import "./Adminpanel.css";
 function AdminpanelOrders() {
 
     const { orders } = useContext(OrderContext)
-    const { data } = useContext(UserContext)!;  
+    const { data } = useContext(UserContext);  
     if(!data.isAdmin) {return (<h1>Du får inte vara här.</h1>)}
     
+    
+
   return (
     <>
       <div className="AdminOrderList">

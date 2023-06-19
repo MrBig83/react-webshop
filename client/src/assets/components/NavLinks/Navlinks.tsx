@@ -11,11 +11,13 @@ import BtnAdminpanel from "../Buttons/BtnAdminpanel/BtnAdminpanel";
 import "./NavLink.css";
 import { MyCartContext } from "../../../context/CartContext";
 
+
+
 function NavLinks() {
   const { data } = useContext(UserContext);
   const [open, setOpen] = useState(false);
   const { items } = useContext(MyCartContext);
-
+  
   const quant = items.map((i) => i.quantity);
   const sum = quant.reduce(function (a, b) {
     return a + b;
@@ -66,11 +68,15 @@ function NavLinks() {
               <ShopingCart />
               
               {sum >0 ? <>
-              <button className="btnStyle">
+              {data._id ? (
+                <button className="btnStyle" >
                 <NavLink to="/kassa" onClick={onClose}>
                   Till kassan
                 </NavLink>
               </button>
+                ) : (
+                <p>Logga in för att forsätta</p>
+                )}
               </> :
                <p>Inga varor i varukorgen</p>} 
             </Drawer>

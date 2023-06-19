@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <ProductContextProvider>
-      <OrderContextProvider>
+       <OrderContextProvider>
         <UserContextProvider>
           <CartProvider>
             <Layout className="layout">
@@ -27,7 +27,7 @@ const App: React.FC = () => {
             </Layout>
           </CartProvider>
         </UserContextProvider>
-      </OrderContextProvider>
+       </OrderContextProvider>
     </ProductContextProvider>
   );
 };
