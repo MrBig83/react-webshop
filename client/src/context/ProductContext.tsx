@@ -16,12 +16,12 @@ const ProductContextProvider = ({ children }: PropsWithChildren) => {
   const getProducts = async () => {
     const res = await fetch(`/api/products`);
     const products = await res.json();
-    setProducts(products);
+    setProducts(products);    
   };
   useEffect(() => {
     getProducts();
   }, []);
-
+  
   async function updateProduct(values: IProduct, id: string) {
     const response = await fetch(`/api/products/${id}`, {
       method: "PUT",
