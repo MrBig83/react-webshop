@@ -8,7 +8,7 @@ import NavCarousel from "./assets/components/NavCarousel/NavCarousel";
 
 import CartProvider from "./context/CartContext";
 import UserContextProvider from "./context/UserContext";
-// import OrderContextProvider from "./context/OrderContext";
+import OrderContextProvider from "./context/OrderContext";
 import ProductContextProvider from "./context/ProductContext";
 const App: React.FC = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <ProductContextProvider>
-    {/* //   <OrderContextProvider> */}
+       <OrderContextProvider>
         <UserContextProvider>
           <CartProvider>
             <Layout className="layout">
@@ -27,7 +27,7 @@ const App: React.FC = () => {
             </Layout>
           </CartProvider>
         </UserContextProvider>
-    {/* //   </OrderContextProvider> */}
+       </OrderContextProvider>
     </ProductContextProvider>
   );
 };

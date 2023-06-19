@@ -3,6 +3,7 @@ import { OrderContext } from "../../../context/OrderContext";
 import { UserContext } from "../../../context/UserContext";
 import { useContext, useEffect } from "react";
 //import { useNavigate } from "react-router-dom";
+import OrderContextProvider from "../../../context/OrderContext";
 import { Spin } from "antd";
 import './OrderConfirm.css'
 const OrderConfirm = () => {
@@ -18,7 +19,7 @@ const OrderConfirm = () => {
     country,
     city,
     shippingTime,
-  } = useContext(OrderContext)!;
+  } = useContext(OrderContext);
 
   const current = new Date();
   const futureDate = new Date(
@@ -32,6 +33,7 @@ const OrderConfirm = () => {
   }, []);
 
   return (
+    <OrderContextProvider>
     <div>
       <h1>Orderbekräftelse</h1>
       {loading ? (
@@ -59,6 +61,7 @@ const OrderConfirm = () => {
         </div>
       )}
     </div>
+    </OrderContextProvider>
   );
 };
 
