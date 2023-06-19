@@ -6,11 +6,9 @@ import "./Checkout.css";
 const Checkout = () => {
   return (
     <>
-    <OrderContextProvider>
       <h1>Kassa</h1>
       <ShopingCart />
       <CheckoutForm />
-      </OrderContextProvider>
     </>
   );
 };
