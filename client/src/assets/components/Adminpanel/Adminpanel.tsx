@@ -4,7 +4,6 @@ import AdminpanelProducts from "./AdminProducts"
 import AdminpanelOrders from "./AdminOrders";
 import "./Adminpanel.css";
 import OrderContextProvider from "../../../context/OrderContext";
-import ProductContextProvider from "../../../context/ProductContext";
 
 const Adminpanel = () => {
     const { data } = useContext(UserContext); 
@@ -15,7 +14,6 @@ const Adminpanel = () => {
     }
   return (
     
-  <ProductContextProvider>
     <OrderContextProvider>
       <div className="admin-title">
         <h1>Adminpanel</h1>
@@ -25,7 +23,6 @@ const Adminpanel = () => {
         <AdminpanelOrders />
       </div>
     </OrderContextProvider>
-  </ProductContextProvider>
     
   );
 };
