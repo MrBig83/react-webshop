@@ -8,7 +8,6 @@ import "./Checkout.css";
 const Checkout = () => {
   const { data } = useContext(UserContext);
   const { items } = useContext(MyCartContext);
-  console.log(items);
 
   if (!data._id) {
     return <h1>För att lägga en order behöver du logga in</h1>;
