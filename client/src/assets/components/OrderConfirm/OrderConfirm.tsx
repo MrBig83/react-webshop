@@ -54,7 +54,7 @@ const OrderConfirm = () => {
           <p>Förnamn: {data.firstName}</p>
           <p>Efternamn: {data.lastName}</p>
           <p>Email: {data.email}</p>
-          <p>Gata: {street}</p>
+          <p>Gata: {street}</p>          
           <p>Postnummer: {zipcode}</p>
           <p>Stad: {city}</p>
           <p>Land: {country}</p>
