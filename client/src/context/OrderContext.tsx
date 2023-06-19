@@ -96,7 +96,7 @@ const OrderContextProvider = ({ children }: PropsWithChildren) => {
   const getOrders = async () => {
     const res = await fetch("/api/orders");
     const orders = await res.json();
-    setOrders(orders);
+    setOrders(orders);    
   };
   useEffect(() => {
     getOrders();
