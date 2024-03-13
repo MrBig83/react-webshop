@@ -21,6 +21,7 @@ interface UserContextProps {
   login: () => Promise<void>;
   logOut: () => Promise<void>;
   auth: () => Promise<void>;
+  test: () => Promise<void>;
   data: IuserData;
 }
 
@@ -78,6 +79,29 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     auth();
   }, []);
+
+  const test = async (): Promise<void> => {
+    console.log("Test i frontend");
+    
+    try {
+      const response = await fetch("/api/users/test");
+      if (!response.ok) {
+        throw new Error(`Fetch request failed with status ${response.status}`);
+      }
+      console.log(response);
+      
+      const data = await response.json();
+      console.log("Response data:", data);
+      // Further handling of the received data
+    } catch (error) {
+      console.error("Error during fetch:", error);
+    }
+  };
+  
+  useEffect(() => {
+    test();
+  }, []);
+
   return (
     <UserContext.Provider
       value={{
@@ -88,6 +112,7 @@ const UserContextProvider = ({ children }: PropsWithChildren) => {
         login,
         logOut,
         auth,
+        test, 
         data,
       }}
     >

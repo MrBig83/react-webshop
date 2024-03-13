@@ -44,6 +44,7 @@ async function login(req, res) {
 
   // Save info about the user to the session (an encrypted cookie stored on the client)
   req.session = user;
+  console.log(req.session._id);
   res.status(200).json(user);
 }
 
@@ -51,6 +52,7 @@ async function login(req, res) {
  * Logout the user and remove the cookie and session
  */
 async function logout(req, res) {
+  console.log(req.session._id);
   if (!req.session._id) {
     return res.status(400).json("Cannot logout when you are not logged in");
   }
@@ -59,10 +61,17 @@ async function logout(req, res) {
 }
 
 async function authorize(req, res) {
+  console.log("Detta är auth i BE");
+  console.log(req.session._id);
   if (!req.session._id) {
     return res.status(401).json("You are not logged in");
   }
   res.status(200).json(req.session);
 }
 
-module.exports = { register, login, logout, authorize };
+function test(req, res) {
+  console.log("Lallo i backend");
+  res.status(200).json("successful")
+}
+
+module.exports = { register, login, logout, authorize, test };

@@ -7,6 +7,9 @@ const ShoppingCart = () => {
 const { items, updateItemQuantity, removeItem, calculateTotal } =
 useContext(MyCartContext);
 
+console.log(items);
+
+
   return (
     <>
       <div>

@@ -4,7 +4,7 @@ import { UserContext } from "../../../context/UserContext";
 
 const LoginForm: React.FC = () => {
   const { email, password, setEmail, setPassword, login, logOut, auth, data } =
-    useContext(UserContext)!;
+    useContext(UserContext);
 
   const handleSubmit = async () => {
     await auth();

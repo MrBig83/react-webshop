@@ -7,6 +7,8 @@ import Checkout from "../Checkout/Checkout";
 import OrderConfirm from "../OrderConfirm/OrderConfirm";
 import Adminpanel from "../Adminpanel/Adminpanel"
 import News from "../News/News";
+import Subpage1 from "../News/Sub1/Subpage1";
+import Subpage2 from "../News/Sub2/Subpage2";
 import Rea from "../Rea/Rea"
 import "./Main.css";
 
@@ -22,7 +24,11 @@ const Main = () => {
           <Route path="/kassa" element={<Checkout />} />
           <Route path="/order" element={<OrderConfirm />} />
           <Route path="/adminpanel" element={<Adminpanel />} />
+
           <Route path="/news" element={<News />} />
+          <Route path="/news/subpage1" element={<Subpage1 />} />
+          <Route path="/news/subpage2" element={<Subpage2 />} />
+
           <Route path="/rea" element={<Rea />} />
         </Routes>
         <div className="sectionLine"></div>
